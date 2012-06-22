@@ -117,7 +117,7 @@ import cascading.pipe.Checkpoint;
     //flowDef.addCheckpoint( dfCheckpoint, checkTap );
     */
 
-    // join to calculate the TF-IDF metric
+    // join to calculate TF-IDF; IDF side is smaller so it goes on RHS of CoGroup
     Pipe idfPipe = new HashJoin( dfPipe, new Fields( "lhs_join" ), dPipe, new Fields( "rhs_join" ) );
     Pipe tfidfPipe = new CoGroup( tfPipe, new Fields( "tf_token" ), idfPipe, new Fields( "df_token" ) );
     tfidfPipe = new Each( tfidfPipe, new TfIdfFunction() );
@@ -137,6 +137,8 @@ import cascading.pipe.Checkpoint;
     flowDef.addSource( stopPipe, stopTap );
     flowDef.addTailSink( tfidfPipe, tfidfTap );
     flowDef.addTailSink( wcPipe, wcTap );
+    flowDef.addTailSink( fooPipe, fooTap );
+    flowDef.addTailSink( barPipe, barTap );
     flowDef.addTrap( docPipe, trapTap );
 
     // run the Flow
