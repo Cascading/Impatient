@@ -1,0 +1,70 @@
+/*
+ * Copyright (c) 2007-2012 Concurrent, Inc. All Rights Reserved.
+ *
+ * Project and contact information: http://www.concurrentinc.com/
+ */
+
+import java.text.SimpleDateFormat
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+  mavenRepo name: 'conjars', url: 'http://conjars.org/repo/'
+}
+
+dependencies {
+  compile( 'cascading:cascading-core:2.0.1' ) { exclude group: 'log4j' }
+  compile( 'cascading:cascading-hadoop:2.0.1' ) { transitive = true }
+
+  testCompile( 'org.apache.hadoop:hadoop-test:0.20.2' )
+  testCompile( 'junit:junit:4.8.+' )
+}
+
+jar {
+  description = "Assembles a Hadoop ready jar file"
+  doFirst {
+    into( 'lib' ) {
+      from configurations.compile
+    }
+  }
+
+  manifest {
+    attributes( "Main-Class": "${archivesBaseName}/Main" )
+  }
+}
+
+task distCopy( type: Copy, dependsOn: jar ) {
+  into "${buildDir}/dist/${archivesBaseName}"
+
+  from 'README.md'
+  from 'build.gradle'
+  from( 'src' ) {into 'src'}
+  from( 'data' ) {into 'data'}
+
+  from "$buildDir/libs"
+}
+
+task dist( type: Tar, dependsOn: distCopy ) {
+  compression = "GZIP"
+  classifier = new SimpleDateFormat( "yyyyMMdd" ).format( new Date() )
+
+  from "${buildDir}/dist/"
+}
+
+test {
+  include 'simple6/**'
+
+  //makes the standard streams (err and out) visible at console when running tests
+  testLogging.showStandardStreams = true
+
+  //listening to test execution events
+  beforeTest { descriptor ->
+     logger.lifecycle("Running test: " + descriptor)
+  }
+  onOutput { descriptor, event ->
+     logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
+  }
+}
