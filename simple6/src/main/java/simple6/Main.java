@@ -73,12 +73,12 @@ public class
     Tap trapTap = makeTap( trapPath, new TextDelimited( true, "\t" ) );
     Tap checkTap = makeTap( checkPath, new TextDelimited( true, "\t" ) );
 
-    // use a stream assertion to error check the input data
+    // use a stream assertion to validate the input data
     Pipe docPipe = new Pipe( "token" );
     AssertMatches assertMatches = new AssertMatches( "doc\\d+\\s.*" );
     docPipe = new Each( docPipe, AssertionLevel.STRICT, assertMatches );
 
-    // specify an operation within a pipe, to split text lines into a token stream
+    // specify a regex operation to split the "document" text lines into a token stream
     Fields token = new Fields( "token" );
     Fields text = new Fields( "text" );
     RegexSplitGenerator splitter = new RegexSplitGenerator( token, "[ \\[\\]\\(\\),.]" );
@@ -89,23 +89,23 @@ public class
     Fields doc_id = new Fields( "doc_id" );
     docPipe = new Each( docPipe, new ScrubFunction( doc_id, token, fieldDeclaration ) );
 
-    // perform a left join to remove the stop words
+    // perform a left join to remove stop words, discarding the rows
+    // which joined with stop words, i.e., were non-null after left join
     Pipe stopPipe = new Pipe( "stop" );
     Pipe tokenPipe = new HashJoin( docPipe, token, stopPipe, stop, new LeftJoin() );
-
-    // discard rows which joined with stop words, i.e., non-null after left join
     tokenPipe = new Each( tokenPipe, stop, new RegexFilter( "^$" ) );
     tokenPipe = new Retain( tokenPipe, new Fields( "doc_id", "token" ) );
 
-    // one branch to tally the token counts for term frequency (TF)
+    // one branch of the flow tallies the token counts for term frequency (TF)
     Pipe tfPipe = new Unique( "tf", tokenPipe, Fields.ALL );
     tfPipe = new GroupBy( tfPipe, new Fields( "doc_id", "token" ) );
+
     Fields tf_count = new Fields( "tf_count" );
     tfPipe = new Every( tfPipe, Fields.ALL, new Count( tf_count ), Fields.ALL );
     Fields tf_token = new Fields( "tf_token" );
     tfPipe = new Rename( tfPipe, token, tf_token );
 
-    // one branch to count the number of documents (D)
+    // one branch counts the number of documents (D)
     Fields tally = new Fields( "tally" );
     Fields rhs_join = new Fields( "rhs_join" );
     Fields n_docs = new Fields( "n_docs" );
@@ -114,7 +114,7 @@ public class
     dPipe = new Each( dPipe, new Insert( rhs_join, 1 ), Fields.ALL );
     dPipe = new SumBy( dPipe, rhs_join, tally, n_docs, long.class );
 
-    // one branch to tally the token counts for document frequency (DF)
+    // one branch tallies the token counts for document frequency (DF)
     Pipe dfPipe = new Unique( "df", tokenPipe, Fields.ALL );
     dfPipe = new GroupBy( dfPipe, token );
 
@@ -125,21 +125,21 @@ public class
     dfPipe = new Rename( dfPipe, token, df_token );
     dfPipe = new Each( dfPipe, new Insert( lhs_join, 1 ), Fields.ALL );
 
-    // use a debug to observe values in the tuple stream; turn off below
+    // exmple use of a debug, to observe tuple stream; turn off below
     dfPipe = new Each( dfPipe, DebugLevel.VERBOSE, new Debug( true ) );
 
     // join to calculate TF-IDF; IDF side is smaller so it goes on RHS of CoGroup
     Pipe idfPipe = new HashJoin( dfPipe, lhs_join, dPipe, rhs_join );
 
-    // create a checkpoint, for tracking intermediate data in DF stream
+    // create a checkpoint, to observe the intermediate data in DF stream
     Checkpoint idfCheck = new Checkpoint( "checkpoint", idfPipe );
     Pipe tfidfPipe = new CoGroup( tfPipe, tf_token, idfCheck, df_token );
 
-    // calculate TF-IDF metric
+    // calculate the TF-IDF metric
     fieldDeclaration = new Fields( "token", "doc_id", "tfidf" );
     tfidfPipe = new Each( tfidfPipe, new TfIdfFunction( doc_id, tf_token, tf_count, df_count, n_docs, fieldDeclaration ) );
 
-    // keep track of the word counts, useful for QA
+    // keep track of the word counts, which are useful for QA
     Pipe wcPipe = new Pipe( "wc", tfPipe );
     wcPipe = new Retain( wcPipe, tf_token );
     wcPipe = new GroupBy( wcPipe, tf_token );
