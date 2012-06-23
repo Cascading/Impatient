@@ -55,6 +55,10 @@ public class
     String trapPath = args[ 4 ];
     String checkPath = args[ 5 ];
 
+    Properties properties = new Properties();
+    AppProps.setApplicationJarClass( properties, Main.class );
+    HadoopFlowConnector flowConnector = new HadoopFlowConnector( properties );
+
     // create source taps, and read from local file system if inputs are not URLs
     Tap docTap = makeTap( docPath, new TextDelimited( true, "\t" ) );
 
@@ -75,14 +79,15 @@ public class
     docPipe = new Each( docPipe, AssertionLevel.STRICT, assertMatches );
 
     // specify an operation within a pipe, to split text lines into a token stream
-    Fields text = new Fields( "text" );
     Fields token = new Fields( "token" );
+    Fields text = new Fields( "text" );
     RegexSplitGenerator splitter = new RegexSplitGenerator( token, "[ \\[\\]\\(\\),.]" );
-    Fields outputSelector = new Fields( "doc_id", "token" );
-    docPipe = new Each( docPipe, text, splitter, outputSelector );
+    Fields fieldDeclaration = new Fields( "doc_id", "token" );
+    docPipe = new Each( docPipe, text, splitter, fieldDeclaration );
 
     // define "ScrubFunction" to clean up the token stream
-    docPipe = new Each( docPipe, new ScrubFunction() );
+    Fields doc_id = new Fields( "doc_id" );
+    docPipe = new Each( docPipe, new ScrubFunction( doc_id, token, fieldDeclaration ) );
 
     // perform a left join to remove the stop words
     Pipe stopPipe = new Pipe( "stop" );
@@ -101,7 +106,6 @@ public class
     tfPipe = new Rename( tfPipe, token, tf_token );
 
     // one branch to count the number of documents (D)
-    Fields doc_id = new Fields( "doc_id" );
     Fields tally = new Fields( "tally" );
     Fields rhs_join = new Fields( "rhs_join" );
     Fields n_docs = new Fields( "n_docs" );
@@ -132,7 +136,7 @@ public class
     Pipe tfidfPipe = new CoGroup( tfPipe, tf_token, idfCheck, df_token );
 
     // calculate TF-IDF metric
-    Fields fieldDeclaration = new Fields( "token", "doc_id", "tfidf" );
+    fieldDeclaration = new Fields( "token", "doc_id", "tfidf" );
     tfidfPipe = new Each( tfidfPipe, new TfIdfFunction( doc_id, tf_token, tf_count, df_count, n_docs, fieldDeclaration ) );
 
     // keep track of the word counts, useful for QA
@@ -144,7 +148,7 @@ public class
     Fields count = new Fields( "count" );
     wcPipe = new GroupBy( wcPipe, count, count );
 
-    // connect the taps and pipes into a flow
+    // connect the taps, pipes, traps, checkpoints, etc., into a flow
     FlowDef flowDef = FlowDef.flowDef().setName( "simple" );
     flowDef.addSource( docPipe, docTap );
     flowDef.addSource( stopPipe, stopTap );
@@ -159,17 +163,10 @@ public class
     // set to AssertionLevel.STRICT for all assertions, or AssertionLevel.NONE in production
     flowDef.setAssertionLevel( AssertionLevel.STRICT );
 
-    // run the Flow
-    Properties properties = new Properties();
-    AppProps.setApplicationJarClass( properties, Main.class );
-
-    HadoopFlowConnector flowConnector = new HadoopFlowConnector( properties );
+    // write a DOT file and run the flow
     Flow simpleFlow = flowConnector.connect( flowDef );
     simpleFlow.writeDOT( "dot/simple.dot" );
-
-    CascadeConnector cascadeConnector = new CascadeConnector( properties );
-    Cascade cascade = cascadeConnector.connect( simpleFlow );
-    cascade.complete();
+    simpleFlow.complete();
     }
 
   public static Tap

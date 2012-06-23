@@ -17,16 +17,21 @@ import cascading.tuple.TupleEntry;
 
 public class ScrubFunction extends BaseOperation implements Function
   {
-  public ScrubFunction()
+  private final Fields docIdField;
+  private final Fields tokenField;
+
+  public ScrubFunction( Fields docIdField, Fields tokenField, Fields fieldDeclaration )
     {
-    super( 2, new Fields( "doc_id", "token" ) );
+    super( 2, fieldDeclaration );
+    this.docIdField = docIdField;
+    this.tokenField = tokenField;
     }
 
   public void operate( FlowProcess flowProcess, FunctionCall functionCall )
     {
     TupleEntry argument = functionCall.getArguments();
-    String doc_id = argument.getString( 0 );
-    String token = scrubText( argument.getString( 1 ) );
+    String doc_id = argument.getString( docIdField );
+    String token = scrubText( argument.getString( tokenField ) );
 
     if( token.length() > 0 )
       {

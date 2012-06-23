@@ -24,5 +24,8 @@ simple5
 	physical plan: 10 Mappers, 10 Reducers
 
 simple6
-	shows how to use checkpoints, assertions, traps, unit tests
+	shows how to use checkpoints, assertions, traps, unit tests, debug
 	automatically switch between Hfs and Lfs
+
+simple7
+	has a switch to run the example instead in local mode

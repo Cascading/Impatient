@@ -1,9 +1,11 @@
 **/build
 **/dot
 **/output
+**/.idea
 **/.gradle
 
 *~
+*.dot
 *.class
 
 # Package Files #
