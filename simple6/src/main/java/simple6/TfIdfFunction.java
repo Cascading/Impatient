@@ -17,19 +17,30 @@ import cascading.tuple.TupleEntry;
 
 public class TfIdfFunction extends BaseOperation implements Function
   {
-  public TfIdfFunction()
+  private final Fields docIdField;
+  private final Fields tokenField;
+  private final Fields tfCountField;
+  private final Fields dfCountField;
+  private final Fields nDocsField;
+
+  public TfIdfFunction( Fields docIdField, Fields tokenField, Fields tfCountField, Fields dfCountField, Fields nDocsField, Fields fieldDeclaration )
     {
-    super( 5, new Fields( "token", "doc_id", "tfidf" ) );
+    super( 5, fieldDeclaration );
+    this.docIdField = docIdField;
+    this.tokenField = tokenField;
+    this.tfCountField = tfCountField;
+    this.dfCountField = dfCountField;
+    this.nDocsField = nDocsField;
     }
 
   public void operate( FlowProcess flowProcess, FunctionCall functionCall )
     {
     TupleEntry argument = functionCall.getArguments();
-    String doc_id = argument.getString( 0 );
-    int tf_count = argument.getInteger( 1 );
-    String token = argument.getString( 2 );
-    int df_count = argument.getInteger( 3 );
-    int n_doc = argument.getInteger( 7 );
+    String doc_id = argument.getString( docIdField );
+    String token = argument.getString( tokenField );
+    int tf_count = argument.getInteger( tfCountField );
+    int df_count = argument.getInteger( dfCountField );
+    int n_doc = argument.getInteger( nDocsField );
 
     Tuple result = new Tuple();
     result.add( token );

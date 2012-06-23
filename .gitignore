@@ -2,6 +2,8 @@
 **/dot
 **/output
 **/.gradle
+
+*~
 *.class
 
 # Package Files #
