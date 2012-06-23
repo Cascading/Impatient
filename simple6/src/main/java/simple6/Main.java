@@ -128,11 +128,14 @@ public class
     // exmple use of a debug, to observe tuple stream; turn off below
     dfPipe = new Each( dfPipe, DebugLevel.VERBOSE, new Debug( true ) );
 
-    // join to calculate TF-IDF; IDF side is smaller so it goes on RHS of CoGroup
+    // join to calculate TF-IDF 
+    // the D side of the join is smaller, so it goes on the RHS
     Pipe idfPipe = new HashJoin( dfPipe, lhs_join, dPipe, rhs_join );
 
     // create a checkpoint, to observe the intermediate data in DF stream
     Checkpoint idfCheck = new Checkpoint( "checkpoint", idfPipe );
+
+    // the IDF side of the join is smaller, so it goes on the RHS
     Pipe tfidfPipe = new CoGroup( tfPipe, tf_token, idfCheck, df_token );
 
     // calculate the TF-IDF metric
