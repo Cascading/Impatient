@@ -4,6 +4,7 @@ simple1
 	physical plan: 1 Mapper
 
 simple2
+	automatically switch between Hfs and Lfs
 	uses a regex to split the input text lines into a token stream
 	generates a DOT file, to show the Cascading flow graphically
 	physical plan: 1 Mapper, 1 Reducer
@@ -24,8 +25,8 @@ simple5
 	physical plan: 10 Mappers, 10 Reducers
 
 simple6
-	shows how to use checkpoints, assertions, traps, unit tests, debug
-	automatically switch between Hfs and Lfs
+	includes unit tests in the build
+	shows how to use checkpoints, assertions, traps, debug
 
 simple7
 	has a switch to run the example instead in local mode
