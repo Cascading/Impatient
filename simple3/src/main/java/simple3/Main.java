@@ -73,9 +73,6 @@ public class
     wcPipe = new GroupBy( wcPipe, token );
     wcPipe = new Every( wcPipe, Fields.ALL, new Count(), Fields.ALL );
 
-    Fields count = new Fields( "count" );
-    wcPipe = new GroupBy( wcPipe, count, count );
-
     // connect the taps, pipes, etc., into a flow
     FlowDef flowDef = FlowDef.flowDef().setName( "simple" );
     flowDef.addSource( docPipe, docTap );
