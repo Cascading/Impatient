@@ -4,8 +4,9 @@ simple1
 	physical plan: 1 Mapper
 
 simple2
-	automatically switch between Hfs and Lfs
+	implements a simple example of WordCount
 	uses a regex to split the input text lines into a token stream
+	automatically switch between Hfs and Lfs
 	generates a DOT file, to show the Cascading flow graphically
 	physical plan: 1 Mapper, 1 Reducer
 
