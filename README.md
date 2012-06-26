@@ -1,6 +1,7 @@
 simple1
 	implements the simplest possible Cascading app
 	this just copies each text line from source tap to sink tap
+	roughly, in about a dozen lines of code
 	physical plan: 1 Mapper
 
 simple2
