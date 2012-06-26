@@ -42,7 +42,7 @@ public class
     Pipe simplePipe = new Pipe( "simple" );
 
     // connect the taps, pipes, etc., into a flow
-    FlowDef flowDef = FlowDef.flowDef().setName( "simple" );
+    FlowDef flowDef = FlowDef.flowDef();
     flowDef.addSource( simplePipe, inTap );
     flowDef.addTailSink( simplePipe, outTap );
 
