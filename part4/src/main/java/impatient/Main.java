@@ -4,7 +4,7 @@
  * Project and contact information: http://www.concurrentinc.com/
  */
 
-package simple4;
+package impatient;
 
 import java.util.Properties;
 
@@ -69,7 +69,8 @@ public class
 
     // define "ScrubFunction" to clean up the token stream
     Fields doc_id = new Fields( "doc_id" );
-    docPipe = new Each( docPipe, new ScrubFunction( doc_id, token, fieldDeclaration ) );
+    Fields scrubArguments = new Fields( "doc_id", "token" );
+    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( fieldDeclaration ), Fields.RESULTS );
 
     // perform a left join to remove stop words, discarding the rows
     // which joined with stop words, i.e., were non-null after left join

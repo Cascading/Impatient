@@ -4,7 +4,7 @@
  * Project and contact information: http://www.concurrentinc.com/
  */
 
-package simple4;
+package impatient;
 
 import cascading.flow.FlowProcess;
 import cascading.operation.BaseOperation;
@@ -17,21 +17,16 @@ import cascading.tuple.TupleEntry;
 
 public class ScrubFunction extends BaseOperation implements Function
   {
-  private final Fields docIdField;
-  private final Fields tokenField;
-
-  public ScrubFunction( Fields docIdField, Fields tokenField, Fields fieldDeclaration )
+  public ScrubFunction( Fields fieldDeclaration )
     {
     super( 2, fieldDeclaration );
-    this.docIdField = docIdField;
-    this.tokenField = tokenField;
     }
 
   public void operate( FlowProcess flowProcess, FunctionCall functionCall )
     {
     TupleEntry argument = functionCall.getArguments();
-    String doc_id = argument.getString( docIdField );
-    String token = scrubText( argument.getString( tokenField ) );
+    String doc_id = argument.getString( 0 );
+    String token = scrubText( argument.getString( 1 ) );
 
     if( token.length() > 0 )
       {
