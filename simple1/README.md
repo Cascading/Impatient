@@ -4,13 +4,13 @@ Bokay, our lesson today is how to write a simple [Cascading 2.0](http://www.casc
 
 So here's a brief Java program, about a dozen lines long. It copies lines of text from file "A" to file "B". It uses 1 *mapper* in Apache Hadoop. No *reducer* needed.
 
-Certainly this same work could be performed in much quicker ways, such as using `cp` on Linux. However this is merely a starting point. We'll build on this example, adding new pieces of code to explore features and strengths of Cascading. We'll keep building until we have a MapReduce implementation of [TF-IDF](http://en.wikipedia.org/wiki/Tf*idf) for scoring the relative "importance" keywords in a set of documents. In other words, Text Mining 101. What you might find if you look inside [Lucene](http://lucene.apache.org/) for example. Moreover, we'll show how to use some [TDD](http://en.wikipedia.org/wiki/Test-driven_development) features of Cascading, to build robust MapReduce apps at scale.
+Certainly this same work could be performed in much quicker ways, such as using `cp` on Linux. However this Cascading example is merely a starting point. We'll build on this example, adding new pieces of code to explore features and strengths of Cascading. We'll keep building until we have a MapReduce implementation of [TF-IDF](http://en.wikipedia.org/wiki/Tf*idf) for scoring the relative "importance" of keywords in a set of documents. In other words, Text Mining 101. What you might find when you peek inside [Lucene](http://lucene.apache.org/) for example, or some other text indexing framework. Moreover, we'll show how to use [TDD](http://en.wikipedia.org/wiki/Test-driven_development) features of Cascading, to build robust MapReduce apps for scale.
 
 Source
 ======
 Download source for this example on GitHub at https://github.com/ConcurrentCore/impatient/tree/master/simple1
 
-For quick reference, the source for this example is listed in a [gist](https://gist.github.com/2911714) on GitHub. The input data is also listed in a [gist](https://gist.github.com/2911686).
+For quick reference, source code for this example is listed in a [gist](https://gist.github.com/2911714) on GitHub. The input data is also listed in a [gist](https://gist.github.com/2911686).
 
 First, we create a **source tap** to specify the input data. That data happens to be formatted as tab-separated values (TSV) with a header row:
 
@@ -26,7 +26,7 @@ Then we create a **pipe** to connect the taps:
 
     Pipe simplePipe = new Pipe( "simple" );
 
-Here comes the fun part. Get your toolbelt ready, because we need to do some plumbing... Connect the taps and pipes into a **flow**:
+Here comes the fun part. Get your toolbelt ready, because we need to do a little plumbing... Connect the taps and pipes into a **flow**:
 
     FlowDef flowDef = FlowDef.flowDef();
     flowDef.addSource( simplePipe, inTap );
@@ -52,7 +52,7 @@ Run
 ===
 Before running this sample app, you'll need to have a supported release of [Apache Hadoop](http://hadoop.apache.org/) installed. Here's what was used to develop and test our example code:
 
-    $ hadoop -version
+    $ hadoop version
     Hadoop 0.20.205.0
 
 Be sure to set your `HADOOP_HOME` environment variable. Then clear the `output` directory (Apache Hadoop insists, if you're running in standalone mode) and run the app:
@@ -60,10 +60,10 @@ Be sure to set your `HADOOP_HOME` environment variable. Then clear the `output` 
     rm -rf output
     hadoop jar ./build/libs/simple1.jar data/rain.txt output/rain
 
-In other words, the file `data/raint.txt` gets copied, TSV row by TSV row. The output text is stored in the partition file `output\rain` which you can then verify:
+Notice how those command line arguments align with `args[]` in the source. The file `data/raint.txt` gets copied, TSV row by TSV row. Output text gets stored in the partition file `output\rain` which you can then verify:
 
     more output/rain/part-00000
 
-Here's a [log file](https://gist.github.com/2911681) from our run of the sample app. If your run looks terribly different, something is probably not set up correctly. Drop us a line on the [cascading-user](https://groups.google.com/forum/?fromgroups#!forum/cascading-user) email forum. Plenty of experienced Cascading users are discussing there and eager to help. Or visit one of our user group meetings. [Coming up real soon...]
+Here's a [log file](https://gist.github.com/2911681) from our run of the sample app. If your run looks terribly different, something is probably not set up correctly. Drop us a line on the [cascading-user](https://groups.google.com/forum/?fromgroups#!forum/cascading-user) email forum. Plenty of experienced Cascading users are discussing **taps** and **pipes** and **flows** there, and eager to help. Or visit one of our user group meetings. [Coming up real soon...]
 
 Stay tuned for the next installments of our *Cascading for the Impatient* series.
