@@ -14,7 +14,7 @@ build
 run
 ===
     rm -rf output
-    hadoop jar ./build/libs/simple6.jar data/rain.txt data/en.stop output/tfidf output/wc output/trap output/check
+    hadoop jar ./build/libs/impatient.jar data/rain.txt data/en.stop output/tfidf output/wc output/trap output/check
     more output/tfidf/part-00000
 
 gists

@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat
 apply plugin: 'java'
 apply plugin: 'idea'
 
+archivesBaseName = 'impatient'
+
 repositories {
   mavenLocal()
   mavenCentral()
@@ -32,7 +34,7 @@ jar {
   }
 
   manifest {
-    attributes( "Main-Class": "${archivesBaseName}/Main" )
+    attributes( "Main-Class": "impatient/Main" )
   }
 }
 
@@ -55,7 +57,7 @@ task dist( type: Tar, dependsOn: distCopy ) {
 }
 
 test {
-  include 'simple6/**'
+  include 'impatient/**'
 
   //makes the standard streams (err and out) visible at console when running tests
   testLogging.showStandardStreams = true

@@ -4,7 +4,7 @@
  * Project and contact information: http://www.concurrentinc.com/
  */
 
-package simple6;
+package impatient;
 
 import java.util.Properties;
 
@@ -86,8 +86,8 @@ public class
     docPipe = new Each( docPipe, text, splitter, fieldDeclaration );
 
     // define "ScrubFunction" to clean up the token stream
-    Fields doc_id = new Fields( "doc_id" );
-    docPipe = new Each( docPipe, new ScrubFunction( doc_id, token, fieldDeclaration ) );
+    Fields scrubArguments = new Fields( "doc_id", "token" );
+    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( fieldDeclaration ), Fields.RESULTS );
 
     // perform a left join to remove stop words, discarding the rows
     // which joined with stop words, i.e., were non-null after left join
@@ -106,6 +106,7 @@ public class
     tfPipe = new Rename( tfPipe, token, tf_token );
 
     // one branch counts the number of documents (D)
+    Fields doc_id = new Fields( "doc_id" );
     Fields tally = new Fields( "tally" );
     Fields rhs_join = new Fields( "rhs_join" );
     Fields n_docs = new Fields( "n_docs" );
@@ -140,7 +141,8 @@ public class
 
     // calculate the TF-IDF metric
     fieldDeclaration = new Fields( "token", "doc_id", "tfidf" );
-    tfidfPipe = new Each( tfidfPipe, new TfIdfFunction( doc_id, tf_token, tf_count, df_count, n_docs, fieldDeclaration ) );
+    Fields tfidfArguments = new Fields( "doc_id", "tf_token", "tf_count", "df_count", "n_docs" );
+    tfidfPipe = new Each( tfidfPipe, tfidfArguments, new TfIdfFunction( fieldDeclaration ), Fields.RESULTS );
 
     // keep track of the word counts, which are useful for QA
     Pipe wcPipe = new Pipe( "wc", tfPipe );
