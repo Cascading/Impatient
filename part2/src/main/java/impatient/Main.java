@@ -4,30 +4,21 @@
  * Project and contact information: http://www.concurrentinc.com/
  */
 
-package simple2;
+package impatient;
 
 import java.util.Properties;
 
-import cascading.cascade.Cascade;
-import cascading.cascade.CascadeConnector;
 import cascading.flow.Flow;
 import cascading.flow.FlowDef;
 import cascading.flow.hadoop.HadoopFlowConnector;
-import cascading.operation.Insert;
 import cascading.operation.aggregator.Count;
 import cascading.operation.regex.RegexFilter;
 import cascading.operation.regex.RegexSplitGenerator;
-import cascading.pipe.CoGroup;
 import cascading.pipe.Each;
 import cascading.pipe.Every;
 import cascading.pipe.GroupBy;
-import cascading.pipe.HashJoin;
 import cascading.pipe.Pipe;
-import cascading.pipe.assembly.Rename;
 import cascading.pipe.assembly.Retain;
-import cascading.pipe.assembly.SumBy;
-import cascading.pipe.assembly.Unique;
-import cascading.pipe.joiner.LeftJoin;
 import cascading.property.AppProps;
 import cascading.scheme.Scheme;
 import cascading.scheme.hadoop.TextDelimited;
