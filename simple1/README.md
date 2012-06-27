@@ -46,7 +46,7 @@ The build for this example is based on using [Gradle](http://gradle.org/). The s
 
     gradle clean jar
 
-What you should have at this point is a JAR file which is just fine to drop into your [Maven](https://maven.apache.org/) repo. Actually, we provide a community jar repository for Cascading libraries and extensions at http://conjars.org
+What you should have at this point is a JAR file which is nearly ready to drop into your [Maven](https://maven.apache.org/) repo -- almost. Actually, we provide a community jar repository for Cascading libraries and extensions at http://conjars.org
 
 Run
 ===
