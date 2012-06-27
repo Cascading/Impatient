@@ -60,7 +60,7 @@ Be sure to set your `HADOOP_HOME` environment variable. Then clear the `output` 
     rm -rf output
     hadoop jar ./build/libs/simple1.jar data/rain.txt output/rain
 
-Notice how those command line arguments align with `args[]` in the source. The file `data/raint.txt` gets copied, TSV row by TSV row. Output text gets stored in the partition file `output\rain` which you can then verify:
+Notice how those command line arguments align with `args[]` in the source. The file `data/rain.txt` gets copied, TSV row by TSV row. Output text gets stored in the partition file `output/rain` which you can then verify:
 
     more output/rain/part-00000
 
