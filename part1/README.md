@@ -1,8 +1,8 @@
 Cascading for the Impatient, part 1
 ===================================
-Bokay, our lesson today is how to write a simple [Cascading 2.0](http://www.cascading.org/) app. The goal is clear and concise: create the simplest application possible in Cascading, while following best practices. No bangs, no whistles, just good solid code.
+The lesson today is how to write a simple [Cascading 2.0](http://www.cascading.org/) app. The goal is clear and concise: create the simplest application possible in Cascading, while following best practices. No bangs, no whistles, just good solid code.
 
-So here's a brief Java program, about a dozen lines long. It copies lines of text from file "A" to file "B". It uses 1 *mapper* in Apache Hadoop. No *reducer* needed.
+Here's a brief Java program, about a dozen lines long. It copies lines of text from file "A" to file "B". It uses 1 *mapper* in Apache Hadoop. No *reducer* needed.
 
 Certainly this same work could be performed in much quicker ways, such as using `cp` on Linux. However this Cascading example is merely a starting point. We'll build on this example, adding new pieces of code to explore features and strengths of Cascading. We'll keep building until we have a MapReduce implementation of [TF-IDF](http://en.wikipedia.org/wiki/Tf*idf) for scoring the relative "importance" of keywords in a set of documents. In other words, Text Mining 101. What you might find when you peek inside [Lucene](http://lucene.apache.org/) for example, or some other text indexing framework. Moreover, we'll show how to use [TDD](http://en.wikipedia.org/wiki/Test-driven_development) features of Cascading, to build robust MapReduce apps for scale.
 
@@ -10,7 +10,9 @@ Source
 ======
 Download source for this example on GitHub at https://github.com/ConcurrentCore/impatient/tree/master/simple1
 
-For quick reference, source code for this example is listed in a [gist](https://gist.github.com/2911714) on GitHub. The input data is also listed in a [gist](https://gist.github.com/2911686).
+For quick reference, source code for this example is listed in a [gist](https://gist.github.com/2911714) on GitHub. The input data is listed in a [gist](https://gist.github.com/2911686).
+
+If you want even more detail, see also the Cascading 2.0 [User Guide](http://docs.cascading.org/cascading/2.0/userguide/html/) or the [JavaDoc](http://docs.cascading.org/cascading/2.0/javadoc/) for individual classes.
 
 First, we create a **source tap** to specify the input data. That data happens to be formatted as tab-separated values (TSV) with a header row:
 
@@ -68,6 +70,6 @@ Notice how those command line arguments align with `args[]` in the source. The f
 
     more output/rain/part-00000
 
-Here's a [log file](https://gist.github.com/2911681) from our run of the sample app. If your run looks terribly different, something is probably not set up correctly. Drop us a line on the [cascading-user](https://groups.google.com/forum/?fromgroups#!forum/cascading-user) email forum. Plenty of experienced Cascading users are discussing **taps** and **pipes** and **flows** there, and eager to help. Or visit one of our user group meetings. [Coming up real soon...]
+Here's a [log file](https://gist.github.com/2911681) from our run of the sample app. If your run looks terribly different, something is probably not set up correctly. Drop us a line on the [cascading-user](https://groups.google.com/forum/?fromgroups#!forum/cascading-user) email forum. Plenty of experienced Cascading users are discussing **taps** and **pipes** and **flows** there, and eager to help. Or visit one of our user group meetings. [Coming up soon...]
 
 That's it in a nutshell, our simplest app possible in Cascading. Not quite a "Hello World", but more like a "Hi there, bus stop". Or something. Stay tuned for the next installments of our *Cascading for the Impatient* series.
