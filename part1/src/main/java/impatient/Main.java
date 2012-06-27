@@ -4,7 +4,7 @@
  * Project and contact information: http://www.concurrentinc.com/
  */
 
-package simple1;
+package impatient;
 
 import java.util.Properties;
 

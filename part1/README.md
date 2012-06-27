@@ -42,7 +42,11 @@ Place those source lines all into a `Main` method, then build a JAR file. You sh
 
 Build
 =====
-The build for this example is based on using [Gradle](http://gradle.org/). The script is in `build.gradle` and to run it:
+The build for this example is based on using [Gradle](http://gradle.org/). The script is in `build.gradle` and to generate an [IntelliJ project](https://www.jetbrains.com/idea/) use:
+
+    gradle ideaModule
+
+To build the sample app from the command line use:
 
     gradle clean jar
 
@@ -58,7 +62,7 @@ Before running this sample app, you'll need to have a supported release of [Apac
 Be sure to set your `HADOOP_HOME` environment variable. Then clear the `output` directory (Apache Hadoop insists, if you're running in standalone mode) and run the app:
 
     rm -rf output
-    hadoop jar ./build/libs/simple1.jar data/rain.txt output/rain
+    hadoop jar ./build/libs/impatient.jar data/rain.txt output/rain
 
 Notice how those command line arguments align with `args[]` in the source. The file `data/rain.txt` gets copied, TSV row by TSV row. Output text gets stored in the partition file `output/rain` which you can then verify:
 
