@@ -1,6 +1,6 @@
 Cascading for the Impatient, part 1
 ===================================
-Bokay, our lesson today is how to write a simple [Cascading 2.0](http://www.cascading.org/) app. The goal is clear and concise: create the simpliest application possible in Cascading, while following best practices. No bangs, no whistles, just good solid code.
+Bokay, our lesson today is how to write a simple [Cascading 2.0](http://www.cascading.org/) app. The goal is clear and concise: create the simplest application possible in Cascading, while following best practices. No bangs, no whistles, just good solid code.
 
 So here's a brief Java program, about a dozen lines long. It copies lines of text from file "A" to file "B". It uses 1 *mapper* in Apache Hadoop. No *reducer* needed.
 
@@ -26,13 +26,13 @@ Then we create a **pipe** to connect the taps:
 
     Pipe simplePipe = new Pipe( "simple" );
 
-Here comes the fun part. Get your toolbelt ready, because we need to do a little plumbing... Connect the taps and pipes into a **flow**:
+Here comes the fun part. Get your tool belt ready, because we need to do a little plumbing... Connect the taps and pipes into a **flow**:
 
     FlowDef flowDef = FlowDef.flowDef();
     flowDef.addSource( simplePipe, inTap );
     flowDef.addTailSink( simplePipe, outTap );
 
-The notion of a *worflow* is the essence of Cascading. Instead of thinking in terms of "map" and "reduce" steps in a MapReduce job, we prefer to think about apps. Real-world apps tend to use lots of job steps. Those are connected, and have dependencies -- typically specified by a [directed acyclic graph](http://en.wikipedia.org/wiki/Directed_acyclic_graph) (DAG). Cascading uses **flow** objects to define how a MapReduce app -- a.k.a., a DAG of MapReduce job steps -- must be connected.
+The notion of a [workflow](http://en.wikipedia.org/wiki/Workflow) lives at the heart of Cascading. Instead of thinking in terms of *mapper* and *reducer* steps in a MapReduce job, we prefer to think about apps. Real-world apps tend to use lots of job steps. Those are connected and have dependencies, which are typically specified by a [directed acyclic graph](http://en.wikipedia.org/wiki/Directed_acyclic_graph) (DAG). Cascading uses **flow** objects to define how a MapReduce app -- a.k.a., a DAG of MapReduce job steps -- must be connected.
 
 Now that we have a **flow** defined, the last line of code runs it:
 
@@ -66,4 +66,4 @@ Notice how those command line arguments align with `args[]` in the source. The f
 
 Here's a [log file](https://gist.github.com/2911681) from our run of the sample app. If your run looks terribly different, something is probably not set up correctly. Drop us a line on the [cascading-user](https://groups.google.com/forum/?fromgroups#!forum/cascading-user) email forum. Plenty of experienced Cascading users are discussing **taps** and **pipes** and **flows** there, and eager to help. Or visit one of our user group meetings. [Coming up real soon...]
 
-Stay tuned for the next installments of our *Cascading for the Impatient* series.
+That's it in a nutshell, our simplest app possible in Cascading. Not quite a "Hello World", but more like a "Hi there, bus stop". Or something. Stay tuned for the next installments of our *Cascading for the Impatient* series.
