@@ -10,7 +10,7 @@ build
 run
 ===
     rm -rf output
-    hadoop jar ./build/libs/simple3.jar data/rain.txt output/wc
+    hadoop jar ./build/libs/impatient.jar data/rain.txt output/wc
     more output/wc/part-00000
 
 gists
