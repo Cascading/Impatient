@@ -25,7 +25,7 @@ To view the results:
 
     more output/rain/part-00000
 
-An example of log captured from a successful build+run is at https://gist.github.com/2911681
+An example of log captured from a successful build+run is at https://gist.github.com/2911686
 
 For more discussion, see the [cascading-user](https://groups.google.com/forum/?fromgroups#!forum/cascading-user) email forum.
 
