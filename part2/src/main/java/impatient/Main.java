@@ -1,7 +1,21 @@
 /*
  * Copyright (c) 2007-2012 Concurrent, Inc. All Rights Reserved.
  *
- * Project and contact information: http://www.concurrentinc.com/
+ * Project and contact information: http://www.cascading.org/
+ *
+ * This file is part of the Cascading project.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package impatient;
@@ -24,7 +38,6 @@ import cascading.scheme.Scheme;
 import cascading.scheme.hadoop.TextDelimited;
 import cascading.tap.Tap;
 import cascading.tap.hadoop.Hfs;
-import cascading.tap.hadoop.Lfs;
 import cascading.tuple.Fields;
 
 
@@ -41,11 +54,9 @@ public class
     AppProps.setApplicationJarClass( properties, Main.class );
     HadoopFlowConnector flowConnector = new HadoopFlowConnector( properties );
 
-    // create source taps, and read from local file system when inputs are not URLs
-    Tap docTap = makeTap( docPath, new TextDelimited( true, "\t" ) );
-
-    // create sink taps, replacing output from prior runs, if needed
-    Tap wcTap = makeTap( wcPath, new TextDelimited( true, "\t" ) );
+    // create source and sink taps
+    Tap docTap = new Hfs( new TextDelimited( true, "\t" ), docPath );
+    Tap wcTap = new Hfs( new TextDelimited( true, "\t" ), wcPath );
 
     // specify a regex operation to split the "document" text lines into a token stream
     Fields token = new Fields( "token" );
@@ -61,19 +72,13 @@ public class
     wcPipe = new Every( wcPipe, Fields.ALL, new Count(), Fields.ALL );
 
     // connect the taps, pipes, etc., into a flow
-    FlowDef flowDef = FlowDef.flowDef().setName( "simple" );
+    FlowDef flowDef = FlowDef.flowDef().setName( "wc" );
     flowDef.addSource( docPipe, docTap );
     flowDef.addTailSink( wcPipe, wcTap );
 
     // write a DOT file and run the flow
-    Flow simpleFlow = flowConnector.connect( flowDef );
-    simpleFlow.writeDOT( "dot/simple.dot" );
-    simpleFlow.complete();
-    }
-
-  public static Tap
-  makeTap( String path, Scheme scheme )
-    {
-    return path.matches( "^[^:]+://.*" ) ? new Hfs( scheme, path ) : new Lfs( scheme, path );
+    Flow wcFlow = flowConnector.connect( flowDef );
+    wcFlow.writeDOT( "dot/wc.dot" );
+    wcFlow.complete();
     }
   }
