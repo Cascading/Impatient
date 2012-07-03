@@ -8,8 +8,6 @@ package impatient;
 
 import java.util.Properties;
 
-import cascading.cascade.Cascade;
-import cascading.cascade.CascadeConnector;
 import cascading.flow.Flow;
 import cascading.flow.FlowDef;
 import cascading.flow.hadoop.HadoopFlowConnector;
@@ -38,7 +36,6 @@ import cascading.scheme.Scheme;
 import cascading.scheme.hadoop.TextDelimited;
 import cascading.tap.Tap;
 import cascading.tap.hadoop.Hfs;
-import cascading.tap.hadoop.Lfs;
 import cascading.tuple.Fields;
 
 
@@ -49,9 +46,9 @@ public class
   main( String[] args )
     {
     String docPath = args[ 0 ];
-    String stopPath = args[ 1 ];
-    String tfidfPath = args[ 2 ];
-    String wcPath = args[ 3 ];
+    String wcPath = args[ 1 ];
+    String stopPath = args[ 2 ];
+    String tfidfPath = args[ 3 ];
     String trapPath = args[ 4 ];
     String checkPath = args[ 5 ];
 
@@ -59,19 +56,16 @@ public class
     AppProps.setApplicationJarClass( properties, Main.class );
     HadoopFlowConnector flowConnector = new HadoopFlowConnector( properties );
 
-    // create source taps, and read from local file system if inputs are not URLs
-    Tap docTap = makeTap( docPath, new TextDelimited( true, "\t" ) );
+    // create source and sink taps
+    Tap docTap = new Hfs( new TextDelimited( true, "\t" ), docPath );
+    Tap wcTap = new Hfs( new TextDelimited( true, "\t" ), wcPath );
 
     Fields stop = new Fields( "stop" );
-    Tap stopTap = makeTap( stopPath, new TextDelimited( stop, true, "\t" ) );
+    Tap stopTap = new Hfs( new TextDelimited( stop, true, "\t" ), stopPath );
+    Tap tfidfTap = new Hfs( new TextDelimited( true, "\t" ), tfidfPath );
 
-    // create sink taps, replacing output from prior runs, if needed
-    Tap tfidfTap = makeTap( tfidfPath, new TextDelimited( true, "\t" ) );
-    Tap wcTap = makeTap( wcPath, new TextDelimited( true, "\t" ) );
-
-    // create sink taps for the example trap and checkpoint
-    Tap trapTap = makeTap( trapPath, new TextDelimited( true, "\t" ) );
-    Tap checkTap = makeTap( checkPath, new TextDelimited( true, "\t" ) );
+    Tap trapTap = new Hfs( new TextDelimited( true, "\t" ), trapPath );
+    Tap checkTap = new Hfs( new TextDelimited( true, "\t" ), checkPath );
 
     // use a stream assertion to validate the input data
     Pipe docPipe = new Pipe( "token" );
@@ -126,7 +120,7 @@ public class
     dfPipe = new Rename( dfPipe, token, df_token );
     dfPipe = new Each( dfPipe, new Insert( lhs_join, 1 ), Fields.ALL );
 
-    // exmple use of a debug, to observe tuple stream; turn off below
+    // example use of a debug, to observe tuple stream; turn off below
     dfPipe = new Each( dfPipe, DebugLevel.VERBOSE, new Debug( true ) );
 
     // join to calculate TF-IDF 
@@ -154,7 +148,7 @@ public class
     wcPipe = new GroupBy( wcPipe, count, count );
 
     // connect the taps, pipes, traps, checkpoints, etc., into a flow
-    FlowDef flowDef = FlowDef.flowDef().setName( "simple" );
+    FlowDef flowDef = FlowDef.flowDef().setName( "tfidf" );
     flowDef.addSource( docPipe, docTap );
     flowDef.addSource( stopPipe, stopTap );
     flowDef.addTailSink( tfidfPipe, tfidfTap );
@@ -169,14 +163,8 @@ public class
     flowDef.setAssertionLevel( AssertionLevel.STRICT );
 
     // write a DOT file and run the flow
-    Flow simpleFlow = flowConnector.connect( flowDef );
-    simpleFlow.writeDOT( "dot/simple.dot" );
-    simpleFlow.complete();
-    }
-
-  public static Tap
-  makeTap( String path, Scheme scheme )
-    {
-    return path.matches( "^[^:]+://.*" ) ? new Hfs( scheme, path ) : new Lfs( scheme, path );
+    Flow tfidfFlow = flowConnector.connect( flowDef );
+    tfidfFlow.writeDOT( "dot/tfidf.dot" );
+    tfidfFlow.complete();
     }
   }
