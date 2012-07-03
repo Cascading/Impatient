@@ -8,8 +8,6 @@ package impatient;
 
 import java.util.Properties;
 
-import cascading.cascade.Cascade;
-import cascading.cascade.CascadeConnector;
 import cascading.flow.Flow;
 import cascading.flow.FlowDef;
 import cascading.flow.hadoop.HadoopFlowConnector;
@@ -33,7 +31,6 @@ import cascading.scheme.Scheme;
 import cascading.scheme.hadoop.TextDelimited;
 import cascading.tap.Tap;
 import cascading.tap.hadoop.Hfs;
-import cascading.tap.hadoop.Lfs;
 import cascading.tuple.Fields;
 
 
@@ -44,23 +41,21 @@ public class
   main( String[] args )
     {
     String docPath = args[ 0 ];
-    String stopPath = args[ 1 ];
-    String tfidfPath = args[ 2 ];
-    String wcPath = args[ 3 ];
+    String wcPath = args[ 1 ];
+    String stopPath = args[ 2 ];
+    String tfidfPath = args[ 3 ];
 
     Properties properties = new Properties();
     AppProps.setApplicationJarClass( properties, Main.class );
     HadoopFlowConnector flowConnector = new HadoopFlowConnector( properties );
 
-    // create source taps, and read from local file system if inputs are not URLs
-    Tap docTap = makeTap( docPath, new TextDelimited( true, "\t" ) );
+    // create source and sink taps
+    Tap docTap = new Hfs( new TextDelimited( true, "\t" ), docPath );
+    Tap wcTap = new Hfs( new TextDelimited( true, "\t" ), wcPath );
 
     Fields stop = new Fields( "stop" );
-    Tap stopTap = makeTap( stopPath, new TextDelimited( stop, true, "\t" ) );
-
-    // create sink taps, replacing output from prior runs, if needed
-    Tap tfidfTap = makeTap( tfidfPath, new TextDelimited( true, "\t" ) );
-    Tap wcTap = makeTap( wcPath, new TextDelimited( true, "\t" ) );
+    Tap stopTap = new Hfs( new TextDelimited( stop, true, "\t" ), stopPath );
+    Tap tfidfTap = new Hfs( new TextDelimited( true, "\t" ), tfidfPath );
 
     // specify a regex operation to split the "document" text lines into a token stream
     Fields token = new Fields( "token" );
@@ -132,21 +127,15 @@ public class
     wcPipe = new GroupBy( wcPipe, count, count );
 
     // connect the taps, pipes, etc., into a flow
-    FlowDef flowDef = FlowDef.flowDef().setName( "simple" );
+    FlowDef flowDef = FlowDef.flowDef().setName( "tfidf" );
     flowDef.addSource( docPipe, docTap );
     flowDef.addSource( stopPipe, stopTap );
     flowDef.addTailSink( tfidfPipe, tfidfTap );
     flowDef.addTailSink( wcPipe, wcTap );
 
     // write a DOT file and run the flow
-    Flow simpleFlow = flowConnector.connect( flowDef );
-    simpleFlow.writeDOT( "dot/simple.dot" );
-    simpleFlow.complete();
-    }
-
-  public static Tap
-  makeTap( String path, Scheme scheme )
-    {
-    return path.matches( "^[^:]+://.*" ) ? new Hfs( scheme, path ) : new Lfs( scheme, path );
+    Flow tfidfFlow = flowConnector.connect( flowDef );
+    tfidfFlow.writeDOT( "dot/tfidf.dot" );
+    tfidfFlow.complete();
     }
   }
