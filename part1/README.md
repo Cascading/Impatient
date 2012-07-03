@@ -29,4 +29,4 @@ An example of log captured from a successful build+run is at https://gist.github
 
 For more discussion, see the [cascading-user](https://groups.google.com/forum/?fromgroups#!forum/cascading-user) email forum.
 
-Stay tuned for the next installments of our *Cascading for the Impatient* series.
+Stay tuned for the next installments of our [Cascading for the Impatient](http://www.cascading.org/category/impatient/) series.

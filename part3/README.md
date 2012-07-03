@@ -1,6 +1,6 @@
 Cascading for the Impatient, Part 3
 ===================================
-The goal is to expand on our Word Count example to show how to write a custom Operation in Cascading.
+The goal is to expand on our Word Count example in Cascading, and show how to write a custom Operation.
 
 We'll keep building on this example until we have a MapReduce implementation of [TF-IDF](http://en.wikipedia.org/wiki/Tf*idf).
 
@@ -29,4 +29,4 @@ An example of log captured from a successful build+run is at https://gist.github
 
 For more discussion, see the [cascading-user](https://groups.google.com/forum/?fromgroups#!forum/cascading-user) email forum.
 
-Stay tuned for the next installments of our *Cascading for the Impatient* series.
+Stay tuned for the next installments of our [Cascading for the Impatient](http://www.cascading.org/category/impatient/) series.
