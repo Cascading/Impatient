@@ -20,7 +20,7 @@ For more detailed information, please see https://github.com/ConcurrentCore/impa
 
 ### Part 3
 * Uses a custom Function to scrub the token stream
-* Shows how to sort the output (ascending, based on token counts)
+* Discusses when to use standard Operations vs. creating custom ones
 * Physical plan: 1 Mapper, 1 Reducer
 
 ### Part 4
