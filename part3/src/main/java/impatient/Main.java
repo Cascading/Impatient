@@ -67,7 +67,6 @@ public class
     Pipe docPipe = new Each( "token", text, splitter, fieldDeclaration );
 
     // define "ScrubFunction" to clean up the token stream
-    Fields doc_id = new Fields( "doc_id" );
     Fields scrubArguments = new Fields( "doc_id", "token" );
     docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( fieldDeclaration ), Fields.RESULTS );
 
