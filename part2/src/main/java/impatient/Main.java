@@ -32,7 +32,6 @@ import cascading.pipe.Each;
 import cascading.pipe.Every;
 import cascading.pipe.GroupBy;
 import cascading.pipe.Pipe;
-import cascading.pipe.assembly.Retain;
 import cascading.property.AppProps;
 import cascading.scheme.Scheme;
 import cascading.scheme.hadoop.TextDelimited;
@@ -62,19 +61,19 @@ public class
     Fields token = new Fields( "token" );
     Fields text = new Fields( "text" );
     RegexSplitGenerator splitter = new RegexSplitGenerator( token, "[ \\[\\]\\(\\),.]" );
-    Fields fieldDeclaration = new Fields( "doc_id", "token" );
-    Pipe docPipe = new Each( "token", text, splitter, fieldDeclaration );
+    // only returns "token"
+    Pipe docPipe = new Each( "token", text, splitter, Fields.RESULTS );
 
     // determine the word counts
     Pipe wcPipe = new Pipe( "wc", docPipe );
-    wcPipe = new Retain( wcPipe, token );
     wcPipe = new GroupBy( wcPipe, token );
     wcPipe = new Every( wcPipe, Fields.ALL, new Count(), Fields.ALL );
 
     // connect the taps, pipes, etc., into a flow
-    FlowDef flowDef = FlowDef.flowDef().setName( "wc" );
-    flowDef.addSource( docPipe, docTap );
-    flowDef.addTailSink( wcPipe, wcTap );
+    FlowDef flowDef = FlowDef.flowDef()
+     .setName( "wc" )
+     .addSource( docPipe, docTap )
+     .addTailSink( wcPipe, wcTap );
 
     // write a DOT file and run the flow
     Flow wcFlow = flowConnector.connect( flowDef );
