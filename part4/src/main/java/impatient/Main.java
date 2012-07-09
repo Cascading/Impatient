@@ -68,12 +68,12 @@ public class
     Fields token = new Fields( "token" );
     Fields text = new Fields( "text" );
     RegexSplitGenerator splitter = new RegexSplitGenerator( token, "[ \\[\\]\\(\\),.]" );
-    Fields fieldDeclaration = new Fields( "doc_id", "token" );
-    Pipe docPipe = new Each( "token", text, splitter, fieldDeclaration );
+    Fields fieldSelector = new Fields( "doc_id", "token" );
+    Pipe docPipe = new Each( "token", text, splitter, fieldSelector );
 
     // define "ScrubFunction" to clean up the token stream
     Fields scrubArguments = new Fields( "doc_id", "token" );
-    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( fieldDeclaration ), Fields.RESULTS );
+    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( fieldSelector ), Fields.RESULTS );
 
     // perform a left join to remove stop words, discarding the rows
     // which joined with stop words, i.e., were non-null after left join
@@ -91,10 +91,11 @@ public class
     wcPipe = new GroupBy( wcPipe, count, count );
 
     // connect the taps, pipes, etc., into a flow
-    FlowDef flowDef = FlowDef.flowDef().setName( "wc" );
-    flowDef.addSource( docPipe, docTap );
-    flowDef.addSource( stopPipe, stopTap );
-    flowDef.addTailSink( wcPipe, wcTap );
+    FlowDef flowDef = FlowDef.flowDef()
+     .setName( "wc" )
+     .addSource( docPipe, docTap )
+     .addSource( stopPipe, stopTap )
+     .addTailSink( wcPipe, wcTap );
 
     // write a DOT file and run the flow
     Flow wcFlow = flowConnector.connect( flowDef );

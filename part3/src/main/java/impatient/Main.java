@@ -63,12 +63,12 @@ public class
     Fields token = new Fields( "token" );
     Fields text = new Fields( "text" );
     RegexSplitGenerator splitter = new RegexSplitGenerator( token, "[ \\[\\]\\(\\),.]" );
-    Fields fieldDeclaration = new Fields( "doc_id", "token" );
-    Pipe docPipe = new Each( "token", text, splitter, fieldDeclaration );
+    Fields fieldSelector = new Fields( "doc_id", "token" );
+    Pipe docPipe = new Each( "token", text, splitter, fieldSelector );
 
     // define "ScrubFunction" to clean up the token stream
     Fields scrubArguments = new Fields( "doc_id", "token" );
-    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( fieldDeclaration ), Fields.RESULTS );
+    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( fieldSelector ), Fields.RESULTS );
 
     // determine the word counts
     Pipe wcPipe = new Pipe( "wc", docPipe );
@@ -77,9 +77,10 @@ public class
     wcPipe = new Every( wcPipe, Fields.ALL, new Count(), Fields.ALL );
 
     // connect the taps, pipes, etc., into a flow
-    FlowDef flowDef = FlowDef.flowDef().setName( "wc" );
-    flowDef.addSource( docPipe, docTap );
-    flowDef.addTailSink( wcPipe, wcTap );
+    FlowDef flowDef = FlowDef.flowDef()
+     .setName( "wc" )
+     .addSource( docPipe, docTap )
+     .addTailSink( wcPipe, wcTap );
 
     // write a DOT file and run the flow
     Flow wcFlow = flowConnector.connect( flowDef );

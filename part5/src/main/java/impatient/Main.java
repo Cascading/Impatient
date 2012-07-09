@@ -75,13 +75,13 @@ public class
     Fields token = new Fields( "token" );
     Fields text = new Fields( "text" );
     RegexSplitGenerator splitter = new RegexSplitGenerator( token, "[ \\[\\]\\(\\),.]" );
-    Fields fieldDeclaration = new Fields( "doc_id", "token" );
-    Pipe docPipe = new Each( "token", text, splitter, fieldDeclaration );
+    Fields fieldSelector = new Fields( "doc_id", "token" );
+    Pipe docPipe = new Each( "token", text, splitter, fieldSelector );
 
     // define "ScrubFunction" to clean up the token stream
     Fields doc_id = new Fields( "doc_id" );
     Fields scrubArguments = new Fields( "doc_id", "token" );
-    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( fieldDeclaration ), Fields.RESULTS );
+    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( fieldSelector ), Fields.RESULTS );
 
     // perform a left join to remove stop words, discarding the rows
     // which joined with stop words, i.e., were non-null after left join
@@ -127,9 +127,9 @@ public class
     Pipe tfidfPipe = new CoGroup( tfPipe, tf_token, idfPipe, df_token );
 
     // calculate the TF-IDF metric
-    fieldDeclaration = new Fields( "token", "doc_id", "tfidf" );
+    fieldSelector = new Fields( "token", "doc_id", "tfidf" );
     Fields tfidfArguments = new Fields( "doc_id", "tf_token", "tf_count", "df_count", "n_docs" );
-    tfidfPipe = new Each( tfidfPipe, tfidfArguments, new TfIdfFunction( fieldDeclaration ), Fields.RESULTS );
+    tfidfPipe = new Each( tfidfPipe, tfidfArguments, new TfIdfFunction( fieldSelector ), Fields.RESULTS );
 
     // keep track of the word counts, which are useful for QA
     Pipe wcPipe = new Pipe( "wc", tfPipe );
@@ -141,11 +141,12 @@ public class
     wcPipe = new GroupBy( wcPipe, count, count );
 
     // connect the taps, pipes, etc., into a flow
-    FlowDef flowDef = FlowDef.flowDef().setName( "tfidf" );
-    flowDef.addSource( docPipe, docTap );
-    flowDef.addSource( stopPipe, stopTap );
-    flowDef.addTailSink( tfidfPipe, tfidfTap );
-    flowDef.addTailSink( wcPipe, wcTap );
+    FlowDef flowDef = FlowDef.flowDef()
+     .setName( "tfidf" )
+     .addSource( docPipe, docTap )
+     .addSource( stopPipe, stopTap )
+     .addTailSink( tfidfPipe, tfidfTap )
+     .addTailSink( wcPipe, wcTap );
 
     // write a DOT file and run the flow
     Flow tfidfFlow = flowConnector.connect( flowDef );

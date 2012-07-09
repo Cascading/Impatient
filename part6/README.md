@@ -24,6 +24,8 @@ Before running this sample app, be sure to set your `HADOOP_HOME` environment va
 To view the results:
 
     more output/tfidf/part-00000
+    more output/trap/part-m-00001-00000 
+    more output/check/part-00000 
 
 An example of log captured from a successful build+run is at https://gist.github.com/3044049
 
