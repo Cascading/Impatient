@@ -68,7 +68,7 @@ public class
 
     // define "ScrubFunction" to clean up the token stream
     Fields scrubArguments = new Fields( "doc_id", "token" );
-    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( fieldSelector ), Fields.RESULTS );
+    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( scrubArguments ), Fields.RESULTS );
 
     // determine the word counts
     Pipe wcPipe = new Pipe( "wc", docPipe );
