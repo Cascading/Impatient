@@ -73,7 +73,7 @@ public class
 
     // define "ScrubFunction" to clean up the token stream
     Fields scrubArguments = new Fields( "doc_id", "token" );
-    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( fieldSelector ), Fields.RESULTS );
+    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( scrubArguments ), Fields.RESULTS );
 
     // perform a left join to remove stop words, discarding the rows
     // which joined with stop words, i.e., were non-null after left join
@@ -86,9 +86,6 @@ public class
     wcPipe = new Retain( wcPipe, token );
     wcPipe = new GroupBy( wcPipe, token );
     wcPipe = new Every( wcPipe, Fields.ALL, new Count(), Fields.ALL );
-
-    Fields count = new Fields( "count" );
-    wcPipe = new GroupBy( wcPipe, count, count );
 
     // connect the taps, pipes, etc., into a flow
     FlowDef flowDef = FlowDef.flowDef()
