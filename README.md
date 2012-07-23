@@ -4,7 +4,7 @@ Welcome to [Cascading for the Impatient](http://www.cascading.org/category/impat
 
 This set of progressive coding examples starts with a simple file copy and builds up to a MapReduce implementation of the TF-IDF algorithm.
 
-For more detailed information, please see https://github.com/ConcurrentCore/impatient/wiki
+For more detailed information, please see https://github.com/Cascading/Impatient/wiki
 
 ### Part 1
 * Implements simplest Cascading app possible
