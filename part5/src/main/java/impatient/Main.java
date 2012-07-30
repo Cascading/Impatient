@@ -79,16 +79,15 @@ public class
     Pipe docPipe = new Each( "token", text, splitter, fieldSelector );
 
     // define "ScrubFunction" to clean up the token stream
-    Fields doc_id = new Fields( "doc_id" );
     Fields scrubArguments = new Fields( "doc_id", "token" );
-    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( fieldSelector ), Fields.RESULTS );
+    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( scrubArguments ), Fields.RESULTS );
 
     // perform a left join to remove stop words, discarding the rows
     // which joined with stop words, i.e., were non-null after left join
     Pipe stopPipe = new Pipe( "stop" );
     Pipe tokenPipe = new HashJoin( docPipe, token, stopPipe, stop, new LeftJoin() );
     tokenPipe = new Each( tokenPipe, stop, new RegexFilter( "^$" ) );
-    tokenPipe = new Retain( tokenPipe, new Fields( "doc_id", "token" ) );
+    tokenPipe = new Retain( tokenPipe, fieldSelector );
 
     // one branch of the flow tallies the token counts for term frequency (TF)
     Pipe tfPipe = new Unique( "tf", tokenPipe, Fields.ALL );
@@ -100,6 +99,7 @@ public class
     tfPipe = new Rename( tfPipe, token, tf_token );
 
     // one branch counts the number of documents (D)
+    Fields doc_id = new Fields( "doc_id" );
     Fields tally = new Fields( "tally" );
     Fields rhs_join = new Fields( "rhs_join" );
     Fields n_docs = new Fields( "n_docs" );
