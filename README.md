@@ -29,7 +29,7 @@ For more detailed information, please see https://github.com/Cascading/Impatient
 * Physical plan: 2 Mappers, 2 Reducers
 
 ### Part 5
-* Calculates TF-IDF using a custom Function
+* Calculates TF-IDF using an ExpressionFunction
 * Shows how to use a SumBy and a CoGroup
 * Physical plan: 10 Mappers, 10 Reducers
 

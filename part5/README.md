@@ -1,6 +1,6 @@
 Cascading for the Impatient, Part 5
 ===================================
-The goal is to expand on our Word Count example in Cascading, adding a custom **function** to calculate [TF-IDF](http://en.wikipedia.org/wiki/Tf*idf). This shows how to use a **sumby** and also a **cogroup**.
+The goal is to expand on our Word Count example in Cascading, using an **ExpressionFunction** to calculate [TF-IDF](http://en.wikipedia.org/wiki/Tf*idf). This shows how to use a **SumBy** and also a **CoGroup** to aggregate the data needed.
 
 We'll keep building on this example to show features related to TDD and "local" mode.
 
