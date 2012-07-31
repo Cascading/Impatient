@@ -27,6 +27,7 @@ import cascading.flow.FlowDef;
 import cascading.flow.hadoop.HadoopFlowConnector;
 import cascading.operation.Insert;
 import cascading.operation.aggregator.Count;
+import cascading.operation.expression.ExpressionFunction;
 import cascading.operation.regex.RegexFilter;
 import cascading.operation.regex.RegexSplitGenerator;
 import cascading.pipe.CoGroup;
@@ -90,7 +91,7 @@ public class
     tokenPipe = new Retain( tokenPipe, fieldSelector );
 
     // one branch of the flow tallies the token counts for term frequency (TF)
-    Pipe tfPipe = new Unique( "tf", tokenPipe, Fields.ALL );
+    Pipe tfPipe = new Unique( "TF", tokenPipe, Fields.ALL );
     tfPipe = new GroupBy( tfPipe, new Fields( "doc_id", "token" ) );
 
     Fields tf_count = new Fields( "tf_count" );
@@ -103,13 +104,13 @@ public class
     Fields tally = new Fields( "tally" );
     Fields rhs_join = new Fields( "rhs_join" );
     Fields n_docs = new Fields( "n_docs" );
-    Pipe dPipe = new Unique( "d", tokenPipe, doc_id );
+    Pipe dPipe = new Unique( "D", tokenPipe, doc_id );
     dPipe = new Each( dPipe, new Insert( tally, 1 ), Fields.ALL );
     dPipe = new Each( dPipe, new Insert( rhs_join, 1 ), Fields.ALL );
     dPipe = new SumBy( dPipe, rhs_join, tally, n_docs, long.class );
 
     // one branch tallies the token counts for document frequency (DF)
-    Pipe dfPipe = new Unique( "df", tokenPipe, Fields.ALL );
+    Pipe dfPipe = new Unique( "DF", tokenPipe, Fields.ALL );
     dfPipe = new GroupBy( dfPipe, token );
 
     Fields df_count = new Fields( "df_count" );
@@ -119,19 +120,25 @@ public class
     dfPipe = new Rename( dfPipe, token, df_token );
     dfPipe = new Each( dfPipe, new Insert( lhs_join, 1 ), Fields.ALL );
 
-    // join to calculate TF-IDF 
+    // join to bring together all the components for calculating TF-IDF 
     // the D side of the join is smaller, so it goes on the RHS
     Pipe idfPipe = new HashJoin( dfPipe, lhs_join, dPipe, rhs_join );
 
     // the IDF side of the join is smaller, so it goes on the RHS
     Pipe tfidfPipe = new CoGroup( tfPipe, tf_token, idfPipe, df_token );
 
-    // calculate the TF-IDF metric
-    fieldSelector = new Fields( "token", "doc_id", "tfidf" );
-    Fields tfidfArguments = new Fields( "doc_id", "tf_token", "tf_count", "df_count", "n_docs" );
-    tfidfPipe = new Each( tfidfPipe, tfidfArguments, new TfIdfFunction( fieldSelector ), Fields.RESULTS );
+    // calculate the TF-IDF weights, per token, per document
+    Fields tfidf = new Fields( "tfidf" );
+    String expression = "(double) tf_count * Math.log( (double) n_docs / ( 1.0 + df_count ) )";
+    ExpressionFunction tfidfExpression = new ExpressionFunction( tfidf, expression, Double.class );
+    Fields tfidfArguments = new Fields( "tf_count", "df_count", "n_docs" );
+    tfidfPipe = new Each( tfidfPipe, tfidfArguments, tfidfExpression, Fields.ALL );
 
-    // keep track of the word counts, which are useful for QA
+    fieldSelector = new Fields( "tf_token", "doc_id", "tfidf" );
+    tfidfPipe = new Retain( tfidfPipe, fieldSelector );
+    tfidfPipe = new Rename( tfidfPipe, tf_token, token );
+
+    // keep the word counts, which are useful for QA
     Pipe wcPipe = new Pipe( "wc", tfPipe );
     wcPipe = new Retain( wcPipe, tf_token );
     wcPipe = new GroupBy( wcPipe, tf_token );
