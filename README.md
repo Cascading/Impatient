@@ -26,12 +26,12 @@ For more detailed information, please see https://github.com/Cascading/Impatient
 ### Part 4
 * Shows how to use a HashJoin on two pipes
 * Filters a list of stop words out of the token stream
-* Physical plan: 2 Mappers, 2 Reducers
+* Physical plan: 1 Mapper, 1 Reducer
 
 ### Part 5
 * Calculates TF-IDF using an ExpressionFunction
 * Shows how to use a SumBy and a CoGroup
-* Physical plan: 10 Mappers, 10 Reducers
+* Physical plan: 11 Mappers, 9 Reducers
 
 ### Part 6
 * Includes unit tests in the build
