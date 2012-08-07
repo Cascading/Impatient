@@ -31,6 +31,7 @@ import cascading.operation.DebugLevel;
 import cascading.operation.Insert;
 import cascading.operation.aggregator.Count;
 import cascading.operation.assertion.AssertMatches;
+import cascading.operation.expression.ExpressionFunction;
 import cascading.operation.regex.RegexFilter;
 import cascading.operation.regex.RegexSplitGenerator;
 import cascading.pipe.Checkpoint;
@@ -95,17 +96,17 @@ public class
 
     // define "ScrubFunction" to clean up the token stream
     Fields scrubArguments = new Fields( "doc_id", "token" );
-    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( fieldSelector ), Fields.RESULTS );
+    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( scrubArguments ), Fields.RESULTS );
 
     // perform a left join to remove stop words, discarding the rows
     // which joined with stop words, i.e., were non-null after left join
     Pipe stopPipe = new Pipe( "stop" );
     Pipe tokenPipe = new HashJoin( docPipe, token, stopPipe, stop, new LeftJoin() );
     tokenPipe = new Each( tokenPipe, stop, new RegexFilter( "^$" ) );
-    tokenPipe = new Retain( tokenPipe, new Fields( "doc_id", "token" ) );
+    tokenPipe = new Retain( tokenPipe, fieldSelector );
 
     // one branch of the flow tallies the token counts for term frequency (TF)
-    Pipe tfPipe = new Unique( "tf", tokenPipe, Fields.ALL );
+    Pipe tfPipe = new Unique( "TF", tokenPipe, Fields.ALL );
     tfPipe = new GroupBy( tfPipe, new Fields( "doc_id", "token" ) );
 
     Fields tf_count = new Fields( "tf_count" );
@@ -118,13 +119,13 @@ public class
     Fields tally = new Fields( "tally" );
     Fields rhs_join = new Fields( "rhs_join" );
     Fields n_docs = new Fields( "n_docs" );
-    Pipe dPipe = new Unique( "d", tokenPipe, doc_id );
+    Pipe dPipe = new Unique( "D", tokenPipe, doc_id );
     dPipe = new Each( dPipe, new Insert( tally, 1 ), Fields.ALL );
     dPipe = new Each( dPipe, new Insert( rhs_join, 1 ), Fields.ALL );
     dPipe = new SumBy( dPipe, rhs_join, tally, n_docs, long.class );
 
     // one branch tallies the token counts for document frequency (DF)
-    Pipe dfPipe = new Unique( "df", tokenPipe, Fields.ALL );
+    Pipe dfPipe = new Unique( "DF", tokenPipe, Fields.ALL );
     dfPipe = new GroupBy( dfPipe, token );
 
     Fields df_count = new Fields( "df_count" );
@@ -137,7 +138,7 @@ public class
     // example use of a debug, to observe tuple stream; turn off below
     dfPipe = new Each( dfPipe, DebugLevel.VERBOSE, new Debug( true ) );
 
-    // join to calculate TF-IDF 
+    // join to bring together all the components for calculating TF-IDF 
     // the D side of the join is smaller, so it goes on the RHS
     Pipe idfPipe = new HashJoin( dfPipe, lhs_join, dPipe, rhs_join );
 
@@ -147,10 +148,16 @@ public class
     // the IDF side of the join is smaller, so it goes on the RHS
     Pipe tfidfPipe = new CoGroup( tfPipe, tf_token, idfCheck, df_token );
 
-    // calculate the TF-IDF metric
-    fieldSelector = new Fields( "token", "doc_id", "tfidf" );
-    Fields tfidfArguments = new Fields( "doc_id", "tf_token", "tf_count", "df_count", "n_docs" );
-    tfidfPipe = new Each( tfidfPipe, tfidfArguments, new TfIdfFunction( fieldSelector ), Fields.RESULTS );
+    // calculate the TF-IDF weights, per token, per document
+    Fields tfidf = new Fields( "tfidf" );
+    String expression = "(double) tf_count * Math.log( (double) n_docs / ( 1.0 + df_count ) )";
+    ExpressionFunction tfidfExpression = new ExpressionFunction( tfidf, expression, Double.class );
+    Fields tfidfArguments = new Fields( "tf_count", "df_count", "n_docs" );
+    tfidfPipe = new Each( tfidfPipe, tfidfArguments, tfidfExpression, Fields.ALL );
+
+    fieldSelector = new Fields( "tf_token", "doc_id", "tfidf" );
+    tfidfPipe = new Retain( tfidfPipe, fieldSelector );
+    tfidfPipe = new Rename( tfidfPipe, tf_token, token );
 
     // keep track of the word counts, which are useful for QA
     Pipe wcPipe = new Pipe( "wc", tfPipe );
