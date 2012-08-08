@@ -91,7 +91,7 @@ public class
     tokenPipe = new Retain( tokenPipe, fieldSelector );
 
     // one branch of the flow tallies the token counts for term frequency (TF)
-    Pipe tfPipe = new Unique( "TF", tokenPipe, Fields.ALL );
+    Pipe tfPipe = new Pipe( "TF", tokenPipe );
     tfPipe = new GroupBy( tfPipe, new Fields( "doc_id", "token" ) );
 
     Fields tf_count = new Fields( "tf_count" );
