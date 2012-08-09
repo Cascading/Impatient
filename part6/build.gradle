@@ -35,7 +35,7 @@ dependencies {
   compile( 'cascading:cascading-core:2.0.1' ) { exclude group: 'log4j' }
   compile( 'cascading:cascading-hadoop:2.0.1' ) { transitive = true }
 
-  testCompile( 'org.apache.hadoop:hadoop-test:0.20.2' )
+  testCompile( 'org.apache.hadoop:hadoop-test:1.0.3' )
   testCompile( 'junit:junit:4.8.+' )
 }
 
