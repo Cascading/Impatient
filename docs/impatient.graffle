@@ -26,7 +26,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2012-08-10 20:38:30 +0000</string>
+	<string>2012-08-11 02:41:35 +0000</string>
 	<key>Modifier</key>
 	<string>Paco NATHAN</string>
 	<key>NotesVisible</key>
@@ -466,7 +466,7 @@
 		</dict>
 		<dict>
 			<key>ActiveLayerIndex</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>AutoAdjust</key>
 			<true/>
 			<key>BackgroundGraphic</key>
@@ -526,6 +526,8 @@
 					</dict>
 					<key>ID</key>
 					<integer>13</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -611,6 +613,8 @@
 					</dict>
 					<key>ID</key>
 					<integer>14</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -691,6 +695,8 @@
 					</dict>
 					<key>ID</key>
 					<integer>25</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -744,6 +750,8 @@
 					</dict>
 					<key>ID</key>
 					<integer>20</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818387}</string>
@@ -794,6 +802,8 @@
 					</dict>
 					<key>ID</key>
 					<integer>19</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-1.1682878732681274, 0.6425583067955285}</string>
@@ -853,6 +863,8 @@
 					</dict>
 					<key>ID</key>
 					<integer>17</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818276}</string>
@@ -903,6 +915,8 @@
 					</dict>
 					<key>ID</key>
 					<integer>15</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302491, -1.1925696134567261}</string>
@@ -946,6 +960,8 @@ Count}</string>
 					</dict>
 					<key>ID</key>
 					<integer>16</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -987,6 +1003,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>24</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -1038,6 +1056,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>23</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{410.05432252647347, 187.40160342284153}</string>
@@ -1083,6 +1103,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>22</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{242.05281448821316, 157.66561653724455}</string>
@@ -1126,6 +1148,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>21</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -1169,7 +1193,7 @@ Collection}</string>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{132.00000958403291, 100.72727621094265}, {467.99996948242188, 142.90908813476562}}</string>
+					<string>{{128.98021500957907, 99.974225272817165}, {467.99996948242188, 142.90908813476562}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -1181,6 +1205,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>26</integer>
+					<key>Layer</key>
+					<integer>1</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -1251,7 +1277,17 @@ Collection}</string>
 					<key>Lock</key>
 					<string>NO</string>
 					<key>Name</key>
-					<string>Layer 1</string>
+					<string>flow</string>
+					<key>Print</key>
+					<string>YES</string>
+					<key>View</key>
+					<string>YES</string>
+				</dict>
+				<dict>
+					<key>Lock</key>
+					<string>NO</string>
+					<key>Name</key>
+					<string>delta</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
@@ -1354,6 +1390,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>14</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -1439,6 +1477,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>13</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -1519,6 +1559,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>25</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -1572,6 +1614,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>31</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818387}</string>
@@ -1622,6 +1666,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>32</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-1.1682878732681274, 0.6425583067955285}</string>
@@ -1681,6 +1727,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>33</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302491, -1.1925696134567261}</string>
@@ -1724,6 +1772,8 @@ Count}</string>
 					</dict>
 					<key>ID</key>
 					<integer>17</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818276}</string>
@@ -1774,6 +1824,8 @@ Count}</string>
 					</dict>
 					<key>ID</key>
 					<integer>16</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -1817,6 +1869,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>26</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818276}</string>
@@ -1868,6 +1922,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>29</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -1919,6 +1975,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>30</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{521.58264912848813, 168.76523318956984}</string>
@@ -1964,6 +2022,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>22</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{231.82554264702145, 157.66611685087301}</string>
@@ -2009,6 +2069,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>21</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -2060,6 +2122,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>27</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{378.7492398174715, 158.2598885458967}</string>
@@ -2093,7 +2157,7 @@ Collection}</string>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{255.27271322770559, 97.454541403400043}, {149.45454406738281, 121.46134948730469}}</string>
+					<string>{{259.45865422240968, 100.29509112460595}, {149.45454406738281, 121.46134948730469}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -2105,6 +2169,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>34</integer>
+					<key>Layer</key>
+					<integer>1</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -2175,7 +2241,17 @@ Collection}</string>
 					<key>Lock</key>
 					<string>NO</string>
 					<key>Name</key>
-					<string>Layer 1</string>
+					<string>flow</string>
+					<key>Print</key>
+					<string>YES</string>
+					<key>View</key>
+					<string>YES</string>
+				</dict>
+				<dict>
+					<key>Lock</key>
+					<string>NO</string>
+					<key>Name</key>
+					<string>delta</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
@@ -2278,6 +2354,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>14</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -2363,6 +2441,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>13</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -2558,6 +2638,8 @@ Left}</string>
 					</array>
 					<key>ID</key>
 					<integer>50</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 				</dict>
 				<dict>
 					<key>Bounds</key>
@@ -2573,6 +2655,8 @@ Left}</string>
 					</dict>
 					<key>ID</key>
 					<integer>37</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818276}</string>
@@ -2626,6 +2710,8 @@ Left}</string>
 					</dict>
 					<key>ID</key>
 					<integer>34</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -2673,6 +2759,8 @@ List}</string>
 					</dict>
 					<key>ID</key>
 					<integer>25</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -2726,6 +2814,8 @@ List}</string>
 					</dict>
 					<key>ID</key>
 					<integer>41</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818387}</string>
@@ -2776,6 +2866,8 @@ List}</string>
 					</dict>
 					<key>ID</key>
 					<integer>42</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-1.1682878732681274, 0.6425583067955285}</string>
@@ -2835,6 +2927,8 @@ List}</string>
 					</dict>
 					<key>ID</key>
 					<integer>43</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302491, -1.1925696134567261}</string>
@@ -2878,6 +2972,8 @@ Count}</string>
 					</dict>
 					<key>ID</key>
 					<integer>17</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818276}</string>
@@ -2928,6 +3024,8 @@ Count}</string>
 					</dict>
 					<key>ID</key>
 					<integer>16</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -2971,6 +3069,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>26</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818276}</string>
@@ -3022,6 +3122,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>46</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -3073,6 +3175,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>45</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{493.42702744004379, 244.49540684590849}</string>
@@ -3116,6 +3220,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>35</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -3169,6 +3275,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>39</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -3220,6 +3328,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>40</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{741.39221353766163, 303.60202229712627}</string>
@@ -3263,6 +3373,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>44</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{627.16455737315925, 245.99579080270209}</string>
@@ -3306,6 +3418,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>22</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{230.59237881340334, 157.3933932273292}</string>
@@ -3351,6 +3465,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>21</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -3406,15 +3522,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>27</integer>
-					<key>Line</key>
-					<dict>
-						<key>ID</key>
-						<integer>45</integer>
-						<key>Position</key>
-						<real>0.45482724905014038</real>
-						<key>RotationType</key>
-						<integer>0</integer>
-					</dict>
+					<key>Layer</key>
+					<integer>1</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -3481,6 +3590,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>53</integer>
+					<key>Layer</key>
+					<integer>1</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -3551,7 +3662,17 @@ Collection}</string>
 					<key>Lock</key>
 					<string>NO</string>
 					<key>Name</key>
-					<string>Layer 1</string>
+					<string>flow</string>
+					<key>Print</key>
+					<string>YES</string>
+					<key>View</key>
+					<string>YES</string>
+				</dict>
+				<dict>
+					<key>Lock</key>
+					<string>NO</string>
+					<key>Name</key>
+					<string>delta</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
@@ -3594,7 +3715,7 @@ Collection}</string>
 		</dict>
 		<dict>
 			<key>ActiveLayerIndex</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>AutoAdjust</key>
 			<true/>
 			<key>BackgroundGraphic</key>
@@ -3654,6 +3775,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>156</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -3739,6 +3862,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>155</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -3824,6 +3949,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>154</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -3909,6 +4036,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>153</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -3994,6 +4123,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>152</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -4079,6 +4210,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>151</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -4164,6 +4297,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>150</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -4249,6 +4384,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>149</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -4334,6 +4471,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>148</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -4419,6 +4558,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>147</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -4504,6 +4645,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>146</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -4589,6 +4732,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>145</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -4674,6 +4819,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>144</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -4759,6 +4906,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>143</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -4844,6 +4993,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>142</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -4929,6 +5080,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>141</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -5014,6 +5167,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>140</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -5099,6 +5254,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>139</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -5184,6 +5341,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>14</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -5269,6 +5428,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>13</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -5567,6 +5728,8 @@ Collection}</string>
 					</array>
 					<key>ID</key>
 					<integer>132</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 				</dict>
 				<dict>
 					<key>Class</key>
@@ -5790,6 +5953,8 @@ Collection}</string>
 					</array>
 					<key>ID</key>
 					<integer>109</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 				</dict>
 				<dict>
 					<key>Class</key>
@@ -5923,6 +6088,8 @@ Collection}</string>
 					</array>
 					<key>ID</key>
 					<integer>96</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 				</dict>
 				<dict>
 					<key>Class</key>
@@ -6057,6 +6224,8 @@ Left}</string>
 					</array>
 					<key>ID</key>
 					<integer>93</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 				</dict>
 				<dict>
 					<key>Class</key>
@@ -6283,6 +6452,8 @@ Left}</string>
 					</array>
 					<key>ID</key>
 					<integer>88</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 				</dict>
 				<dict>
 					<key>Class</key>
@@ -6453,6 +6624,8 @@ Left}</string>
 					</array>
 					<key>ID</key>
 					<integer>73</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 				</dict>
 				<dict>
 					<key>Bounds</key>
@@ -6468,6 +6641,8 @@ Left}</string>
 					</dict>
 					<key>ID</key>
 					<integer>55</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818276}</string>
@@ -6520,6 +6695,8 @@ Left}</string>
 					</dict>
 					<key>ID</key>
 					<integer>37</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818276}</string>
@@ -6573,6 +6750,8 @@ Left}</string>
 					</dict>
 					<key>ID</key>
 					<integer>34</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -6620,6 +6799,8 @@ List}</string>
 					</dict>
 					<key>ID</key>
 					<integer>25</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -6819,6 +7000,8 @@ Count}</string>
 					</array>
 					<key>ID</key>
 					<integer>120</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 				</dict>
 				<dict>
 					<key>Bounds</key>
@@ -6834,6 +7017,8 @@ Count}</string>
 					</dict>
 					<key>ID</key>
 					<integer>17</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818276}</string>
@@ -6884,6 +7069,8 @@ Count}</string>
 					</dict>
 					<key>ID</key>
 					<integer>16</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -6927,6 +7114,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>26</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818276}</string>
@@ -6976,6 +7165,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>54</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -7029,6 +7220,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>22</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{208.68328788066759, 158.3933932273292}</string>
@@ -7074,6 +7267,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>46</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -7127,6 +7322,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>35</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -7178,6 +7375,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>45</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{420.03696565975156, 245.46152767803648}</string>
@@ -7221,6 +7420,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>21</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -7274,6 +7475,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>131</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -7327,6 +7530,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>129</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{1260.226368891203, 261.56144611774903}</string>
@@ -7372,6 +7577,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>127</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -7425,6 +7632,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>108</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -7476,6 +7685,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>107</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{900.25547550423698, 259.78741056529691}</string>
@@ -7519,6 +7730,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>105</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{788.51768314649678, 249.40185860082377}</string>
@@ -7562,6 +7775,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>104</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{668.10793971749649, 248.41560553852923}</string>
@@ -7607,6 +7822,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>87</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -7658,6 +7875,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>86</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{669.10795772459528, 73.029821481298669}</string>
@@ -7701,6 +7920,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>80</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{900.44119165312327, 75.029776283969824}</string>
@@ -7744,6 +7965,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>78</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{787.24451624208109, 74.028784792052946}</string>
@@ -7785,6 +8008,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>65</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{786.01956775596454, 429.4015959904882}</string>
@@ -7828,6 +8053,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>63</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{669.10793971749649, 419.02979096372053}</string>
@@ -7871,6 +8098,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>62</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -7924,6 +8153,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>60</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -7977,6 +8208,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>56</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -8030,6 +8263,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>119</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -8081,6 +8316,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>118</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{1188.0393418930735, 440.26097596581894}</string>
@@ -8122,6 +8359,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>58</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -8175,6 +8414,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>53</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -8218,7 +8459,7 @@ Collection}</string>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{962, 9.0000050036224195}, {560, 375}}</string>
+					<string>{{970.72727253811422, 11.181823138150918}, {560, 375}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -8230,6 +8471,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>138</integer>
+					<key>Layer</key>
+					<integer>1</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -8284,7 +8527,7 @@ Collection}</string>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{564.09091678335676, 9.0000046816742838}, {397.90908813476562, 474}}</string>
+					<string>{{572.81818932147098, 11.181822816202782}, {397.90908813476562, 474}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -8296,6 +8539,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>27</integer>
+					<key>Layer</key>
+					<integer>1</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -8366,7 +8611,17 @@ Collection}</string>
 					<key>Lock</key>
 					<string>NO</string>
 					<key>Name</key>
-					<string>Layer 1</string>
+					<string>flow</string>
+					<key>Print</key>
+					<string>YES</string>
+					<key>View</key>
+					<string>YES</string>
+				</dict>
+				<dict>
+					<key>Lock</key>
+					<string>NO</string>
+					<key>Name</key>
+					<string>delta</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
@@ -8410,7 +8665,7 @@ Collection}</string>
 		</dict>
 		<dict>
 			<key>ActiveLayerIndex</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>AutoAdjust</key>
 			<true/>
 			<key>BackgroundGraphic</key>
@@ -8470,6 +8725,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>167</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -8555,6 +8812,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>166</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -8640,6 +8899,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>165</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -8725,6 +8986,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>164</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -8810,6 +9073,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>163</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -8895,6 +9160,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>162</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -8980,6 +9247,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>161</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -9065,6 +9334,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>160</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -9150,6 +9421,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>159</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -9235,6 +9508,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>158</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -9320,6 +9595,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>157</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -9405,6 +9682,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>156</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -9490,6 +9769,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>155</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -9575,6 +9856,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>154</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -9660,6 +9943,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>143</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -9745,6 +10030,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>142</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -9830,6 +10117,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>153</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -9915,6 +10204,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>140</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -10000,6 +10291,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>152</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -10085,6 +10378,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>14</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -10170,6 +10465,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>13</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -10246,6 +10543,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>148</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302491, -1.1925696134567261}</string>
@@ -10288,6 +10587,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>141</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -10331,6 +10632,8 @@ Traps}</string>
 					</dict>
 					<key>ID</key>
 					<integer>138</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818276}</string>
@@ -10603,6 +10906,8 @@ Traps}</string>
 					</array>
 					<key>ID</key>
 					<integer>132</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 				</dict>
 				<dict>
 					<key>Class</key>
@@ -10826,6 +11131,8 @@ Traps}</string>
 					</array>
 					<key>ID</key>
 					<integer>109</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 				</dict>
 				<dict>
 					<key>Class</key>
@@ -10959,6 +11266,8 @@ Traps}</string>
 					</array>
 					<key>ID</key>
 					<integer>96</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 				</dict>
 				<dict>
 					<key>Class</key>
@@ -11093,6 +11402,8 @@ Left}</string>
 					</array>
 					<key>ID</key>
 					<integer>93</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 				</dict>
 				<dict>
 					<key>Class</key>
@@ -11104,6 +11415,8 @@ Left}</string>
 					</dict>
 					<key>ID</key>
 					<integer>86</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{797.92128718503602, 73.029661594118323}</string>
@@ -11360,6 +11673,8 @@ Left}</string>
 					</array>
 					<key>ID</key>
 					<integer>88</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 				</dict>
 				<dict>
 					<key>Class</key>
@@ -11530,6 +11845,8 @@ Left}</string>
 					</array>
 					<key>ID</key>
 					<integer>73</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 				</dict>
 				<dict>
 					<key>Bounds</key>
@@ -11545,6 +11862,8 @@ Left}</string>
 					</dict>
 					<key>ID</key>
 					<integer>55</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818276}</string>
@@ -11597,6 +11916,8 @@ Left}</string>
 					</dict>
 					<key>ID</key>
 					<integer>37</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818276}</string>
@@ -11650,6 +11971,8 @@ Left}</string>
 					</dict>
 					<key>ID</key>
 					<integer>34</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -11697,6 +12020,8 @@ List}</string>
 					</dict>
 					<key>ID</key>
 					<integer>25</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -11896,6 +12221,8 @@ Count}</string>
 					</array>
 					<key>ID</key>
 					<integer>120</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 				</dict>
 				<dict>
 					<key>Bounds</key>
@@ -11911,6 +12238,8 @@ Count}</string>
 					</dict>
 					<key>ID</key>
 					<integer>17</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818276}</string>
@@ -11961,6 +12290,8 @@ Count}</string>
 					</dict>
 					<key>ID</key>
 					<integer>16</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -12004,6 +12335,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>26</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{1.2353829169924579, -0.50160423926818276}</string>
@@ -12044,72 +12377,6 @@ Collection}</string>
 					</dict>
 				</dict>
 				<dict>
-					<key>Bounds</key>
-					<string>{{65.868998083557585, 326.99999887078229}, {57.131000518798828, 159}}</string>
-					<key>Class</key>
-					<string>ShapedGraphic</string>
-					<key>FontInfo</key>
-					<dict>
-						<key>Font</key>
-						<string>Verdana-Bold</string>
-						<key>Size</key>
-						<real>10</real>
-					</dict>
-					<key>ID</key>
-					<integer>150</integer>
-					<key>Magnets</key>
-					<array>
-						<string>{-0.59628479784302701, -1.1925696134567261}</string>
-						<string>{1.9868215517249155e-08, -1.3333333730697632}</string>
-						<string>{0.59628487781105122, -1.1925696134567261}</string>
-						<string>{1.1925696134567261, -0.59628480672836304}</string>
-						<string>{1.3333333730697632, 1.5894572413799324e-07}</string>
-						<string>{1.1925696134567261, 0.59628473564567486}</string>
-						<string>{0.59628465308492196, 1.1925697326660134}</string>
-						<string>{0, 1.3333333730697607}</string>
-						<string>{-0.5962849488937394, 1.1925696134567239}</string>
-						<string>{-1.1925697326660158, 0.5962844398368361}</string>
-						<string>{-1.3333333730697634, -6.3578289655197295e-07}</string>
-						<string>{-1.1925696134567263, -0.59628480672836304}</string>
-					</array>
-					<key>Shape</key>
-					<string>Rectangle</string>
-					<key>Style</key>
-					<dict>
-						<key>fill</key>
-						<dict>
-							<key>Color</key>
-							<dict>
-								<key>a</key>
-								<string>0.3</string>
-								<key>b</key>
-								<string>0</string>
-								<key>g</key>
-								<string>1</string>
-								<key>r</key>
-								<string>1</string>
-							</dict>
-						</dict>
-						<key>shadow</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>stroke</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-					</dict>
-					<key>Text</key>
-					<dict>
-						<key>Align</key>
-						<integer>0</integer>
-					</dict>
-					<key>TextPlacement</key>
-					<integer>2</integer>
-				</dict>
-				<dict>
 					<key>Class</key>
 					<string>LineGraphic</string>
 					<key>Head</key>
@@ -12121,6 +12388,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>147</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<false/>
 					<key>OrthogonalBarPoint</key>
@@ -12172,6 +12441,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>139</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{220.4058475494385, 157.99042328793928}</string>
@@ -12215,6 +12486,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>54</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -12268,6 +12541,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>46</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -12319,6 +12594,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>45</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{549.60029516724887, 246.46152767803648}</string>
@@ -12362,6 +12639,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>35</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -12415,6 +12694,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>22</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{337.24661738816525, 159.3933932273292}</string>
@@ -12460,6 +12741,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>21</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -12500,72 +12783,6 @@ Collection}</string>
 						<key>Info</key>
 						<integer>8</integer>
 					</dict>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{121.77736905523727, 100.99999887078229}, {115.22263336181641, 385}}</string>
-					<key>Class</key>
-					<string>ShapedGraphic</string>
-					<key>FontInfo</key>
-					<dict>
-						<key>Font</key>
-						<string>Verdana-Bold</string>
-						<key>Size</key>
-						<real>10</real>
-					</dict>
-					<key>ID</key>
-					<integer>27</integer>
-					<key>Magnets</key>
-					<array>
-						<string>{-0.59628479784302701, -1.1925696134567261}</string>
-						<string>{1.9868215517249155e-08, -1.3333333730697632}</string>
-						<string>{0.59628487781105122, -1.1925696134567261}</string>
-						<string>{1.1925696134567261, -0.59628480672836304}</string>
-						<string>{1.3333333730697632, 1.5894572413799324e-07}</string>
-						<string>{1.1925696134567261, 0.59628473564567486}</string>
-						<string>{0.59628465308492196, 1.1925697326660134}</string>
-						<string>{0, 1.3333333730697607}</string>
-						<string>{-0.5962849488937394, 1.1925696134567239}</string>
-						<string>{-1.1925697326660158, 0.5962844398368361}</string>
-						<string>{-1.3333333730697634, -6.3578289655197295e-07}</string>
-						<string>{-1.1925696134567263, -0.59628480672836304}</string>
-					</array>
-					<key>Shape</key>
-					<string>Rectangle</string>
-					<key>Style</key>
-					<dict>
-						<key>fill</key>
-						<dict>
-							<key>Color</key>
-							<dict>
-								<key>a</key>
-								<string>0.3</string>
-								<key>b</key>
-								<string>0</string>
-								<key>g</key>
-								<string>1</string>
-								<key>r</key>
-								<string>1</string>
-							</dict>
-						</dict>
-						<key>shadow</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>stroke</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-					</dict>
-					<key>Text</key>
-					<dict>
-						<key>Align</key>
-						<integer>0</integer>
-					</dict>
-					<key>TextPlacement</key>
-					<integer>2</integer>
 				</dict>
 				<dict>
 					<key>Class</key>
@@ -12660,6 +12877,8 @@ Collection}</string>
 					</array>
 					<key>ID</key>
 					<integer>144</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 				</dict>
 				<dict>
 					<key>Class</key>
@@ -12673,6 +12892,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>149</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -12726,6 +12947,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>131</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -12779,6 +13002,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>129</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{1517.0406905674733, 267.89573722908983}</string>
@@ -12822,6 +13047,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>127</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -12875,6 +13102,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>108</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -12926,6 +13155,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>107</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{1029.8188050117321, 259.78741056529691}</string>
@@ -12969,6 +13200,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>105</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{918.08101265399193, 249.40185860082377}</string>
@@ -13012,6 +13245,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>104</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{797.67126922499176, 248.41560553852926}</string>
@@ -13057,6 +13292,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>87</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -13110,6 +13347,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>80</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{1029.0045211606182, 75.029776283969824}</string>
@@ -13153,6 +13392,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>78</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{915.80784574957624, 74.028784792052946}</string>
@@ -13194,6 +13435,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>65</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{914.5828972634597, 429.4015959904882}</string>
@@ -13237,6 +13480,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>63</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{797.67126922499176, 419.02979096372053}</string>
@@ -13280,6 +13525,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>62</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -13333,6 +13580,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>60</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -13386,6 +13635,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>56</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -13439,6 +13690,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>119</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -13490,6 +13743,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>118</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>Points</key>
 					<array>
 						<string>{1317.6026714005748, 440.26097596581894}</string>
@@ -13531,6 +13786,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>58</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -13584,6 +13841,8 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>53</integer>
+					<key>Layer</key>
+					<integer>0</integer>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
@@ -13639,6 +13898,144 @@ Collection}</string>
 					</dict>
 					<key>ID</key>
 					<integer>151</integer>
+					<key>Layer</key>
+					<integer>0</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{-0.59628479784302701, -1.1925696134567261}</string>
+						<string>{1.9868215517249155e-08, -1.3333333730697632}</string>
+						<string>{0.59628487781105122, -1.1925696134567261}</string>
+						<string>{1.1925696134567261, -0.59628480672836304}</string>
+						<string>{1.3333333730697632, 1.5894572413799324e-07}</string>
+						<string>{1.1925696134567261, 0.59628473564567486}</string>
+						<string>{0.59628465308492196, 1.1925697326660134}</string>
+						<string>{0, 1.3333333730697607}</string>
+						<string>{-0.5962849488937394, 1.1925696134567239}</string>
+						<string>{-1.1925697326660158, 0.5962844398368361}</string>
+						<string>{-1.3333333730697634, -6.3578289655197295e-07}</string>
+						<string>{-1.1925696134567263, -0.59628480672836304}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>fill</key>
+						<dict>
+							<key>Color</key>
+							<dict>
+								<key>a</key>
+								<string>0.3</string>
+								<key>b</key>
+								<string>0</string>
+								<key>g</key>
+								<string>1</string>
+								<key>r</key>
+								<string>1</string>
+							</dict>
+						</dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+						<key>stroke</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Align</key>
+						<integer>0</integer>
+					</dict>
+					<key>TextPlacement</key>
+					<integer>2</integer>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{68.868998083557585, 325.99999887078229}, {57.131000518798828, 159}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>FontInfo</key>
+					<dict>
+						<key>Font</key>
+						<string>Verdana-Bold</string>
+						<key>Size</key>
+						<real>10</real>
+					</dict>
+					<key>ID</key>
+					<integer>150</integer>
+					<key>Layer</key>
+					<integer>1</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{-0.59628479784302701, -1.1925696134567261}</string>
+						<string>{1.9868215517249155e-08, -1.3333333730697632}</string>
+						<string>{0.59628487781105122, -1.1925696134567261}</string>
+						<string>{1.1925696134567261, -0.59628480672836304}</string>
+						<string>{1.3333333730697632, 1.5894572413799324e-07}</string>
+						<string>{1.1925696134567261, 0.59628473564567486}</string>
+						<string>{0.59628465308492196, 1.1925697326660134}</string>
+						<string>{0, 1.3333333730697607}</string>
+						<string>{-0.5962849488937394, 1.1925696134567239}</string>
+						<string>{-1.1925697326660158, 0.5962844398368361}</string>
+						<string>{-1.3333333730697634, -6.3578289655197295e-07}</string>
+						<string>{-1.1925696134567263, -0.59628480672836304}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>fill</key>
+						<dict>
+							<key>Color</key>
+							<dict>
+								<key>a</key>
+								<string>0.3</string>
+								<key>b</key>
+								<string>0</string>
+								<key>g</key>
+								<string>1</string>
+								<key>r</key>
+								<string>1</string>
+							</dict>
+						</dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+						<key>stroke</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Align</key>
+						<integer>0</integer>
+					</dict>
+					<key>TextPlacement</key>
+					<integer>2</integer>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{124.77736905523727, 99.999998870782292}, {115.22263336181641, 385}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>FontInfo</key>
+					<dict>
+						<key>Font</key>
+						<string>Verdana-Bold</string>
+						<key>Size</key>
+						<real>10</real>
+					</dict>
+					<key>ID</key>
+					<integer>27</integer>
+					<key>Layer</key>
+					<integer>1</integer>
 					<key>Magnets</key>
 					<array>
 						<string>{-0.59628479784302701, -1.1925696134567261}</string>
@@ -13709,7 +14106,17 @@ Collection}</string>
 					<key>Lock</key>
 					<string>NO</string>
 					<key>Name</key>
-					<string>Layer 1</string>
+					<string>flow</string>
+					<key>Print</key>
+					<string>YES</string>
+					<key>View</key>
+					<string>YES</string>
+				</dict>
+				<dict>
+					<key>Lock</key>
+					<string>NO</string>
+					<key>Name</key>
+					<string>delta</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
@@ -13764,6 +14171,8 @@ Collection}</string>
 		<integer>5</integer>
 		<key>ExpandedCanvases</key>
 		<array/>
+		<key>FitInWindow</key>
+		<true/>
 		<key>Frame</key>
 		<string>{{251, 100}, {1025, 677}}</string>
 		<key>ListView</key>
@@ -13779,15 +14188,15 @@ Collection}</string>
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{803, 15}, {890, 538}}</string>
+		<string>{{0, -310.00000000000006}, {1941.8181397304074, 1173.8181563763587}}</string>
 		<key>Zoom</key>
-		<real>1</real>
+		<real>0.4583333432674408</real>
 		<key>ZoomValues</key>
 		<array>
 			<array>
 				<string>1: distcp</string>
-				<real>0.0</real>
 				<real>1</real>
+				<real>0.0</real>
 			</array>
 			<array>
 				<string>2: word count</string>
@@ -13806,13 +14215,13 @@ Collection}</string>
 			</array>
 			<array>
 				<string>5: tf-idf</string>
-				<real>1</real>
 				<real>0.0</real>
+				<real>1</real>
 			</array>
 			<array>
 				<string>6: tf-idf + tdd</string>
-				<real>1</real>
 				<real>0.0</real>
+				<real>1</real>
 			</array>
 		</array>
 	</dict>
