@@ -53,12 +53,12 @@ public class
     Tap outTap = new Hfs( new TextDelimited( true, "\t" ), outPath );
 
     // specify a pipe to connect the taps
-    Pipe simplePipe = new Pipe( "simple" );
+    Pipe copyPipe = new Pipe( "copy" );
 
     // connect the taps, pipes, etc., into a flow
-    FlowDef flowDef = FlowDef.flowDef();
-    flowDef.addSource( simplePipe, inTap );
-    flowDef.addTailSink( simplePipe, outTap );
+    FlowDef flowDef = FlowDef.flowDef()
+     .addSource( copyPipe, inTap )
+     .addTailSink( copyPipe, outTap );
 
     // run the flow
     flowConnector.connect( flowDef ).complete();
