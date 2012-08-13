@@ -6,8 +6,19 @@ Here's a brief Java program which copies lines of text from file "A" to file "B"
 
 More detailed background information and step-by-step documentation is provided at https://github.com/ConcurrentCore/impatient/wiki
 
+Pre-reqs
+==================
+You will need to have [Apache Hadoop](http://hadoop.apache.org/) installed. If you're on a Mac and have [Homebrew](http://mxcl.github.com/homebrew/), simply run the following:
+
+    brew install hadoop
+
+Once Hadoop has been installed , be sure to set your `HADOOP_HOME` environment variable set.  In a 'nix environment, simply run the following:
+
+    export HADOOP_HOME=$(which hadoop)
+
 Build Instructions
 ==================
+
 To generate an IntelliJ project use:
 
     gradle ideaModule
@@ -16,9 +27,8 @@ To build the sample app from the command line use:
 
     gradle clean jar
 
-Before running this sample app, be sure to set your `HADOOP_HOME` environment variable. Then clear the `output` directory, then to run on a desktop/laptop with Apache Hadoop in standalone mode:
+To run on a desktop/laptop with Hadoop in standalone mode:
 
-    rm -rf output
     hadoop jar ./build/libs/impatient.jar data/rain.txt output/rain
 
 To view the results:
