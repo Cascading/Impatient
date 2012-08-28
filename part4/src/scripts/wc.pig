@@ -17,7 +17,7 @@ tokenPipe = FILTER tokenPipe BY stopPipe::stop is NULL;
 -- determine the word counts
 tokenGroups = GROUP tokenPipe BY token;
 wcPipe = FOREACH tokenGroups GENERATE group AS token, COUNT(tokenPipe) AS count;
- 
+
 -- output
 STORE wcPipe INTO '$wcPath' using PigStorage('\t', 'tagsource');
-EXPLAIN -out dot/wc.pig.dot -dot wcPipe;
+EXPLAIN -out dot/wc_pig.dot -dot wcPipe;
