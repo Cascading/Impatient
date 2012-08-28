@@ -1,17 +1,23 @@
 docPipe = LOAD '$docPath' USING PigStorage('\t', 'tagsource') AS (doc_id, text);
+docPipe = FILTER docPipe BY doc_id != 'doc_id';
+
 stopPipe = LOAD '$stopPath' USING PigStorage('\t', 'tagsource') AS (stop:chararray);
+stopPipe = FILTER stopPipe BY stop != 'stop';
 
 -- specify a regex operation to split the "document" text lines into a token stream
-tokenPipe = FOREACH docPipe GENERATE FLATTEN(TOKENIZE(LOWER(text))) AS token;
-tokenPipe = FILTER tokenPipe BY token MATCHES '\\w+';
+tokenPipe = FOREACH docPipe GENERATE doc_id, FLATTEN(TOKENIZE(LOWER(text), ' [](),.')) AS token;
+tokenPipe = FILTER tokenPipe BY token MATCHES '\\w.*';
 
 -- perform a left join to remove stop words, discarding the rows
 -- which joined with stop words, i.e., were non-null after left join
-tokenPipe = JOIN tokenPipe BY $0 LEFT, stopPipe BY $0;
-tokenPipe = FILTER tokenPipe BY $1 is NULL;
+tokenPipe = JOIN tokenPipe BY token LEFT, stopPipe BY stop;
+tokenPipe = FILTER tokenPipe BY stopPipe::stop is NULL;
+-- DUMP tokenPipe;
 
 -- determine the word counts
 tokenGroups = GROUP tokenPipe BY token;
-wcPipe = FOREACH tokenGroups GENERATE COUNT(tokenPipe) AS count, group AS token;
+wcPipe = FOREACH tokenGroups GENERATE group AS token, COUNT(tokenPipe) AS count;
  
+-- output
 STORE wcPipe INTO '$wcPath' using PigStorage('\t', 'tagsource');
+EXPLAIN -out dot/wc.pig.dot -dot wcPipe;
