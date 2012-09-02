@@ -4,7 +4,7 @@ The goal is to expand on our Word Count example in Cascading, and show how to wr
 
 We'll keep building on this example until we have a MapReduce implementation of [TF-IDF](http://en.wikipedia.org/wiki/Tf*idf).
 
-More detailed background information and step-by-step documentation is provided at https://github.com/ConcurrentCore/impatient/wiki
+More detailed background information and step-by-step documentation is provided at https://github.com/cascading/impatient/wiki
 
 Build Instructions
 ==================

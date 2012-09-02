@@ -1,3 +1,5 @@
+set pig.exec.mapPartAgg true
+
 docPipe = LOAD '$docPath' USING PigStorage('\t', 'tagsource') AS (doc_id, text);
 docPipe = FILTER docPipe BY doc_id != 'doc_id';
 
@@ -8,10 +10,11 @@ stopPipe = FILTER stopPipe BY stop != 'stop';
 tokenPipe = FOREACH docPipe GENERATE doc_id, FLATTEN(TOKENIZE(LOWER(text), ' [](),.')) AS token;
 tokenPipe = FILTER tokenPipe BY token MATCHES '\\w.*';
 
--- perform a left join to remove stop words, discarding the rows
--- which joined with stop words, i.e., were non-null after left join
-tokenPipe = JOIN tokenPipe BY token LEFT, stopPipe BY stop;
+--- perform a left join to remove stop words, discarding the rows
+--- which joined with stop words, i.e., were non-null after left join
+tokenPipe = JOIN tokenPipe BY token LEFT, stopPipe BY stop using 'replicated';
 tokenPipe = FILTER tokenPipe BY stopPipe::stop is NULL;
+
 -- DUMP tokenPipe;
 
 -- determine the word counts
@@ -20,4 +23,5 @@ wcPipe = FOREACH tokenGroups GENERATE group AS token, COUNT(tokenPipe) AS count;
 
 -- output
 STORE wcPipe INTO '$wcPath' using PigStorage('\t', 'tagsource');
-EXPLAIN -out dot/wc_pig.dot -dot wcPipe;
+--explain wcPipe
+-- EXPLAIN -out dot/wc_pig.dot -dot wcPipe;
