@@ -23,7 +23,15 @@ Before running this sample app, be sure to set your `HADOOP_HOME` environment va
 
 To view the results:
 
-    more output/rain/part-00000
+    cat output/rain/*
+    
+To run the pig version of the script, make sure `PIG_HOME` is set and run :
+
+    rm -rf pigoutput
+    pig -p inPath=data/rain.txt -p outPath=pigoutput/rain ./src/scripts/copy.pig 
+
+To view the results:
+    cat pigoutput/rain/*
 
 An example of log captured from a successful build+run is at https://gist.github.com/2911686
 
