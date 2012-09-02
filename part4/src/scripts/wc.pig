@@ -10,8 +10,11 @@ stopPipe = FILTER stopPipe BY stop != 'stop';
 tokenPipe = FOREACH docPipe GENERATE doc_id, FLATTEN(TOKENIZE(LOWER(text), ' [](),.')) AS token;
 tokenPipe = FILTER tokenPipe BY token MATCHES '\\w.*';
 
--- perform a left join to remove stop words
+--- perform a left join to remove stop words, discarding the rows
+--- which joined with stop words, i.e., were non-null after left join
 tokenPipe = JOIN tokenPipe BY token LEFT, stopPipe BY stop using 'replicated';
+tokenPipe = FILTER tokenPipe BY stopPipe::stop is NULL;
+
 -- DUMP tokenPipe;
 
 -- determine the word counts
