@@ -26,23 +26,21 @@ import cascading.flow.Flow;
 import cascading.flow.FlowDef;
 import cascading.flow.hadoop.HadoopFlowConnector;
 import cascading.operation.Insert;
-import cascading.operation.aggregator.Count;
 import cascading.operation.expression.ExpressionFunction;
 import cascading.operation.regex.RegexFilter;
 import cascading.operation.regex.RegexSplitGenerator;
 import cascading.pipe.CoGroup;
 import cascading.pipe.Each;
-import cascading.pipe.Every;
 import cascading.pipe.GroupBy;
 import cascading.pipe.HashJoin;
 import cascading.pipe.Pipe;
+import cascading.pipe.assembly.CountBy;
 import cascading.pipe.assembly.Rename;
 import cascading.pipe.assembly.Retain;
 import cascading.pipe.assembly.SumBy;
 import cascading.pipe.assembly.Unique;
 import cascading.pipe.joiner.LeftJoin;
 import cascading.property.AppProps;
-import cascading.scheme.Scheme;
 import cascading.scheme.hadoop.TextDelimited;
 import cascading.tap.Tap;
 import cascading.tap.hadoop.Hfs;
@@ -92,10 +90,8 @@ public class
 
     // one branch of the flow tallies the token counts for term frequency (TF)
     Pipe tfPipe = new Pipe( "TF", tokenPipe );
-    tfPipe = new GroupBy( tfPipe, new Fields( "doc_id", "token" ) );
-
     Fields tf_count = new Fields( "tf_count" );
-    tfPipe = new Every( tfPipe, Fields.ALL, new Count( tf_count ), Fields.ALL );
+    tfPipe = new CountBy( tfPipe, new Fields( "doc_id", "token" ), tf_count );
     Fields tf_token = new Fields( "tf_token" );
     tfPipe = new Rename( tfPipe, token, tf_token );
 
@@ -111,12 +107,11 @@ public class
 
     // one branch tallies the token counts for document frequency (DF)
     Pipe dfPipe = new Unique( "DF", tokenPipe, Fields.ALL );
-    dfPipe = new GroupBy( dfPipe, token );
-
     Fields df_count = new Fields( "df_count" );
+    dfPipe = new CountBy( dfPipe, token, df_count );
+
     Fields df_token = new Fields( "df_token" );
     Fields lhs_join = new Fields( "lhs_join" );
-    dfPipe = new Every( dfPipe, Fields.ALL, new Count( df_count ), Fields.ALL );
     dfPipe = new Rename( dfPipe, token, df_token );
     dfPipe = new Each( dfPipe, new Insert( lhs_join, 1 ), Fields.ALL );
 
@@ -141,10 +136,9 @@ public class
     // keep the word counts, which are useful for QA
     Pipe wcPipe = new Pipe( "wc", tfPipe );
     wcPipe = new Retain( wcPipe, tf_token );
-    wcPipe = new GroupBy( wcPipe, tf_token );
-    wcPipe = new Every( wcPipe, Fields.ALL, new Count(), Fields.ALL );
-
     Fields count = new Fields( "count" );
+    wcPipe = new CountBy( wcPipe, tf_token, count );
+    //sort by count
     wcPipe = new GroupBy( wcPipe, count, count );
 
     // connect the taps, pipes, etc., into a flow
