@@ -92,6 +92,7 @@ public class
     Pipe tfPipe = new Pipe( "TF", tokenPipe );
     Fields tf_count = new Fields( "tf_count" );
     tfPipe = new CountBy( tfPipe, new Fields( "doc_id", "token" ), tf_count );
+
     Fields tf_token = new Fields( "tf_token" );
     tfPipe = new Rename( tfPipe, token, tf_token );
 
@@ -138,7 +139,8 @@ public class
     wcPipe = new Retain( wcPipe, tf_token );
     Fields count = new Fields( "count" );
     wcPipe = new CountBy( wcPipe, tf_token, count );
-    //sort by count
+
+    // additionally, sort by count
     wcPipe = new GroupBy( wcPipe, count, count );
 
     // connect the taps, pipes, etc., into a flow
