@@ -31,11 +31,12 @@ For more detailed information, please see https://github.com/Cascading/Impatient
 ### Part 5
 * Calculates TF-IDF using an ExpressionFunction
 * Shows how to use a CountBy, SumBy, and a CoGroup
-* Physical plan: 11 Mappers, 9 Reducers
+* Physical plan: 10 Mappers, 8 Reducers
 
 ### Part 6
 * Includes unit tests in the build
 * Shows how to use other TDD features: checkpoints, assertions, traps, debug
+* Physical plan: 11 Mappers, 8 Reducers
 
 ### Part 7
 * Implements switch to run the example in local mode (without Apache Hadoop)
