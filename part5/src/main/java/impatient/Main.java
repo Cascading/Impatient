@@ -134,9 +134,10 @@ public class
     tfidfPipe = new Retain( tfidfPipe, fieldSelector );
     tfidfPipe = new Rename( tfidfPipe, tf_token, token );
 
-    // keep the word counts, which are useful for QA
+    // keep track of the word counts, which are useful for QA
     Pipe wcPipe = new Pipe( "wc", tfPipe );
     wcPipe = new Retain( wcPipe, tf_token );
+
     Fields count = new Fields( "count" );
     wcPipe = new CountBy( wcPipe, tf_token, count );
 

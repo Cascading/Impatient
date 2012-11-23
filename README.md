@@ -30,7 +30,7 @@ For more detailed information, please see https://github.com/Cascading/Impatient
 
 ### Part 5
 * Calculates TF-IDF using an ExpressionFunction
-* Shows how to use a SumBy and a CoGroup
+* Shows how to use a CountBy, SumBy, and a CoGroup
 * Physical plan: 11 Mappers, 9 Reducers
 
 ### Part 6
