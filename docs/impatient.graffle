@@ -13539,6 +13539,8 @@ Collection}</string>
 		<integer>5</integer>
 		<key>ExpandedCanvases</key>
 		<array/>
+		<key>FitInWindow</key>
+		<true/>
 		<key>Frame</key>
 		<string>{{255, 94}, {1025, 677}}</string>
 		<key>ListView</key>
@@ -13554,9 +13556,9 @@ Collection}</string>
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{579, 14}, {890, 538}}</string>
+		<string>{{0, -309}, {1941.8181397304074, 1173.8181563763585}}</string>
 		<key>Zoom</key>
-		<real>1</real>
+		<real>0.4583333432674408</real>
 		<key>ZoomValues</key>
 		<array>
 			<array>
@@ -13581,13 +13583,13 @@ Collection}</string>
 			</array>
 			<array>
 				<string>5: tf-idf</string>
+				<real>0.0</real>
 				<real>0.9100000262260437</real>
-				<real>0.93999999761581421</real>
 			</array>
 			<array>
 				<string>6: tf-idf + tdd</string>
-				<real>1</real>
 				<real>0.0</real>
+				<real>1</real>
 			</array>
 		</array>
 	</dict>
