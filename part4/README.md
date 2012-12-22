@@ -25,6 +25,12 @@ To view the results:
 
     more output/wc/part-00000
 
+To run the Pig version of the script, make sure `PIG_HOME` is set and run :
+
+    rm -rf output
+    mkdir -p dot
+    pig -p docPath=./data/rain.txt -p wcPath=./output/wc -p stopPath=./data/en.stop ./src/scripts/wc.pig
+
 An example of log captured from a successful build+run is at https://gist.github.com/3043745
 
 For more discussion, see the [cascading-user](https://groups.google.com/forum/?fromgroups#!forum/cascading-user) email forum.
