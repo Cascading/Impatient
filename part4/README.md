@@ -25,11 +25,16 @@ To view the results:
 
     more output/wc/part-00000
 
-To run the Pig version of the script, make sure `PIG_HOME` is set and run :
+To run the Pig version of the script:
 
     rm -rf output
     mkdir -p dot
     pig -p docPath=./data/rain.txt -p wcPath=./output/wc -p stopPath=./data/en.stop ./src/scripts/wc.pig
+
+To run the Hive version of the script:
+
+    rm -rf derby.log metastore_db/
+    hive -hiveconf hive.metastore.warehouse.dir=/tmp < src/scripts/wc.q 
 
 An example of log captured from a successful build+run is at https://gist.github.com/3043745
 
