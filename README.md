@@ -41,3 +41,6 @@ For more detailed information, please see https://github.com/Cascading/Impatient
 ### Part 7
 * Implements switch to run the example in local mode (without Apache Hadoop)
 * Uses an R script to analyze/visualize the results
+
+### Part 8
+* Scalding equivalents of previous examples in Cascading
