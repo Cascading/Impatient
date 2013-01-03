@@ -11,9 +11,10 @@ dependencies {
   scalaTools 'org.scala-lang:scala-compiler:2.9.2'
   compile 'org.scala-lang:scala-library:2.9.2'
 
-  // Scalding build; better to use local build
-  // Twitter may be slow to update ConJars.org
-  // see README.md
+  // Scalding
+  compile( 'com.twitter:scalding_2.9.2:0.8.1' )
+
+  // in case you need to add JARs from a local build
   compile fileTree( dir: 'lib', includes: ['*.jar'] )
 }
 

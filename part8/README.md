@@ -17,15 +17,11 @@ Example logs of running these apps are in https://gist.github.com/4371896
 Fat Jar
 -------
 
-To use Gradle to build a "fat jar", first copy the Scalding JAR into the local `lib` directory:
+If you need to use any locally built JARs, move them into the local `lib` directory:
 
     mkdir -p lib
-    cp $SCALDING_HOME/targetscalding-assembly-*.jar lib/
 
-It is better to use a locally built Scalding JAR, because Twitter tends to be slow in updating ConJars.org
-
-
-Then build with the `build.gradle` script:
+Then to build a "fat jar" with Gradle, use the `build.gradle` script:
 
     gradle clean jar
     
