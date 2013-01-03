@@ -7,11 +7,12 @@ repositories {
 }
 
 dependencies {
-  // Scala compiler, related tools, standard library
-  scalaTools 'org.scala-lang:scala-compiler:2.9.1'
-  compile 'org.scala-lang:scala-library:2.9.1'
+  // Scala compiler + related tools, and standard library
+  scalaTools 'org.scala-lang:scala-compiler:2.9.2'
+  compile 'org.scala-lang:scala-library:2.9.2'
 
-  // Scalding build; better local, Twitter is slow to update ConJars.org
+  // Scalding build; better to use local build
+  // Twitter may be slow to update ConJars.org
   // see README.md
   compile fileTree( dir: 'lib', includes: ['*.jar'] )
 }
