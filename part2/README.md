@@ -1,6 +1,7 @@
 Cascading for the Impatient, Part 2
 ===================================
-The goal is to expand on the simplest [Cascading 2.0](http://www.cascading.org/) app possible, while following best practices, to implement a Word Count example.
+The goal is to expand on the simplest [Cascading 2.1](http://www.cascading.org/) app possible, while following best practices,
+to implement a Word Count example.
 
 We'll keep building on this example until we have a MapReduce implementation of [TF-IDF](http://en.wikipedia.org/wiki/Tf*idf).
 
@@ -16,7 +17,8 @@ To build the sample app from the command line use:
 
     gradle clean jar
 
-Before running this sample app, be sure to set your `HADOOP_HOME` environment variable. Then clear the `output` directory, then to run on a desktop/laptop with Apache Hadoop in standalone mode:
+Before running this sample app, be sure to set your `HADOOP_HOME` environment variable.
+Then clear the `output` directory, then to run on a desktop/laptop with Apache Hadoop in standalone mode:
 
     rm -rf output
     hadoop jar ./build/libs/impatient.jar data/rain.txt output/wc
@@ -25,14 +27,36 @@ To view the results:
 
     more output/wc/part-00000
 
+An example of log captured from a successful build+run is at https://gist.github.com/3020297
+
+
+Amazon AWS Elastic MapReduce
+============================
+
+To run this Cascading app on the Amazon AWS cloud, You'll need to have an AWS account, with credentials setup --
+probably in your `~/.aws_cred/` directory.
+
+Then install these two excellent AWS tools:
+
+* [s3cmd](http://s3tools.org/s3cmd)
+* [EMR Ruby client](http://aws.amazon.com/developertools/2264)
+
+Next, edit the `emr.sh` shell script to update the `BUCKET` variable for one of your S3 buckets.
+Now upload your JAR and run it on [Elastic MapReduce](http://aws.amazon.com/elasticmapreduce/)
+using the `emr.sh` shell script.
+
+
+Apache Pig Comparison
+=====================
 To run the Pig version of the script, make sure `PIG_HOME` is set and run :
 
     rm -rf output
     mkdir -p dot
     pig -p docPath=./data/rain.txt -p wcPath=./output/wc ./src/scripts/wc.pig
 
-An example of log captured from a successful build+run is at https://gist.github.com/3020297
 
+More Info
+=========
 For more discussion, see the [cascading-user](https://groups.google.com/forum/?fromgroups#!forum/cascading-user) email forum.
 
 Stay tuned for the next installments of our [Cascading for the Impatient](http://www.cascading.org/category/impatient/) series.

@@ -1,7 +1,7 @@
 
 License:
 
-  Copyright (c) 2007-2012 Concurrent, Inc. All Rights Reserved.
+  Copyright (c) 2007-2013 Concurrent, Inc. All Rights Reserved.
 
   Project and contact information: http://www.cascading.org/
 
@@ -21,4 +21,4 @@ License:
 
 Third-party Licenses:
 
-  All third-party dependencies are listed in the gradle.build files.
+  All third-party dependencies are listed in the build.gradle files.

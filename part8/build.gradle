@@ -18,6 +18,9 @@ dependencies {
 
   // in case you need to add JARs from a local build
   compile fileTree( dir: 'lib', includes: ['*.jar'] )
+
+  compile( 'cascading:cascading-core:2.0.2' )
+  compile( 'cascading:cascading-hadoop:2.0.2' )
 }
 
 jar {
