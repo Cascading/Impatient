@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007-2012 Concurrent, Inc. All Rights Reserved.
+ * Copyright (c) 2007-2013 Concurrent, Inc. All Rights Reserved.
  *
  * Project and contact information: http://www.cascading.org/
  *
@@ -18,10 +18,9 @@
  * limitations under the License.
  */
 
-import java.text.SimpleDateFormat
-
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'eclipse'
 
 archivesBaseName = 'impatient'
 
@@ -31,10 +30,11 @@ repositories {
   mavenRepo name: 'conjars', url: 'http://conjars.org/repo/'
 }
 
+ext.cascadingVersion = '2.1.0'
+
 dependencies {
-  compile( 'cascading:cascading-core:2.0.8' ) { exclude group: 'log4j' }
-  compile( 'cascading:cascading-local:2.0.8' ) { transitive = false }
-  compile( 'cascading:cascading-hadoop:2.0.8' ) { transitive = false }
+  compile( group: 'cascading', name: 'cascading-core', version: cascadingVersion )
+  compile( group: 'cascading', name: 'cascading-hadoop', version: cascadingVersion )
 }
 
 jar {
@@ -48,22 +48,4 @@ jar {
   manifest {
     attributes( "Main-Class": "impatient/Main" )
   }
-}
-
-task distCopy( type: Copy, dependsOn: jar ) {
-  into "${buildDir}/dist/${archivesBaseName}"
-
-  from 'README.md'
-  from 'build.gradle'
-  from( 'src' ) {into 'src'}
-  from( 'data' ) {into 'data'}
-
-  from "$buildDir/libs"
-}
-
-task dist( type: Tar, dependsOn: distCopy ) {
-  compression = "GZIP"
-  classifier = new SimpleDateFormat( "yyyyMMdd" ).format( new Date() )
-
-  from "${buildDir}/dist/"
 }
