@@ -48,7 +48,7 @@ and run the app on [Elastic MapReduce](http://aws.amazon.com/elasticmapreduce/).
 
 Kudos
 =====
-Many thanks to Sujit Pal, Chris Severs, Dean Wampler, Oscar Boykinand, Hans Dockter --
+Many thanks to Sujit Pal, Chris Severs, Dean Wampler, Oscar Boykin, Hans Dockter --
 for assistance with Scalding code samples, Gradle build for Scala, etc.
 
 
