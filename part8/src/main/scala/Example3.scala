@@ -14,4 +14,11 @@ class Example3(args : Args) extends Job(args) {
       .trim
       .toLowerCase
   }  
+
+  // kudos to Chris Severs for this workaround, when running "fat jars" -
+  // avoids the "ClassNotFoundException cascading.*" exception on a Hadoop cluster
+
+  override def config(implicit mode: Mode): Map[AnyRef, AnyRef] = {
+    super.config(mode) ++ Map("cascading.app.appjar.class" -> classOf[Example3])
+  }
 }
