@@ -1,11 +1,11 @@
 Scalding Examples
 =================
-`Word Count` with a token scrub operation -- similar to "Impatient", Part 3:
+Word Count with a token scrub operation -- similar to "Impatient", Part 3:
 
     rm -rf output
     scald.rb --hdfs-local src/main/scala/Example3.scala --doc data/rain.txt --wc output/wc
 
-`Word Count` with a stop word list based on HashJoin, similar to Part 4:
+Word Count with a stop word list based on HashJoin -- similar to "Impatient", Part 4:
 
     rm -rf output
     scald.rb --hdfs-local src/main/scala/Example4.scala --doc data/rain.txt --stop data/en.stop --wc output/wc 
@@ -31,7 +31,8 @@ BTW, if you need to use any locally built JARs with this script, move them into 
 Amazon AWS Elastic MapReduce
 ============================
 
-To run this Scalding app on the Amazon AWS cloud, you'll need to have an AWS account with credentials setup locally --
+To run this Scalding app on the Amazon AWS cloud, you'll need to have an AWS account.
+Be sure to sign up for EMR, S3, SimpleDB. Also have your credentials set up locally --
 for example, in your `~/.aws_cred/` directory.
 
 Then install these two excellent AWS tools:
@@ -47,7 +48,7 @@ and run the app on [Elastic MapReduce](http://aws.amazon.com/elasticmapreduce/).
 
 Kudos
 =====
-Many thanks to Sujit Pal, Chris Severs, Dean Wampler, Oscar Boykinand, Hans Doktor --
+Many thanks to Sujit Pal, Chris Severs, Dean Wampler, Oscar Boykinand, Hans Dockter --
 for assistance with Scalding code samples, Gradle build for Scala, etc.
 
 
