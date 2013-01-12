@@ -13,7 +13,7 @@ Word Count with a stop word list based on HashJoin -- similar to "Impatient", Pa
 
 Fat Jar
 =======
-To build a _fat jar_ with Gradle, use the `build.gradle` script:
+To build a _fat jar_ with Gradle (version 1.3 or later) which uses the `build.gradle` script:
 
     gradle clean jar
     
@@ -23,19 +23,18 @@ To build a _fat jar_ with Gradle, use the `build.gradle` script:
     rm -rf output
     hadoop jar build/libs/impatient.jar Example4 --hdfs --doc data/rain.txt --stop data/en.stop --wc output/wc
 
-Example logs of running these apps are in https://gist.github.com/4371896
+To build a _fat jar_ with Maven (version 3.0.4 or later) which uses the `pom.xml` script:
 
-BTW, if you need to use any locally built JARs with this script, move them into the local `lib` directory.
+    mvn clean package
 
-To build a _fat jar_ with Maven:
-	mvn clean package
-
-	rm -rf output
+    rm -rf output
     hadoop jar target/part8-1.0.0.jar Example3 --hdfs --doc data/rain.txt --wc output/wc
     
     rm -rf output
     hadoop jar target/part8-1.0.0.jar Example4 --hdfs --doc data/rain.txt --stop data/en.stop --wc output/wc
 
+Example logs of running these apps are in https://gist.github.com/4371896
+BTW, if you need to use any locally built JARs with this script, move them into the local `lib` directory.
 
 
 Amazon AWS Elastic MapReduce
@@ -59,7 +58,7 @@ and run the app on [Elastic MapReduce](http://aws.amazon.com/elasticmapreduce/).
 Kudos
 =====
 Many thanks to Sujit Pal, Chris Severs, Dean Wampler, Oscar Boykin, Hans Dockter --
-for assistance with Scalding code samples, Gradle build for Scala, etc.
+for assistance with Scalding code samples, Gradle build for Scala, Maven build, etc.
 
 
 More Info
