@@ -26,7 +26,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2013-04-05 00:22:42 +0000</string>
+	<string>2013-04-05 00:48:48 +0000</string>
 	<key>Modifier</key>
 	<string>Paco NATHAN</string>
 	<key>NotesVisible</key>
@@ -11556,7 +11556,7 @@ List}</string>
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\b\fs20 \cf0 CountBy\
+\f0\b\fs20 \cf0 SumBy\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
 \b0 \cf0 token}</string>
@@ -13536,7 +13536,7 @@ Collection}</string>
 	<key>WindowInfo</key>
 	<dict>
 		<key>CurrentSheet</key>
-		<integer>4</integer>
+		<integer>5</integer>
 		<key>ExpandedCanvases</key>
 		<array/>
 		<key>Frame</key>
@@ -13554,9 +13554,9 @@ Collection}</string>
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{607, 16}, {890, 538}}</string>
+		<string>{{1102, 195.33333333333334}, {593.33333333333326, 358.66666666666663}}</string>
 		<key>Zoom</key>
-		<real>1</real>
+		<real>1.5</real>
 		<key>ZoomValues</key>
 		<array>
 			<array>
@@ -13586,8 +13586,8 @@ Collection}</string>
 			</array>
 			<array>
 				<string>6: tf-idf + tdd</string>
+				<real>1.5</real>
 				<real>0.0</real>
-				<real>1</real>
 			</array>
 		</array>
 	</dict>

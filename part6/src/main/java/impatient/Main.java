@@ -159,10 +159,10 @@ public class
 
     // keep track of the word counts, which are useful for QA
     Pipe wcPipe = new Pipe( "wc", tfPipe );
-    wcPipe = new Retain( wcPipe, tf_token );
 
     Fields count = new Fields( "count" );
-    wcPipe = new CountBy( wcPipe, tf_token, count );
+    wcPipe = new SumBy( wcPipe, tf_token, tf_count, count, long.class );
+    wcPipe = new Rename( wcPipe, tf_token, token );
 
     // additionally, sort by count
     wcPipe = new GroupBy( wcPipe, count, count );
