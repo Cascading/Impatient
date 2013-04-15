@@ -44,3 +44,6 @@ For more detailed information, please see https://github.com/Cascading/Impatient
 
 ### Part 8
 * Scalding equivalents of previous examples in Cascading
+
+---
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Cascading/Impatient/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
