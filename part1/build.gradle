@@ -22,6 +22,8 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 
+apply from: "../common/providedCompile.gradle"
+
 archivesBaseName = 'impatient'
 
 repositories {
@@ -31,11 +33,14 @@ repositories {
 }
 
 ext.cascadingVersion = '2.1.2'
+ext.hadoopVersion = '1.1.2'
 
 dependencies {
   compile( group: 'cascading', name: 'cascading-core', version: cascadingVersion )
   compile( group: 'cascading', name: 'cascading-local', version: cascadingVersion )
   compile( group: 'cascading', name: 'cascading-hadoop', version: cascadingVersion )
+
+  providedCompile( group: 'org.apache.hadoop', name: 'hadoop-core', version: hadoopVersion )
 }
 
 jar {

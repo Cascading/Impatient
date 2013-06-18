@@ -3,6 +3,9 @@
 **/output
 **/.idea
 **/.gradle
+**/.classpath
+**/.settings
+**/.project
 
 *~
 *.dot

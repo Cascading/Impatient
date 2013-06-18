@@ -22,6 +22,9 @@ import java.text.SimpleDateFormat
 
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+apply from: "../common/providedCompile.gradle"
 
 archivesBaseName = 'impatient'
 
@@ -31,12 +34,16 @@ repositories {
   mavenRepo name: 'conjars', url: 'http://conjars.org/repo/'
 }
 
+ext.cascadingVersion = '2.1.0'
+ext.hadoopVersion = '1.1.2'
+
 dependencies {
-  compile( 'cascading:cascading-core:2.0.1' ) { exclude group: 'log4j' }
-  compile( 'cascading:cascading-hadoop:2.0.1' ) { transitive = true }
+  compile( group: 'cascading', name: 'cascading-core', version: cascadingVersion )
+  compile( group: 'cascading', name: 'cascading-hadoop', version: cascadingVersion )
+  providedCompile( group: 'org.apache.hadoop', name: 'hadoop-core', version: hadoopVersion )
 
   testCompile( 'cascading:cascading-test:2.0.1' )
-  testCompile( 'org.apache.hadoop:hadoop-test:1.0.3' )
+  testCompile( 'org.apache.hadoop:hadoop-test:1.1.2' )
   testCompile( 'junit:junit:4.8.+' )
 }
 
