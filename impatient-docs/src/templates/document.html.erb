@@ -110,10 +110,11 @@
                end
                if attr? :revnumber %>
         <span id="revnumber">version <%= attr :revnumber %><%= attr?(:revdate) ? ',' : '' %></span>
-        <a href="http://cascading.org/" target="_blank" class="cascLogo"></a>
       <%
          end
-         if attr? :revdate %>
+      %>
+        <a href="http://cascading.org/" target="_blank" class="cascLogo"></a>
+        <% if attr? :revdate %>
         <span id="revdate"><%= attr :revdate %></span>
       <%
          end
