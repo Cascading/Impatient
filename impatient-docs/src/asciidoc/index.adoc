@@ -3,15 +3,12 @@
 The Impatient series is a set of tutorials to get you started with Cascading
 2.2.
 
-include::impatient1.adoc[]
+// TODO write better introduction
 
-include::impatient2.adoc[]
-
-include::impatient3.adoc[]
-
-include::impatient4.adoc[]
-
-include::impatient5.adoc[]
-
-include::impatient6.adoc[]
+- link:impatient1.html[Part 1]
+- link:impatient2.html[Part 2]
+- link:impatient3.html[Part 3]
+- link:impatient4.html[Part 4]
+- link:impatient5.html[Part 5]
+- link:impatient6.html[Part 6]
 

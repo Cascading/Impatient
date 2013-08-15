@@ -34,7 +34,7 @@ apply plugin: 'asciidoctor'
 
 asciidoctor {
 
-  sourceDocumentName = file( 'src/asciidoc/index.adoc' )
+  //sourceDocumentName = file( 'src/asciidoc/index.adoc' )
 
   // http://asciidoc.org/userguide.html#X88
   // attributed must all be lowercase
