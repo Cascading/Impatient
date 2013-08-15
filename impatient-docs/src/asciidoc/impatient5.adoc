@@ -1,0 +1,275 @@
+Part 5 - Implementing TF-IDF in Cascading
+-----------------------------------------
+
+This part builds on the Word Count app from the previous chapter and now
+implements TF-IDF in Cascading. We’ll show how to use a
+http://docs.cascading.org/cascading/2.1/javadoc/cascading/pipe/assembly/SumBy.html[SumBy]
+and a
+http://docs.cascading.org/cascading/2.1/javadoc/cascading/pipe/CoGroup.html[CoGroup]
+to aggregate the data needed, and then how to use an
+http://docs.cascading.org/cascading/2.1/javadoc/cascading/operation/expression/ExpressionFunction.html[ExpressionFunction]
+to calculate the TF-IDF weights. We also continue to show best practices for
+workflow orchestration and test-driven development (TDD) at scale.
+
+Theory
+~~~~~~
+
+Fortunately, most all of the data required to calculate TF-IDF weight was
+already available in our Word Count example in Part 4. However, we’ll need to
+revise the overall workflow, adding more pipe assemblies to it.
+
+TF-IDF calculates a metric for each token which indicates how “important” that
+token is to a document _within the context of a collection of documents_. The
+metric is calculated based on relative frequencies. On one hand, tokens which
+appear in most documents tend to have very low TF-IDF weights. On the other
+hand, tokens which are less common but appear multiple times in a few documents
+tend to have very high TF-IDF weights. Consequently, the TF-IDF algorithm gets
+used to drive the indexing in some text search engines, such as
+http://lucene.apache.org/core/[Apache Lucene].  In particular, TF-IDF provides
+an effective way to rank documents for a search query. For a good discussion of
+this in gory detail, see the
+http://lucene.apache.org/core/2_9_4/api/all/org/apache/lucene/search/Similarity.html[Similarity]
+class in Lucene.
+
+Note that in the literature, `token` and `term` may be used interchangeably for
+this sample app. More advanced text analytics might look at sequences of words,
+in which case a `term` becomes a more complex structure. However, we’re only
+looking at single words.
+
+We’ll need the following components to calculate TF-IDF:
+
+- term count: number of times a given term appears in a given document
+- document frequency: how frequently a given term appears across all documents
+- number of terms: total number of terms in a given document
+- document count: total number of documents
+
+Slight modifications to Word Count provides the means to get both term count
+and document frequency, along with the other two components which get
+calculated almost as by-products. In this sense, we get to leverage Cascading
+by re-using the results of some pipes within our workflow. A conceptual diagram
+for this implementation of TF-IDF in Cascading is shown as:
+
+image:plumb5.png[scaledwidth="75%"]
+
+Source
+~~~~~~
+
+Download source for this example on GitHub. You’ll need to clone the whole of this multi-part series:
+
+    git clone git://github.com/Cascading/Impatient.git
+
+For quick reference, the source code and a log for this example are listed in a gist. The input data stays the same as in the earlier code.
+
+First, let’s add another sink tap to write the TF-IDF weights as an output data set:
+
+[source,java]
+----
+String tfidfPath = args[ 3 ];
+Tap tfidfTap = new Hfs( new TextDelimited( true, "\t" ), tfidfPath );
+----
+
+Next we’ll modify the existing pipe assemblies for Word Count, beginning
+immediately after the “stop words” filter. We add the following line to retain
+only the doc_id and token fields:
+
+[source,java]
+----
+tokenPipe = new Retain( tokenPipe, fieldSelector );
+----
+
+Then we re-use the intermediate results from `tokenPipe`, creating three
+different branches in the workflow. The first addresses _term counts_:
+
+[source,java]
+----
+// one branch of the flow tallies the token counts for term frequency (TF)
+Pipe tfPipe = new Pipe( "TF", tokenPipe );
+tfPipe = new GroupBy( tfPipe, new Fields( "doc_id", "token" ) );
+Fields tf_count = new Fields( "tf_count" );
+tfPipe = new Every( tfPipe, Fields.ALL, new Count( tf_count ), Fields.ALL );
+Fields tf_token = new Fields( "tf_token" );
+tfPipe = new Rename( tfPipe, token, tf_token );
+----
+
+At that point, we have _TF_ values for each token.
+
+In a second branch we’ll calculate _D_, the total number of documents in a way
+which can be consumed later in a join. This uses a built-in partial aggregate
+operation called
+http://docs.cascading.org/cascading/2.1/javadoc/cascading/pipe/assembly/SumBy.html[SumBy]:
+
+[source,java]
+----
+// one branch counts the number of documents (D)
+Fields doc_id = new Fields( "doc_id" );
+Fields tally = new Fields( "tally" );
+Fields rhs_join = new Fields( "rhs_join" );
+Fields n_docs = new Fields( "n_docs" );
+Pipe dPipe = new Unique( "D", tokenPipe, doc_id );
+dPipe = new Each( dPipe, new Insert( tally, 1 ), Fields.ALL );
+dPipe = new Each( dPipe, new Insert( rhs_join, 1 ), Fields.ALL );
+dPipe = new SumBy( dPipe, rhs_join, tally, n_docs, long.class );
+----
+
+This part may seem less than intuitive... and it is a bit odd. We need a total
+document count as a field, in each tuple for the RHS of the join. That keeps
+our processing parallel, allowing this calculation to scale-out horizontally.
+
+The third branch calculates _DF_ as a step toward _inverse document frequency per
+token_:
+
+[source,java]
+----
+// one branch tallies the token counts for document frequency (DF)
+Pipe dfPipe = new Unique( "DF", tokenPipe, Fields.ALL );
+dfPipe = new GroupBy( dfPipe, token );
+Fields df_count = new Fields( "df_count" );
+Fields df_token = new Fields( "df_token" );
+Fields lhs_join = new Fields( "lhs_join" );
+dfPipe = new Every( dfPipe, Fields.ALL, new Count( df_count ), Fields.ALL );
+dfPipe = new Rename( dfPipe, token, df_token );
+dfPipe = new Each( dfPipe, new Insert( lhs_join, 1 ), Fields.ALL );
+----
+
+Now we have all the components needed to calculate TF-IDF weights. We’ll use two
+kinds of joins – a HashJoin followed by a
+http://docs.cascading.org/cascading/2.1/javadoc/cascading/pipe/CoGroup.html[CoGroup] -
+to merge the three branches together:
+
+[source,java]
+----
+// join to bring together all the components for calculating TF-IDF
+// the D side of the join is smaller, so it goes on the RHS
+Pipe idfPipe = new HashJoin( dfPipe, lhs_join, dPipe, rhs_join );
+
+// the IDF side of the join is smaller, so it goes on the RHS
+Pipe tfidfPipe = new CoGroup( tfPipe, tf_token, idfPipe, df_token );
+----
+
+Then we calculate the weights using an
+http://docs.cascading.org/cascading/2.1/javadoc/cascading/operation/expression/ExpressionFunction.html[ExpressionFunction]
+in Cascading:
+
+[source,java]
+----
+// calculate the TF-IDF weights, per token, per document
+Fields tfidf = new Fields( "tfidf" );
+String expression = "(double) tf_count * Math.log( (double) n_docs / ( 1.0 + df_count ) )";
+ExpressionFunction tfidfExpression = new ExpressionFunction( tfidf, expression, Double.class );
+Fields tfidfArguments = new Fields( "tf_count", "df_count", "n_docs" );
+tfidfPipe = new Each( tfidfPipe, tfidfArguments, tfidfExpression, Fields.ALL );
+fieldSelector = new Fields( "tf_token", "doc_id", "tfidf" );
+tfidfPipe = new Retain( tfidfPipe, fieldSelector );
+tfidfPipe = new Rename( tfidfPipe, tf_token, token );
+----
+
+Now we can get back to the remainder of the workflow. We’ll keep the actual
+Word Count metrics, since those are useful for testing:
+
+[source,java]
+----
+// keep track of the word counts, which are useful for QA
+Pipe wcPipe = new Pipe( "wc", tfPipe );
+
+Fields count = new Fields( "count" );
+wcPipe = new SumBy( wcPipe, tf_token, tf_count, count, long.class );
+wcPipe = new Rename( wcPipe, tf_token, token );
+----
+
+Last, we’ll add another sink tap to the
+http://docs.cascading.org/cascading/2.1/javadoc/cascading/flow/FlowDef.html[FlowDef], to include output data for our
+TF-IDF weights:
+
+[source,java]
+----
+// connect the taps, pipes, etc., into a flow
+FlowDef flowDef = FlowDef.flowDef()
+ .setName( "tfidf" )
+ .addSource( docPipe, docTap )
+ .addSource( stopPipe, stopTap )
+ .addTailSink( tfidfPipe, tfidfTap )
+ .addTailSink( wcPipe, wcTap );
+----
+
+We’ll change the name of the resulting Flow too, to keep our code properly
+descriptive:
+
+[source,java]
+----
+// write a DOT file and run the flow
+Flow tfidfFlow = flowConnector.connect( flowDef );
+tfidfFlow.writeDOT( "dot/tfidf.dot" );
+tfidfFlow.complete();
+----
+
+Modify the `Main` method to make those changes, then build a JAR file. You should
+be good to go. For those keeping score, the resulting physical plan in
+Cascading for _Part 5_ now uses eleven mappers and nine reducers. That amount
+jumped by 5x since our previous example.
+
+The diagram for the Cascading flow will be in the `dot/` subdirectory after the
+app runs. Here we have annotated it to show where the *mapper* and *reducer*
+phases are running, and also the sections which were added since _Part 4_:
+
+image:tfidf1.png[]
+
+If you want to read in more detail about the classes in the Cascading API which
+were used, see the Cascading 2.0 User Guide and JavaDoc.
+
+Build
+~~~~~
+
+The build for this example is based on using Gradle. The script is in
+`build.gradle` and to generate an IntelliJ project use:
+
+    gradle ideaModule
+
+To build the sample app from the command line use:
+
+    gradle clean jar
+
+What you should have at this point is a JAR file which is nearly ready to drop
+into your Maven repo — almost. Actually, we provide a community jar repository
+for Cascading libraries and extensions at http://conjars.org
+
+Run
+~~~
+
+Before running this sample app, you’ll need to have a supported release of
+Apache Hadoop installed. Here’s what was used to develop and test our example
+code:
+
+    $ hadoop version
+    Hadoop 1.1.2
+
+Be sure to set your `HADOOP_HOME` environment variable. Then clear the `output`
+directory (Apache Hadoop insists, if you’re running in standalone mode) and run
+the app:
+
+    rm -rf output
+    hadoop jar ./build/libs/impatient.jar data/rain.txt output/wc data/en.stop output/tfidf
+
+Output text gets stored in the partition file output/tfidf which you can then
+verify:
+
+    more output/tfidf/part-00000
+
+BTW, did you notice what the TF-IDF weights for the tokens rain and shadow
+were? Those represent what the documents have in common. How do those compare
+with weights for the other tokens? Conversely, consider the weights for
+australia (high weight) or area (different weights).
+
+Here’s a log file from our run of the sample app, part 5. If your run looks
+terribly different, something is probably not set up correctly. Drop us a line
+on the cascading-user email forum. Or visit one of our user group meetings.
+
+
+For those familiar with Apache Pig, we have included a comparable script, and to run that:
+
+[source]
+----
+rm -rf output
+mkdir -p dot
+pig -p docPath=./data/rain.txt -p wcPath=./output/wc -p stopPath=./data/en.stop -p tfidfPath=./output/tfidf ./src/scripts/tfidf.pig
+----
+

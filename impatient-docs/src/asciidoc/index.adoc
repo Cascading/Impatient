@@ -1,0 +1,17 @@
+# Cascading for the Impatient
+
+The Impatient series is a set of tutorials to get you started with Cascading
+2.2.
+
+include::impatient1.adoc[]
+
+include::impatient2.adoc[]
+
+include::impatient3.adoc[]
+
+include::impatient4.adoc[]
+
+include::impatient5.adoc[]
+
+include::impatient6.adoc[]
+
