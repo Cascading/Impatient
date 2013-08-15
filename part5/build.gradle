@@ -43,8 +43,6 @@ dependencies {
   providedCompile( group: 'org.apache.hadoop', name: 'hadoop-core', version: hadoopVersion )
 }
 
-
-
 jar {
   description = "Assembles a Hadoop ready jar file"
   doFirst {

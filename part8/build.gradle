@@ -8,6 +8,9 @@ repositories {
   mavenRepo name: 'conjars', url: 'http://conjars.org/repo/'
 }
 
+ext.cascadingVersion = '2.1.6'
+ext.hadoopVersion = '1.1.2'
+
 dependencies {
   // Scala compiler + related tools, and standard library
   scalaTools 'org.scala-lang:scala-compiler:2.9.2'
@@ -19,8 +22,8 @@ dependencies {
   // in case you need to add JARs from a local build
   compile fileTree( dir: 'lib', includes: ['*.jar'] )
 
-  compile( 'cascading:cascading-core:2.1.6' )
-  compile( 'cascading:cascading-hadoop:2.1.6' )
+  compile( group: 'cascading', name: 'cascading-core', version: cascadingVersion )
+  compile( group: 'cascading', name: 'cascading-hadoop', version: cascadingVersion )
 }
 
 jar {
