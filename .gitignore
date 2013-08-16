@@ -18,3 +18,5 @@
 *.iml
 *.ipr
 *.iws
+
+.gradle
