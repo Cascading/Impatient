@@ -1,4 +1,4 @@
-# Cascading for the Impatient Part 6
+# Cascading for the Impatient, Part 6
 
 Part 6 - TDD at scale
 ---------------------
@@ -27,13 +27,13 @@ and lots of refactoring. Those descriptions would not appear to fit with batch
 jobs involving terabytes of data and huge clusters running apps that take days
 to complete.
 
-Stated in a different way, according to Kent Beck, TDD “encourages simple
-designs and inspires confidence.” That statement does actually fit well with
+Stated in a different way, according to Kent Beck, TDD ``encourages simple
+designs and inspires confidence.`` That statement does actually fit well with
 Cascading. The API is intended to provide simple design patterns for working
 with data - _GroupBy_, _Join_, _Count_, _Regex_, _Filter_ - so that the need for writing
 custom functions becomes relatively rare. That speaks to “encouraging simple
 designs” directly. The practice in Cascading of modeling business process and
-orchestrating MapReduce workflows – that speaks to “inspiring confidence” in a
+orchestrating MapReduce workflows - that speaks to ``inspiring confidence`` in a
 big way.
 
 So now we’ll let the cat out of the bag for a little secret… Working with
@@ -178,7 +178,7 @@ public class ScrubTest
 ----
 
 This is a particularly good place for a unit test. Scrubbing tokens is a likely
-point at which edge cases get encountered at scale. In practice, you’d probably
+point at which edge cases get encountered at scale. In practice, you'd probably
 want to define even more unit tests.
 
 Next, going back to the `Main.java` module, let’s add sink taps for writing out
@@ -192,7 +192,7 @@ Tap trapTap = new Hfs( new TextDelimited( true, "\t" ), trapPath );
 Tap checkTap = new Hfs( new TextDelimited( true, "\t" ), checkPath );
 ----
 
-Next we’ll modify the head of the existing pipe assembly for TF-IDF to
+Next we'll modify the head of the existing pipe assembly for TF-IDF to
 incorporate a Stream Assertion. We use an AssertMatches to define the expected
 pattern for input data. Then we apply AssertionLevel.STRICT to force validation
 of the data:
@@ -205,7 +205,7 @@ AssertMatches assertMatches = new AssertMatches( "doc\\d+\\s.*" );
 docPipe = new Each( docPipe, AssertionLevel.STRICT, assertMatches );
 ----
 
-Next we’ll add a `Debug` and `DebugLevel.VERBOSE` to the _D_ branch, to trace
+Next we'll add a `Debug` and `DebugLevel.VERBOSE` to the _D_ branch, to trace
 the tuple values in the flow there:
 
 [source,java]
@@ -214,7 +214,7 @@ the tuple values in the flow there:
 dfPipe = new Each( dfPipe, DebugLevel.VERBOSE, new Debug( true ) );
 ----
 
-Next we’ll add a Checkpoint after the join of the DF and D branches. That
+Next we'll add a Checkpoint after the join of the DF and D branches. That
 forces the tuples at this point in the workflow to be persisted to HDFS:
 
 [source,java]
@@ -224,7 +224,7 @@ Checkpoint idfCheck = new Checkpoint( "checkpoint", idfPipe );
 Pipe tfidfPipe = new CoGroup( tfPipe, tf_token, idfCheck, df_token );
 ----
 
-Next we have a relatively more complex set of taps to connect in the FlowDef,
+Next we have a relatively more complex set of taps to connect in the `FlowDef`,
 to include output data for TDD-related features:
 
 [source,java]
@@ -240,7 +240,7 @@ FlowDef flowDef = FlowDef.flowDef()
  .addCheckpoint( idfCheck, checkTap );
 ----
 
-Last, we’ll specify the verbosity level for the debug trace, and the strictness
+Last, we'll specify the verbosity level for the debug trace, and the strictness
 level for the stream assertion:
 
 [source,java]
@@ -251,7 +251,7 @@ flowDef.setDebugLevel( DebugLevel.VERBOSE );
 flowDef.setAssertionLevel( AssertionLevel.STRICT );
 ----
 
-Modify the Main method to make those changes, then build a JAR file. You should
+Modify the `Main` method to make those changes, then build a JAR file. You should
 be good to go. For those keeping score, the resulting physical plan in
 MapReduce for Part 6 now uses twelve mappers and nine reducers. In other words,
 we added one mapper as the overhead for gaining lots of test features.
@@ -265,53 +265,32 @@ image:tfidf.png[]
 Build
 ~~~~~
 
-The build for this example is based on using Gradle. The script is in
-build.gradle and to generate an IntelliJ project use:
-
-    gradle ideaModule
-
 To build the sample app from the command line use:
 
     gradle clean jar
 
-What you should have at this point is a JAR file which is nearly ready to drop
-into your Maven repo — almost. Actually, we provide a community jar repository
-for Cascading libraries and extensions at http://conjars.org 
-
 Run
 ~~~
 
-Before running this sample app, you’ll need to have a supported release of
-Apache Hadoop installed. Here’s what was used to develop and test our example
-code:
-
-    $ hadoop version
-    Hadoop 1.1.2
-
-Be sure to set your `HADOOP_HOME` environment variable. Then clear the `output`
-directory (Apache Hadoop insists, if you’re running in standalone mode) and run
-the app:
+Running this version is as easy as:
 
     rm -rf output
     hadoop jar ./build/libs/impatient.jar data/rain.txt output/wc data/en.stop output/tfidf output/trap output/check
 
 The output log should include a warning, based on the stream assertion, which looks like this:
 
-[source]
-----
-12/08/06 14:15:07 WARN stream.TrapHandler: exception trap on branch: 'token', for fields: [{2}:'doc_id', 'text'] tuple: ['zoink', 'null']
-cascading.operation.AssertionException: argument tuple: ['zoink', 'null'] did not match: doc\d+\s.*
-    at cascading.operation.assertion.BaseAssertion.throwFail(BaseAssertion.java:107)
-    at cascading.operation.assertion.AssertMatches.doAssert(AssertMatches.java:84)
-    at cascading.flow.stream.ValueAssertionEachStage.receive(ValueAssertionEachStage.java:57)
-    at cascading.flow.stream.ValueAssertionEachStage.receive(ValueAssertionEachStage.java:33)
-    at cascading.flow.stream.SourceStage.map(SourceStage.java:102)
-    at cascading.flow.stream.SourceStage.run(SourceStage.java:58)
-    at cascading.flow.hadoop.FlowMapper.run(FlowMapper.java:124)
-    at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:436)
-    at org.apache.hadoop.mapred.MapTask.run(MapTask.java:372)
-    at org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:212)
-----
+    12/08/06 14:15:07 WARN stream.TrapHandler: exception trap on branch: 'token', for fields: [{2}:'doc_id', 'text'] tuple: ['zoink', 'null']
+    cascading.operation.AssertionException: argument tuple: ['zoink', 'null'] did not match: doc\d+\s.*
+        at cascading.operation.assertion.BaseAssertion.throwFail(BaseAssertion.java:107)
+        at cascading.operation.assertion.AssertMatches.doAssert(AssertMatches.java:84)
+        at cascading.flow.stream.ValueAssertionEachStage.receive(ValueAssertionEachStage.java:57)
+        at cascading.flow.stream.ValueAssertionEachStage.receive(ValueAssertionEachStage.java:33)
+        at cascading.flow.stream.SourceStage.map(SourceStage.java:102)
+        at cascading.flow.stream.SourceStage.run(SourceStage.java:58)
+        at cascading.flow.hadoop.FlowMapper.run(FlowMapper.java:124)
+        at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:436)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:372)
+        at org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:212)
 
 That is expected behavior. We directed the API to show warning when stream
 assertions failed. The data which caused this warning will get trapped.
@@ -319,19 +298,16 @@ assertions failed. The data which caused this warning will get trapped.
 Not too far after that point in the log, there should be debug output which
 looks like the following:
 
-[source]
-----
-12/08/06 14:15:46 INFO hadoop.FlowReducer: sinking to: TempHfs["SequenceFile[ ['df_count', 'df_token', 'lhs_join']]"][DF/93669/]
-['df_count', 'df_token', 'lhs_join']
-['1', 'air', '1']
-['3', 'area', '1']
-['1', 'australia', '1']
-['1', 'broken', '1']
-----
+    12/08/06 14:15:46 INFO hadoop.FlowReducer: sinking to: TempHfs["SequenceFile[ ['df_count', 'df_token', 'lhs_join']]"][DF/93669/]
+    ['df_count', 'df_token', 'lhs_join']
+    ['1', 'air', '1']
+    ['3', 'area', '1']
+    ['1', 'australia', '1']
+    ['1', 'broken', '1']
 
 plus several more lines. That is the result of our debug trace.
 
-Output text gets stored in the partition file output/tfidf which you can then
+Output text gets stored in the partition file `output/tfidf` which you can then
 verify:
 
     more output/tfidf/part-00000
@@ -342,15 +318,17 @@ Notice the data tuple output/trap:
 
     zoink   null
 
-That did not match the regex doc\\d+\\s.* which was specified by the stream
+That did not match the regex `doc\\d+\\s.*` which was specified by the stream
 assertion.
 
-Here’s a log file from our run of the sample app, part 6. If your run looks
-terribly different, something is probably not set up correctly.
+Here's a https://gist.github.com/ceteri/3044049[log] file from our run of the
+sample app, part 6. If your run looks terribly different, something is probably
+not set up correctly.
 
-To run this same app on the Amazon AWS Elastic MapReduce service, based on
-their command line interface, use the following commands. Be sure to replace
-temp.cascading.org with your own S3 bucket name:
+To run this same app on the http://aws.amazon.com/elasticmapreduce/[Amazon AWS
+Elastic MapReduce] service, based on their command line interface, use the
+following commands. Be sure to replace `temp.cascading.org` with your own S3
+bucket name:
 
 [source,bash]
 ----

@@ -1,38 +1,38 @@
-# Cascading for the Impatient Part 1
+# Cascading for the Impatient, Part 1
 
 Part 1 - Distributed file copy
 ------------------------------
 
-The lesson today is how to write a simple Cascading 2.1 app. The goal is clear
+The lesson today is how to write a simple Cascading 2.2 app. The goal is clear
 and concise: create the simplest application possible in Cascading, while
 following best practices. No bangs, no whistles, just good solid code.
 
 https://github.com/Cascading/Impatient/tree/master/part1
 
 Here’s a brief Java program, about a dozen lines long. It copies lines of text
-from file “A” to file “B”. It uses 1 _mapper_ in http://hadoop.apache.org[Apache
-Hadoop]. No _reducer_ needed.  A conceptual diagram for this implementation in
-Cascading is shown as:
+from file ``A`` to file ``B``. It uses 1 _mapper_ in
+http://hadoop.apache.org[Apache Hadoop]. No _reducer_ needed.  A conceptual
+diagram for this implementation in Cascading is shown as:
 
 image:plumb1.png[]
 
 Certainly this same work could be performed in much quicker ways, such as using
-cp on Linux. However this Cascading example is merely a starting point. We’ll
+`cp` on Linux. However this Cascading example is merely a starting point. We’ll
 build on this example, adding new pieces of code to explore features and
 strengths of Cascading. We’ll keep building until we have a MapReduce
 implementation of http://en.wikipedia.org/wiki/Tf*idf[TF-IDF] for scoring the
-relative “importance” of keywords in a set of documents. In other words, Text
+relative ``importance`` of keywords in a set of documents. In other words, Text
 Mining 101. What you might find when you peek inside
 http://lucene.apache.org[Lucene] for example, or some other text indexing
 framework. Moreover, we’ll show how to use
 http://en.wikipedia.org/wiki/Test-driven_development[TDD] features of Cascading,
-to build robust MapReduce apps for scale.  
+to build robust MapReduce apps for scale.
 
 Source
 ~~~~~~
 
-Download source for this example on GitHub. You’ll need to clone the whole of
-this multi-part series:
+As explained in the introduction of the series, all code is hosted on github.
+If you have not cloned the repository yet, please do it now:
 
     git clone git://github.com/Cascading/Impatient.git
 
@@ -91,21 +91,16 @@ Now that we have a flow defined, the last line of code runs it:
 flowConnector.connect( flowDef ).complete();
 ----
 
-Place those source lines all into a Main method, then build a JAR file. You
+Place those source lines all into a `Main` method, then build a JAR file. You
 should be good to go.
 
 If you want to read in more detail about the classes in the Cascading API which
 were used, see the
-http://docs.cascading.org/cascading/2.1/userguide/html/[Cascading 2.1 User
+http://docs.cascading.org/cascading/2.1/userguide/html/[Cascading 2.2 User
 Guide] and http://docs.cascading.org/cascading/2.1/javadoc/[JavaDoc].  
 
 Build
 ~~~~~
-
-The build for this example is based on using http://gradle.org[Gradle]. The
-script is in `build.gradle` and to generate an IntelliJ project use:
-
-    gradle ideaModule
 
 To build the sample app from the command line use:
 
@@ -120,11 +115,11 @@ Run
 ~~~
 
 Before running this sample app, you’ll need to have a supported release of
-http://hadoop.apache.org[Apache Hadoop] installed. Here’s what was used to develop and test our example
-code:
+http://hadoop.apache.org[Apache Hadoop] installed. Here’s what was used to
+develop and test our example code:
 
     $ hadoop version
-    Hadoop 1.1.2
+    Hadoop 1.2.1
 
 Be sure to set your `HADOOP_HOME` environment variable. Then clear the output
 directory (Apache Hadoop insists, if you’re running in standalone mode) and run
@@ -144,7 +139,7 @@ run of the sample app. If your run looks terribly different, something is
 probably not set up correctly. Drop us a line on the
 https://groups.google.com/forum/#!overview[cascading-user] email forum.  Plenty
 of experienced Cascading users are discussing taps and pipes and flows there,
-and eager to help. Or visit one of our user group meetings.
+and eager to help.
 
 For those who are familiar with http://pig.apache.org[Apache Pig], we have
 included a comparable script:
@@ -161,5 +156,5 @@ To run that, use:
     pig -p inPath=./data/rain.txt -p outPath=./output/rain ./src/scripts/copy.pig
 
 That’s it in a nutshell, our simplest app possible in Cascading. Not quite a
-“Hello World”, but more like a “Hi there, bus stop”. Or something. 
+``Hello World``, but more like a `Hi there, bus stop``. Or something.
 

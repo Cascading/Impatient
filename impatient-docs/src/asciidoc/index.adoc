@@ -1,10 +1,65 @@
 # Cascading for the Impatient
 
-The Impatient series is a set of tutorials to get you started with Cascading
-2.2.
+The Impatient series is a set of tutorials to get you started with
+http://cascading.org/[Cascading 2.2].
 
 This set of progressive coding examples starts with a simple file copy and
-builds up to a MapReduce implementation of the TF-IDF algorithm
+builds up to a MapReduce implementation of the TF-IDF algorithm.
+
+Prerequisites
+-------------
+
+The code of this tutorial is hosted on
+https://github.com/Cascading/Impatient[github]. Please clone it onto your local
+disk like so:
+
+    $ git clone https://github.com/Cascading/Impatient
+
+Each part has its own sub-directory in the repository.
+
+In order to follow the tutorial, you will also have to have
+http://gradle.org[gradle] and http://hadoop.apache.org/[apache hadoop] installed
+on your computer. You do not need a hadoop cluster,local mode is sufficient.
+
+Gradle
+~~~~~~
+
+Everything has been tested with gradle 1.6. You can check your version of gradle
+like this:
+
+    $ gradle -v
+    ------------------------------------------------------------
+    Gradle 1.6
+    ------------------------------------------------------------
+    ...
+
+Hadoop
+~~~~~~
+
+For hadoop please install the latest stable version from the 1.x series. At the
+time of this writing, this means apache hadoop 1.2.1.
+
+    $ hadoop version
+    Hadoop 1.2.1
+    ...
+
+Cascading is compatible with a number of hadoop distributions and versions. You
+can see on the http://www.cascading.org/support/compatibility/[compatibility
+page], if your distribution is supported.
+
+
+IDE support
+~~~~~~~~~~~
+
+While an IDE is not strictly required to follow the tutorials, it is certainly
+useful. You can easily create an http://www.jetbrains.com/idea/[IntelliJ IDEA]
+compatible project in each part of the tutorial like this:
+
+    $ gradle ideaModule
+
+If you prefer http://eclipse.org[eclipse], you can run:
+
+   gradle eclipse
 
 
 link:impatient1.html[Part 1]
@@ -48,4 +103,12 @@ link:impatient6.html[Part 6]
 - Physical plan: 11 Mappers, 8 Reducers
 
 
+Other versions
+--------------
+
+Also, compare these other excellent implementations of the example apps here -
+by http://sujitpal.blogspot.de/2012/08/scalding-for-impatient.html[Sujit Pal] in
+http://github.com/twitter/scalding[Scalding] and by
+https://github.com/Cascading/Impatient-Cascalog[Paul Lam] in
+https://github.com/nathanmarz/cascalog[Cascalog].
 

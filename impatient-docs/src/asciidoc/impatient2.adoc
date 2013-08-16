@@ -1,25 +1,25 @@
-# Cascading for the Impatient Part 2
+# Cascading for the Impatient, Part 2
 
 Part 2 - Word count
 -------------------
 
-In our first installment of this series we showed how to create the simplest
-possible Cascading 2.2 application. If you haven’t read that yet, it’s probably
-best to start there.
+In our link:impatient1.html[first installment] of this series we showed how to
+create the simplest possible Cascading 2.2 application. If you haven’t read that
+yet, it’s probably best to start there.
 
 Today’s lesson takes the same app and stretches it a bit further. Undoubtedly
 you’ve seen Word Count before. We’d feel remiss if we did not provide a Word
-Count example. It’s the “Hello World” of MapReduce apps. Fortunately, this code
-is one of the basic steps toward developing a TF-IDF implementation. How
+Count example. It’s the ``Hello World`` of MapReduce apps. Fortunately, this
+code is one of the basic steps toward developing a TF-IDF implementation. How
 convenient. We’ll also show how to use Cascading to generate a visualization of
 your MapReduce app. 
 
 Theory
 ~~~~~~
 
-Our example code in Part 1 of this series showed how to move data from point A
-to point B. It was simply a distributed file copy — loading data via
-distributed tasks, an instance of the “L” in
+Our example code in link:impatient1.html[Part 1] of this series showed how to
+move data from point A to point B. It was simply a distributed file copy -
+loading data via distributed tasks, an instance of the ``L`` in
 http://en.wikipedia.org/wiki/Extract,_transform,_load[ETL].
 
 That may seem overly simple, and it may seem like Cascading is overkill for
@@ -57,17 +57,17 @@ your app performs correctly. Day in and day out. That’s not unlike strangers
 trusting a ferris wheel; they want to make sure it wasn’t just built out of
 spare bicycle parts by some amateur welder. Robustness is key.
 
-Or taking this analogy a few steps in another interesting direction… Perhaps
+Or taking this analogy a few steps in another interesting direction... Perhaps
 you’re not only moving data and reshaping it a little, but you’re applying some
 interesting machine learning algorithms, some natural language processing,
-resequencing genes… who knows. Those imply lots of resource use, lots of
-potential expense in case of failures. Or lots of customer exposure. You’ll
-want to use an application framework which is significantly more robust than a
-bunch of scripts cobbled together.
+resequencing genes... who knows. Those imply lots of resource use, lots of
+potential expense in case of failures. Or lots of customer exposure. You’ll want
+to use an application framework which is significantly more robust than a bunch
+of scripts cobbled together.
 
 With Cascading, you can package your entire MapReduce application, including
 its orchestration and testing, within a single JAR file. You define all of that
-within the context of one programming language — whether that language may be
+within the context of one programming language - whether that language may be
 Java, Scala, Clojure, Python, Ruby, etc. That way your tests are included
 within a single program, not spread across several scripts written in different
 languages. Having a single JAR file define the app also allows for typical
@@ -86,14 +86,11 @@ image:plumb2.png[]
 Source
 ~~~~~~
 
-Download source for this example on
-https://github.com/Cascading/Impatient/tree/master/part2[GitHub]. You’ll need to
-clone the whole of this multi-part series:
-
-    git clone git://github.com/Cascading/Impatient.git
+The code of this example is in the `part2` sub-directory of the github
+repository.
 
 For quick reference, the source code and a log for this example are listed in a
-gist. The input data stays the same as in the
+https://gist.github.com/3020297[gist]. The input data stays the same as in the
 https://gist.github.com/2911686[earlier code].
 
 Note that the names of the *taps* have changed. Instead of `inTap` and `outTap`,
@@ -167,46 +164,30 @@ http://docs.cascading.org/cascading/2.0/javadoc/[JavaDoc].
 Build
 ~~~~~
 
-The build for this example is based on using http://gradle.org/[Gradle]. The script is in
-`build.gradle` and to generate an IntelliJ project use:
-
-    gradle ideaModule
-
 To build the sample app from the command line use:
 
     gradle clean jar
 
-What you should have at this point is a JAR file which is nearly ready to drop
-into your http://maven.apache.org/[Maven] repo — almost. Actually, we provide a community jar repository
-for Cascading libraries and extensions at http://conjars.org
-
 Run
 ~~~
 
-Before running this sample app, you’ll need to have a supported release of
-Apache Hadoop installed. Here’s what was used to develop and test our example
-code:
-
-    $ hadoop version
-    Hadoop 1.1.2
-
-Be sure to set your `HADOOP_HOME` environment variable. Then clear the output
-directory (Apache Hadoop insists, if you’re running in standalone mode) and run
-the app:
+lear the output directory (Apache Hadoop insists, if you’re running in
+standalone mode) and run the app:
 
     rm -rf output
     hadoop jar ./build/libs/impatient.jar data/rain.txt output/rain
 
 Notice how those command line arguments align with args[] in the source. The
-file data/rain.txt gets copied, TSV row by TSV row. Output text gets stored in
-the partition file output/rain which you can then verify:
+file `data/rain.txt` gets copied, TSV row by TSV row. Output text gets stored in
+the partition file `output/rain` which you can then verify:
 
     more output/rain/part-00000
 
-Again, here’s a log file from our run of the sample app, part 2. If your run
-looks terribly different, something is probably not set up correctly. Drop us a
-line on the cascading-user email forum. Or visit one of our user group
-meetings.
+Again, here's a https://gist.github.com/ceteri/3020297[log file] from our run of
+the sample app, part 2. If your run looks terribly different, something is
+probably not set up correctly. Drop us a line on the
+https://groups.google.com/forum/#!forum/cascading-user[cascading-user] email
+forum.
 
 For those who are familiar with Apache Pig, we have included a comparable script:
 
