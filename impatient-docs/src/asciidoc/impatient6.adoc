@@ -119,15 +119,9 @@ image:plumb6.png[]
 Source
 ~~~~~~
 
-Download source for this example on GitHub. You’ll need to clone the whole of
-this multi-part series:
+All code and data is in the `part6` subdirectory of the github project.
 
-    git clone git://github.com/Cascading/Impatient.git
-
-For quick reference, the source code and a log for this example are listed in a
-gist. The input data stays the same as in the earlier code.
-
-Let’s add a unit test and show how that works into this example. In the Gradle
+Let's add a unit test and show how that works into this example. In the Gradle
 build script build.gradle we need to modify the compile task to include JUnit
 and other testing dependencies:
 
@@ -321,7 +315,7 @@ Notice the data tuple output/trap:
 That did not match the regex `doc\\d+\\s.*` which was specified by the stream
 assertion.
 
-Here's a https://gist.github.com/ceteri/3044049[log] file from our run of the
+Here's a link:part6.log[log] file from our run of the
 sample app, part 6. If your run looks terribly different, something is probably
 not set up correctly.
 

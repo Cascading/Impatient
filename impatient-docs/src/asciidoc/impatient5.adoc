@@ -58,10 +58,6 @@ Source
 
 Look for the `part5` directory, you will find everything in there.
 
-For quick reference, the source code and a log for this example are listed in a
-https://gist.github.com/ceteri/3043791[gist]. The input data stays the same as in the 
-https://gist.github.com/ceteri/2911686[earlier code].
-
 First, let's add another sink tap to write the TF-IDF weights as an output data set:
 
 [source,java]
@@ -250,7 +246,7 @@ were? Those represent what the documents have in common. How do those compare
 with weights for the other tokens? Conversely, consider the weights for
 australia (high weight) or area (different weights).
 
-Here's a https://gist.github.com/ceteri/3043791[log] file from our run of the
+Here's a link:part5.log[log] file from our run of the
 sample app, part 5. If your run looks terribly different, something is probably
 not set up correctly. Drop us a line on the
 https://groups.google.com/forum/#!forum/cascading-user[cascading-user] email

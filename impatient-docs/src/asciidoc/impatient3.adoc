@@ -58,11 +58,8 @@ image:plumb3.png[]
 Source
 ~~~~~~
 
-You can find the code of this part in the `part3` subdirectory.
-
-For quick reference, the source code and a log for this example are listed in a
-https://gist.github.com/3021655[gist]. The input data stays the same as in the
-earlier code
+You can find the code of this part in the `part3` subdirectory. The input data
+stays the same as in the earlier code
 
 First, let’s make room for using our custom operation `ScrubFunction` to clean up
 the token stream. We place it into the `docPipe` assembly, immediately after the
@@ -154,7 +151,7 @@ verify:
 
     more output/wc/part-00000
 
-Here's a https://gist.github.com/3021655[log] file from our run of the sample
+Here's a link:part3.log[log] file from our run of the sample
 app, part 3. If your run looks terribly different, something is probably not set
 up correctly. Drop us a line on the
 https://groups.google.com/forum/#!forum/cascading-user[cascading-user] email

@@ -89,12 +89,11 @@ Source
 The code of this example is in the `part2` sub-directory of the github
 repository.
 
-For quick reference, the source code and a log for this example are listed in a
-https://gist.github.com/3020297[gist]. The input data stays the same as in the
-https://gist.github.com/2911686[earlier code].
+The input data stays the same as in the link:impatient1.html[part 1] of the
+series.
 
 Note that the names of the *taps* have changed. Instead of `inTap` and `outTap`,
-we’re now using `docTap` and `wcTap`. We’ll be adding more taps, so this will help
+we're now using `docTap` and `wcTap`. We’ll be adding more taps, so this will help
 to have more descriptive names. Makes it simpler to follow all the plumbing.
 
 Previously we defined a simple *pipe* to connect the *taps*. This example shows a
@@ -183,7 +182,7 @@ the partition file `output/rain` which you can then verify:
 
     more output/rain/part-00000
 
-Again, here's a https://gist.github.com/ceteri/3020297[log file] from our run of
+Here's a link:part2.log[log file] from our run of
 the sample app, part 2. If your run looks terribly different, something is
 probably not set up correctly. Drop us a line on the
 https://groups.google.com/forum/#!forum/cascading-user[cascading-user] email

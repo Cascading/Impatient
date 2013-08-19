@@ -1,0 +1,36 @@
+13/08/19 12:26:49 INFO util.HadoopUtil: resolving application jar from found main method on: impatient.Main
+13/08/19 12:26:49 INFO planner.HadoopPlanner: using application jar: /home/fs111/code/concurrent/Impatient/part1/./build/libs/impatient.jar
+13/08/19 12:26:49 INFO property.AppProps: using app.id: 6A83A9A3B00D61D1E752499A4FE04ADA
+13/08/19 12:26:49 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+13/08/19 12:26:49 WARN snappy.LoadSnappy: Snappy native library not loaded
+13/08/19 12:26:49 INFO mapred.FileInputFormat: Total input paths to process : 1
+13/08/19 12:26:49 INFO util.Version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:26:49 INFO flow.Flow: [] starting
+13/08/19 12:26:49 INFO flow.Flow: []  source: Hfs["TextDelimited[['doc_id', 'text']->[ALL]]"]["data/rain.txt"]
+13/08/19 12:26:49 INFO flow.Flow: []  sink: Hfs["TextDelimited[[UNKNOWN]->['doc_id', 'text']]"]["output/rain"]
+13/08/19 12:26:49 INFO flow.Flow: []  parallel execution is enabled: false
+13/08/19 12:26:49 INFO flow.Flow: []  starting jobs: 1
+13/08/19 12:26:49 INFO flow.Flow: []  allocating threads: 1
+13/08/19 12:26:49 INFO flow.FlowStep: [] starting step: (1/1) output/rain
+13/08/19 12:26:50 INFO mapred.FileInputFormat: Total input paths to process : 1
+13/08/19 12:26:50 INFO flow.FlowStep: [] submitted hadoop job: job_local1332846944_0001
+13/08/19 12:26:50 INFO mapred.LocalJobRunner: Waiting for map tasks
+13/08/19 12:26:50 INFO mapred.LocalJobRunner: Starting task: attempt_local1332846944_0001_m_000000_0
+13/08/19 12:26:50 INFO util.ProcessTree: setsid exited with exit code 0
+13/08/19 12:26:50 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@6691177
+13/08/19 12:26:50 INFO io.MultiInputSplit: current split input path: file:/home/fs111/code/concurrent/Impatient/part1/data/rain.txt
+13/08/19 12:26:50 INFO mapred.MapTask: Processing split: cascading.tap.hadoop.io.MultiInputSplit@83e96cf
+13/08/19 12:26:50 INFO mapred.MapTask: numReduceTasks: 0
+13/08/19 12:26:50 INFO hadoop.FlowMapper: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:26:50 INFO hadoop.FlowMapper: child jvm opts: -Xmx200m
+13/08/19 12:26:50 INFO hadoop.FlowMapper: sourcing from: Hfs["TextDelimited[['doc_id', 'text']->[ALL]]"]["data/rain.txt"]
+13/08/19 12:26:50 INFO hadoop.FlowMapper: sinking to: Hfs["TextDelimited[[UNKNOWN]->['doc_id', 'text']]"]["output/rain"]
+13/08/19 12:26:50 INFO mapred.Task: Task:attempt_local1332846944_0001_m_000000_0 is done. And is in the process of commiting
+13/08/19 12:26:50 INFO mapred.LocalJobRunner: 
+13/08/19 12:26:50 INFO mapred.Task: Task attempt_local1332846944_0001_m_000000_0 is allowed to commit now
+13/08/19 12:26:50 INFO mapred.FileOutputCommitter: Saved output of task 'attempt_local1332846944_0001_m_000000_0' to file:/home/fs111/code/concurrent/Impatient/part1/output/rain
+13/08/19 12:26:50 INFO mapred.LocalJobRunner: file:/home/fs111/code/concurrent/Impatient/part1/data/rain.txt:0+510
+13/08/19 12:26:50 INFO mapred.Task: Task 'attempt_local1332846944_0001_m_000000_0' done.
+13/08/19 12:26:50 INFO mapred.LocalJobRunner: Finishing task: attempt_local1332846944_0001_m_000000_0
+13/08/19 12:26:50 INFO mapred.LocalJobRunner: Map task executor complete.
+13/08/19 12:26:55 INFO util.Hadoop18TapUtil: deleting temp path output/rain/_temporary

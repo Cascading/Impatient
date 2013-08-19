@@ -36,9 +36,6 @@ If you have not cloned the repository yet, please do it now:
 
     git clone git://github.com/Cascading/Impatient.git
 
-For quick reference, the source code, input data, and a log for this example are
-listed in a https://gist.github.com/ceteri/2911686[gist].
-
 First, we create a source tap to specify the input data. That data happens to be
 formatted as tab-separated values (TSV) with a header row:
 
@@ -134,12 +131,12 @@ the partition file `output/rain` which you can then verify:
 
     more output/rain/part-00000
 
-Again, here’s a https://github.com/ato/clojars-web/issues/162[log file] from our
-run of the sample app. If your run looks terribly different, something is
-probably not set up correctly. Drop us a line on the
-https://groups.google.com/forum/#!overview[cascading-user] email forum.  Plenty
-of experienced Cascading users are discussing taps and pipes and flows there,
-and eager to help.
+Here's a link:part1.log[log file] from our run of the sample app. If your run
+looks terribly different, something is probably not set up correctly. Drop us a
+line on the
+https://groups.google.com/forum/#!forum/cascading-user[cascading-user] email
+forum. Plenty of experienced Cascading users are discussing taps and pipes and
+flows there, and eager to help.
 
 For those who are familiar with http://pig.apache.org[Apache Pig], we have
 included a comparable script:
@@ -155,6 +152,6 @@ To run that, use:
     rm -rf output
     pig -p inPath=./data/rain.txt -p outPath=./output/rain ./src/scripts/copy.pig
 
-That’s it in a nutshell, our simplest app possible in Cascading. Not quite a
+That's it in a nutshell, our simplest app possible in Cascading. Not quite a
 ``Hello World``, but more like a `Hi there, bus stop``. Or something.
 

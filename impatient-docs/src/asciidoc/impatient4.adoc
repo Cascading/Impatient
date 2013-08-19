@@ -115,11 +115,8 @@ image:plumb4.png[]
 Source
 ~~~~~~
 
-You can find all code in the `part4` sub-directory.
-
-For quick reference, the source code and a log for this example are listed in a
-https://gist.github.com/ceteri/3043745[gist]. The input data stays the same as
-in the https://gist.github.com/ceteri/2911686i[earlier code].
+You can find all code in the `part4` sub-directory. The input data stays the
+same as in the earlier parts of the series.
 
 This example in _Part 4_ uses a HashJoin in Cascading to implement a stop words
 list, filtering some words out of the token stream prior to counting.
@@ -204,7 +201,7 @@ Output text gets stored in the partition file `output/wc` which you can then ver
 
     more output/wc/part-00000
 
-Here’s a https://gist.github.com/ceteri/3043745[log] file from our run of the
+Here’s a link:part4.log[log] file from our run of the
 sample app, part 4. If your run looks terribly different, something is probably
 not set up correctly. Drop us a line on the
 https://groups.google.com/forum/#!forum/cascading-user[cascading-user] email forum.

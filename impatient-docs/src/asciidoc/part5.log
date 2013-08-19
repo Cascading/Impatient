@@ -1,0 +1,532 @@
+13/08/19 12:33:25 INFO util.HadoopUtil: resolving application jar from found main method on: impatient.Main
+13/08/19 12:33:25 INFO planner.HadoopPlanner: using application jar: /home/fs111/code/concurrent/Impatient/part5/./build/libs/impatient.jar
+13/08/19 12:33:25 INFO property.AppProps: using app.id: D4E32EF11B5624C828A0030F1BF29964
+13/08/19 12:33:25 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+13/08/19 12:33:25 WARN snappy.LoadSnappy: Snappy native library not loaded
+13/08/19 12:33:25 INFO mapred.FileInputFormat: Total input paths to process : 1
+13/08/19 12:33:26 INFO util.Version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:33:26 INFO flow.Flow: [tfidf] starting
+13/08/19 12:33:26 INFO flow.Flow: [tfidf]  source: Hfs["TextDelimited[['stop']]"]["data/en.stop"]
+13/08/19 12:33:26 INFO flow.Flow: [tfidf]  source: Hfs["TextDelimited[['doc_id', 'text']->[ALL]]"]["data/rain.txt"]
+13/08/19 12:33:26 INFO flow.Flow: [tfidf]  sink: Hfs["TextDelimited[[UNKNOWN]->['doc_id', 'tfidf', 'token']]"]["output/tfidf"]
+13/08/19 12:33:26 INFO flow.Flow: [tfidf]  sink: Hfs["TextDelimited[[UNKNOWN]->['count', 'token']]"]["output/wc"]
+13/08/19 12:33:26 INFO flow.Flow: [tfidf]  parallel execution is enabled: false
+13/08/19 12:33:26 INFO flow.Flow: [tfidf]  starting jobs: 9
+13/08/19 12:33:26 INFO flow.Flow: [tfidf]  allocating threads: 1
+13/08/19 12:33:26 INFO flow.FlowStep: [tfidf] starting step: (1/9)
+13/08/19 12:33:26 INFO mapred.FileInputFormat: Total input paths to process : 1
+13/08/19 12:33:26 INFO flow.FlowStep: [tfidf] submitted hadoop job: job_local770541431_0001
+13/08/19 12:33:26 INFO mapred.LocalJobRunner: Waiting for map tasks
+13/08/19 12:33:26 INFO mapred.LocalJobRunner: Starting task: attempt_local770541431_0001_m_000000_0
+13/08/19 12:33:26 INFO util.ProcessTree: setsid exited with exit code 0
+13/08/19 12:33:26 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@6267fe80
+13/08/19 12:33:26 INFO io.MultiInputSplit: current split input path: file:/home/fs111/code/concurrent/Impatient/part5/data/rain.txt
+13/08/19 12:33:26 INFO mapred.MapTask: Processing split: cascading.tap.hadoop.io.MultiInputSplit@31984a9d
+13/08/19 12:33:26 INFO mapred.MapTask: numReduceTasks: 0
+13/08/19 12:33:26 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:26 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:26 INFO hadoop.FlowMapper: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:33:26 INFO hadoop.FlowMapper: child jvm opts: -Xmx200m
+13/08/19 12:33:26 INFO hadoop.FlowMapper: sourcing from: Hfs["TextDelimited[['doc_id', 'text']->[ALL]]"]["data/rain.txt"]
+13/08/19 12:33:26 INFO hadoop.FlowMapper: sourcing from: Hfs["TextDelimited[['stop']]"]["data/en.stop"]
+13/08/19 12:33:26 INFO hadoop.FlowMapper: sinking to: TempHfs["SequenceFile[['doc_id', 'token']]"][8182613126/token_stop/]
+13/08/19 12:33:26 INFO collect.SpillableTupleList: attempting to load codec: org.apache.hadoop.io.compress.GzipCodec
+13/08/19 12:33:26 INFO collect.SpillableTupleList: found codec: org.apache.hadoop.io.compress.GzipCodec
+13/08/19 12:33:26 INFO mapred.FileInputFormat: Total input paths to process : 1
+13/08/19 12:33:26 INFO collect.SpillableTupleList: attempting to load codec: org.apache.hadoop.io.compress.GzipCodec
+13/08/19 12:33:26 INFO collect.SpillableTupleList: found codec: org.apache.hadoop.io.compress.GzipCodec
+13/08/19 12:33:26 INFO mapred.Task: Task:attempt_local770541431_0001_m_000000_0 is done. And is in the process of commiting
+13/08/19 12:33:26 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:26 INFO mapred.Task: Task attempt_local770541431_0001_m_000000_0 is allowed to commit now
+13/08/19 12:33:26 INFO mapred.FileOutputCommitter: Saved output of task 'attempt_local770541431_0001_m_000000_0' to file:/tmp/hadoop-fs111/8182613126_token_stop_3BDA3FFF9692BFE6DB371F69FB5B666D
+13/08/19 12:33:26 INFO mapred.LocalJobRunner: file:/home/fs111/code/concurrent/Impatient/part5/data/rain.txt:0+510
+13/08/19 12:33:26 INFO mapred.Task: Task 'attempt_local770541431_0001_m_000000_0' done.
+13/08/19 12:33:26 INFO mapred.LocalJobRunner: Finishing task: attempt_local770541431_0001_m_000000_0
+13/08/19 12:33:26 INFO mapred.LocalJobRunner: Map task executor complete.
+13/08/19 12:33:31 INFO flow.FlowStep: [tfidf] starting step: (2/9)
+13/08/19 12:33:31 INFO mapred.FileInputFormat: Total input paths to process : 1
+13/08/19 12:33:31 INFO flow.FlowStep: [tfidf] submitted hadoop job: job_local179423762_0002
+13/08/19 12:33:31 INFO mapred.LocalJobRunner: Waiting for map tasks
+13/08/19 12:33:31 INFO mapred.LocalJobRunner: Starting task: attempt_local179423762_0002_m_000000_0
+13/08/19 12:33:31 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@29b22d99
+13/08/19 12:33:31 INFO io.MultiInputSplit: current split input path: file:/tmp/hadoop-fs111/8182613126_token_stop_3BDA3FFF9692BFE6DB371F69FB5B666D/part-00000
+13/08/19 12:33:31 INFO mapred.MapTask: Processing split: cascading.tap.hadoop.io.MultiInputSplit@5273a5d3
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:31 INFO mapred.MapTask: numReduceTasks: 1
+13/08/19 12:33:31 INFO mapred.MapTask: io.sort.mb = 100
+13/08/19 12:33:31 INFO mapred.MapTask: data buffer = 79691776/99614720
+13/08/19 12:33:31 INFO mapred.MapTask: record buffer = 262144/327680
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:31 INFO hadoop.FlowMapper: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:33:31 INFO hadoop.FlowMapper: child jvm opts: -Xmx200m
+13/08/19 12:33:31 INFO hadoop.FlowMapper: sourcing from: TempHfs["SequenceFile[['doc_id', 'token']]"][8182613126/token_stop/]
+13/08/19 12:33:31 INFO hadoop.FlowMapper: sinking to: GroupBy(TF)[by:[{2}:'doc_id', 'token']]
+13/08/19 12:33:31 INFO assembly.AggregateBy: using threshold value: 10000
+13/08/19 12:33:31 INFO mapred.MapTask: Starting flush of map output
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:31 INFO mapred.MapTask: Finished spill 0
+13/08/19 12:33:31 INFO mapred.Task: Task:attempt_local179423762_0002_m_000000_0 is done. And is in the process of commiting
+13/08/19 12:33:31 INFO mapred.LocalJobRunner: file:/tmp/hadoop-fs111/8182613126_token_stop_3BDA3FFF9692BFE6DB371F69FB5B666D/part-00000:0+1539
+13/08/19 12:33:31 INFO mapred.Task: Task 'attempt_local179423762_0002_m_000000_0' done.
+13/08/19 12:33:31 INFO mapred.LocalJobRunner: Finishing task: attempt_local179423762_0002_m_000000_0
+13/08/19 12:33:31 INFO mapred.LocalJobRunner: Map task executor complete.
+13/08/19 12:33:31 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@1e9af0b1
+13/08/19 12:33:31 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:31 INFO mapred.Merger: Merging 1 sorted segments
+13/08/19 12:33:31 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 1321 bytes
+13/08/19 12:33:31 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:31 INFO hadoop.FlowReducer: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:33:31 INFO hadoop.FlowReducer: child jvm opts: -Xmx200m
+13/08/19 12:33:31 INFO hadoop.FlowReducer: sourcing from: GroupBy(TF)[by:[{2}:'doc_id', 'token']]
+13/08/19 12:33:31 INFO hadoop.FlowReducer: sinking to: TempHfs["SequenceFile[['doc_id', 'tf_count', 'tf_token']]"][5440785012/TF/]
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:31 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:31 INFO mapred.Task: Task:attempt_local179423762_0002_r_000000_0 is done. And is in the process of commiting
+13/08/19 12:33:31 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:31 INFO mapred.Task: Task attempt_local179423762_0002_r_000000_0 is allowed to commit now
+13/08/19 12:33:31 INFO mapred.FileOutputCommitter: Saved output of task 'attempt_local179423762_0002_r_000000_0' to file:/tmp/hadoop-fs111/5440785012_TF_F5C0DA96743F7DB06C71514744BE9450
+13/08/19 12:33:31 INFO mapred.LocalJobRunner: reduce > reduce
+13/08/19 12:33:31 INFO mapred.Task: Task 'attempt_local179423762_0002_r_000000_0' done.
+13/08/19 12:33:36 INFO flow.FlowStep: [tfidf] starting step: (4/9)
+13/08/19 12:33:36 INFO mapred.FileInputFormat: Total input paths to process : 1
+13/08/19 12:33:36 INFO flow.FlowStep: [tfidf] submitted hadoop job: job_local1384993461_0003
+13/08/19 12:33:36 INFO mapred.LocalJobRunner: Waiting for map tasks
+13/08/19 12:33:36 INFO mapred.LocalJobRunner: Starting task: attempt_local1384993461_0003_m_000000_0
+13/08/19 12:33:36 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@59a02097
+13/08/19 12:33:36 INFO io.MultiInputSplit: current split input path: file:/tmp/hadoop-fs111/8182613126_token_stop_3BDA3FFF9692BFE6DB371F69FB5B666D/part-00000
+13/08/19 12:33:36 INFO mapred.MapTask: Processing split: cascading.tap.hadoop.io.MultiInputSplit@6124e935
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:36 INFO mapred.MapTask: numReduceTasks: 1
+13/08/19 12:33:36 INFO mapred.MapTask: io.sort.mb = 100
+13/08/19 12:33:36 INFO mapred.MapTask: data buffer = 79691776/99614720
+13/08/19 12:33:36 INFO mapred.MapTask: record buffer = 262144/327680
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:36 INFO hadoop.FlowMapper: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:33:36 INFO hadoop.FlowMapper: child jvm opts: -Xmx200m
+13/08/19 12:33:36 INFO hadoop.FlowMapper: sourcing from: TempHfs["SequenceFile[['doc_id', 'token']]"][8182613126/token_stop/]
+13/08/19 12:33:36 INFO hadoop.FlowMapper: sinking to: GroupBy(D)[by:[{1}:'doc_id']]
+13/08/19 12:33:36 INFO mapred.MapTask: Starting flush of map output
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:36 INFO mapred.MapTask: Finished spill 0
+13/08/19 12:33:36 INFO mapred.Task: Task:attempt_local1384993461_0003_m_000000_0 is done. And is in the process of commiting
+13/08/19 12:33:36 INFO mapred.LocalJobRunner: file:/tmp/hadoop-fs111/8182613126_token_stop_3BDA3FFF9692BFE6DB371F69FB5B666D/part-00000:0+1539
+13/08/19 12:33:36 INFO mapred.Task: Task 'attempt_local1384993461_0003_m_000000_0' done.
+13/08/19 12:33:36 INFO mapred.LocalJobRunner: Finishing task: attempt_local1384993461_0003_m_000000_0
+13/08/19 12:33:36 INFO mapred.LocalJobRunner: Map task executor complete.
+13/08/19 12:33:36 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@5675b3ee
+13/08/19 12:33:36 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:36 INFO mapred.Merger: Merging 1 sorted segments
+13/08/19 12:33:36 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 127 bytes
+13/08/19 12:33:36 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:36 INFO hadoop.FlowReducer: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:33:36 INFO hadoop.FlowReducer: child jvm opts: -Xmx200m
+13/08/19 12:33:36 INFO hadoop.FlowReducer: sourcing from: GroupBy(D)[by:[{1}:'doc_id']]
+13/08/19 12:33:36 INFO hadoop.FlowReducer: sinking to: TempHfs["SequenceFile[['rhs_join', 'n_docs']]"][804298196/D/]
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:36 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:36 INFO assembly.AggregateBy: using threshold value: 10000
+13/08/19 12:33:36 INFO mapred.Task: Task:attempt_local1384993461_0003_r_000000_0 is done. And is in the process of commiting
+13/08/19 12:33:36 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:36 INFO mapred.Task: Task attempt_local1384993461_0003_r_000000_0 is allowed to commit now
+13/08/19 12:33:36 INFO mapred.FileOutputCommitter: Saved output of task 'attempt_local1384993461_0003_r_000000_0' to file:/tmp/hadoop-fs111/804298196_D_D679790189A9554EC35F8E735098162F
+13/08/19 12:33:36 INFO mapred.LocalJobRunner: reduce > reduce
+13/08/19 12:33:36 INFO mapred.Task: Task 'attempt_local1384993461_0003_r_000000_0' done.
+13/08/19 12:33:41 INFO flow.FlowStep: [tfidf] starting step: (6/9)
+13/08/19 12:33:41 INFO mapred.FileInputFormat: Total input paths to process : 1
+13/08/19 12:33:41 INFO flow.FlowStep: [tfidf] submitted hadoop job: job_local578304481_0004
+13/08/19 12:33:41 INFO mapred.LocalJobRunner: Waiting for map tasks
+13/08/19 12:33:41 INFO mapred.LocalJobRunner: Starting task: attempt_local578304481_0004_m_000000_0
+13/08/19 12:33:41 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@71a2f5b1
+13/08/19 12:33:41 INFO io.MultiInputSplit: current split input path: file:/tmp/hadoop-fs111/5440785012_TF_F5C0DA96743F7DB06C71514744BE9450/part-00000
+13/08/19 12:33:41 INFO mapred.MapTask: Processing split: cascading.tap.hadoop.io.MultiInputSplit@66fbf51d
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:41 INFO mapred.MapTask: numReduceTasks: 1
+13/08/19 12:33:41 INFO mapred.MapTask: io.sort.mb = 100
+13/08/19 12:33:41 INFO mapred.MapTask: data buffer = 79691776/99614720
+13/08/19 12:33:41 INFO mapred.MapTask: record buffer = 262144/327680
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:41 INFO hadoop.FlowMapper: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:33:41 INFO hadoop.FlowMapper: child jvm opts: -Xmx200m
+13/08/19 12:33:41 INFO hadoop.FlowMapper: sourcing from: TempHfs["SequenceFile[['doc_id', 'tf_count', 'tf_token']]"][5440785012/TF/]
+13/08/19 12:33:41 INFO hadoop.FlowMapper: sinking to: GroupBy(wc)[by:[{1}:'tf_token']]
+13/08/19 12:33:41 INFO assembly.AggregateBy: using threshold value: 10000
+13/08/19 12:33:41 INFO mapred.MapTask: Starting flush of map output
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:41 INFO mapred.MapTask: Finished spill 0
+13/08/19 12:33:41 INFO mapred.Task: Task:attempt_local578304481_0004_m_000000_0 is done. And is in the process of commiting
+13/08/19 12:33:41 INFO mapred.LocalJobRunner: file:/tmp/hadoop-fs111/5440785012_TF_F5C0DA96743F7DB06C71514744BE9450/part-00000:0+1573
+13/08/19 12:33:41 INFO mapred.Task: Task 'attempt_local578304481_0004_m_000000_0' done.
+13/08/19 12:33:41 INFO mapred.LocalJobRunner: Finishing task: attempt_local578304481_0004_m_000000_0
+13/08/19 12:33:41 INFO mapred.LocalJobRunner: Map task executor complete.
+13/08/19 12:33:41 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@521ba1d9
+13/08/19 12:33:41 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:41 INFO mapred.Merger: Merging 1 sorted segments
+13/08/19 12:33:41 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 561 bytes
+13/08/19 12:33:41 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:41 INFO hadoop.FlowReducer: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:33:41 INFO hadoop.FlowReducer: child jvm opts: -Xmx200m
+13/08/19 12:33:41 INFO hadoop.FlowReducer: sourcing from: GroupBy(wc)[by:[{1}:'tf_token']]
+13/08/19 12:33:41 INFO hadoop.FlowReducer: sinking to: TempHfs["SequenceFile[['count', 'token']]"][9835677308/wc/]
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:41 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:41 INFO mapred.Task: Task:attempt_local578304481_0004_r_000000_0 is done. And is in the process of commiting
+13/08/19 12:33:41 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:41 INFO mapred.Task: Task attempt_local578304481_0004_r_000000_0 is allowed to commit now
+13/08/19 12:33:41 INFO mapred.FileOutputCommitter: Saved output of task 'attempt_local578304481_0004_r_000000_0' to file:/tmp/hadoop-fs111/9835677308_wc_82FE73B40D0CEDA5786A1DAF36E808DB
+13/08/19 12:33:41 INFO mapred.LocalJobRunner: reduce > reduce
+13/08/19 12:33:41 INFO mapred.Task: Task 'attempt_local578304481_0004_r_000000_0' done.
+13/08/19 12:33:46 INFO flow.FlowStep: [tfidf] starting step: (8/9)
+13/08/19 12:33:46 INFO mapred.FileInputFormat: Total input paths to process : 1
+13/08/19 12:33:46 INFO flow.FlowStep: [tfidf] submitted hadoop job: job_local1717574684_0005
+13/08/19 12:33:46 INFO mapred.LocalJobRunner: Waiting for map tasks
+13/08/19 12:33:46 INFO mapred.LocalJobRunner: Starting task: attempt_local1717574684_0005_m_000000_0
+13/08/19 12:33:46 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@2224ea85
+13/08/19 12:33:46 INFO io.MultiInputSplit: current split input path: file:/tmp/hadoop-fs111/804298196_D_D679790189A9554EC35F8E735098162F/part-00000
+13/08/19 12:33:46 INFO mapred.MapTask: Processing split: cascading.tap.hadoop.io.MultiInputSplit@618eabf6
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:46 INFO mapred.MapTask: numReduceTasks: 1
+13/08/19 12:33:46 INFO mapred.MapTask: io.sort.mb = 100
+13/08/19 12:33:46 INFO mapred.MapTask: data buffer = 79691776/99614720
+13/08/19 12:33:46 INFO mapred.MapTask: record buffer = 262144/327680
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:46 INFO hadoop.FlowMapper: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:33:46 INFO hadoop.FlowMapper: child jvm opts: -Xmx200m
+13/08/19 12:33:46 INFO hadoop.FlowMapper: sourcing from: TempHfs["SequenceFile[['rhs_join', 'n_docs']]"][804298196/D/]
+13/08/19 12:33:46 INFO hadoop.FlowMapper: sinking to: GroupBy(D)[by:[{1}:'rhs_join']]
+13/08/19 12:33:46 INFO mapred.MapTask: Starting flush of map output
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:46 INFO mapred.MapTask: Finished spill 0
+13/08/19 12:33:46 INFO mapred.Task: Task:attempt_local1717574684_0005_m_000000_0 is done. And is in the process of commiting
+13/08/19 12:33:46 INFO mapred.LocalJobRunner: file:/tmp/hadoop-fs111/804298196_D_D679790189A9554EC35F8E735098162F/part-00000:0+84
+13/08/19 12:33:46 INFO mapred.Task: Task 'attempt_local1717574684_0005_m_000000_0' done.
+13/08/19 12:33:46 INFO mapred.LocalJobRunner: Finishing task: attempt_local1717574684_0005_m_000000_0
+13/08/19 12:33:46 INFO mapred.LocalJobRunner: Map task executor complete.
+13/08/19 12:33:46 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@a6dddcf
+13/08/19 12:33:46 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:46 INFO mapred.Merger: Merging 1 sorted segments
+13/08/19 12:33:46 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 11 bytes
+13/08/19 12:33:46 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:46 INFO hadoop.FlowReducer: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:33:46 INFO hadoop.FlowReducer: child jvm opts: -Xmx200m
+13/08/19 12:33:46 INFO hadoop.FlowReducer: sourcing from: GroupBy(D)[by:[{1}:'rhs_join']]
+13/08/19 12:33:46 INFO hadoop.FlowReducer: sinking to: TempHfs["SequenceFile[['rhs_join', 'n_docs']]"][1824700825/D/]
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:46 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:46 INFO mapred.Task: Task:attempt_local1717574684_0005_r_000000_0 is done. And is in the process of commiting
+13/08/19 12:33:46 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:46 INFO mapred.Task: Task attempt_local1717574684_0005_r_000000_0 is allowed to commit now
+13/08/19 12:33:46 INFO mapred.FileOutputCommitter: Saved output of task 'attempt_local1717574684_0005_r_000000_0' to file:/tmp/hadoop-fs111/1824700825_D_A8F642B7A40743302DF40359D0648E9D
+13/08/19 12:33:46 INFO mapred.LocalJobRunner: reduce > reduce
+13/08/19 12:33:46 INFO mapred.Task: Task 'attempt_local1717574684_0005_r_000000_0' done.
+13/08/19 12:33:51 INFO flow.FlowStep: [tfidf] starting step: (9/9) output/wc
+13/08/19 12:33:51 INFO mapred.FileInputFormat: Total input paths to process : 1
+13/08/19 12:33:51 INFO flow.FlowStep: [tfidf] submitted hadoop job: job_local1271763308_0006
+13/08/19 12:33:51 INFO mapred.LocalJobRunner: Waiting for map tasks
+13/08/19 12:33:51 INFO mapred.LocalJobRunner: Starting task: attempt_local1271763308_0006_m_000000_0
+13/08/19 12:33:51 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@7d57bf4c
+13/08/19 12:33:51 INFO io.MultiInputSplit: current split input path: file:/tmp/hadoop-fs111/9835677308_wc_82FE73B40D0CEDA5786A1DAF36E808DB/part-00000
+13/08/19 12:33:51 INFO mapred.MapTask: Processing split: cascading.tap.hadoop.io.MultiInputSplit@1af70ee1
+13/08/19 12:33:51 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:51 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:51 INFO mapred.MapTask: numReduceTasks: 1
+13/08/19 12:33:51 INFO mapred.MapTask: io.sort.mb = 100
+13/08/19 12:33:51 INFO mapred.MapTask: data buffer = 79691776/99614720
+13/08/19 12:33:51 INFO mapred.MapTask: record buffer = 262144/327680
+13/08/19 12:33:51 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:51 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:51 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:51 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:51 INFO hadoop.FlowMapper: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:33:51 INFO hadoop.FlowMapper: child jvm opts: -Xmx200m
+13/08/19 12:33:51 INFO hadoop.FlowMapper: sourcing from: TempHfs["SequenceFile[['count', 'token']]"][9835677308/wc/]
+13/08/19 12:33:51 INFO hadoop.FlowMapper: sinking to: GroupBy(wc)[by:[{1}:'count']]
+13/08/19 12:33:51 INFO mapred.MapTask: Starting flush of map output
+13/08/19 12:33:51 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:51 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:51 INFO mapred.MapTask: Finished spill 0
+13/08/19 12:33:51 INFO mapred.Task: Task:attempt_local1271763308_0006_m_000000_0 is done. And is in the process of commiting
+13/08/19 12:33:51 INFO mapred.LocalJobRunner: file:/tmp/hadoop-fs111/9835677308_wc_82FE73B40D0CEDA5786A1DAF36E808DB/part-00000:0+784
+13/08/19 12:33:51 INFO mapred.Task: Task 'attempt_local1271763308_0006_m_000000_0' done.
+13/08/19 12:33:51 INFO mapred.LocalJobRunner: Finishing task: attempt_local1271763308_0006_m_000000_0
+13/08/19 12:33:51 INFO mapred.LocalJobRunner: Map task executor complete.
+13/08/19 12:33:51 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@7aba175f
+13/08/19 12:33:51 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:51 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:51 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:51 INFO mapred.Merger: Merging 1 sorted segments
+13/08/19 12:33:51 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 654 bytes
+13/08/19 12:33:51 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:51 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:51 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:51 INFO hadoop.FlowReducer: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:33:51 INFO hadoop.FlowReducer: child jvm opts: -Xmx200m
+13/08/19 12:33:51 INFO hadoop.FlowReducer: sourcing from: GroupBy(wc)[by:[{1}:'count']]
+13/08/19 12:33:51 INFO hadoop.FlowReducer: sinking to: Hfs["TextDelimited[[UNKNOWN]->['count', 'token']]"]["output/wc"]
+13/08/19 12:33:51 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:51 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:51 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:51 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:51 INFO mapred.Task: Task:attempt_local1271763308_0006_r_000000_0 is done. And is in the process of commiting
+13/08/19 12:33:51 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:51 INFO mapred.Task: Task attempt_local1271763308_0006_r_000000_0 is allowed to commit now
+13/08/19 12:33:51 INFO mapred.FileOutputCommitter: Saved output of task 'attempt_local1271763308_0006_r_000000_0' to file:/home/fs111/code/concurrent/Impatient/part5/output/wc
+13/08/19 12:33:51 INFO mapred.LocalJobRunner: reduce > reduce
+13/08/19 12:33:51 INFO mapred.Task: Task 'attempt_local1271763308_0006_r_000000_0' done.
+13/08/19 12:33:56 INFO flow.FlowStep: [tfidf] starting step: (3/9)
+13/08/19 12:33:56 INFO mapred.FileInputFormat: Total input paths to process : 1
+13/08/19 12:33:56 INFO flow.FlowStep: [tfidf] submitted hadoop job: job_local77971291_0007
+13/08/19 12:33:56 INFO mapred.LocalJobRunner: Waiting for map tasks
+13/08/19 12:33:56 INFO mapred.LocalJobRunner: Starting task: attempt_local77971291_0007_m_000000_0
+13/08/19 12:33:56 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@4e9e75f6
+13/08/19 12:33:56 INFO io.MultiInputSplit: current split input path: file:/tmp/hadoop-fs111/8182613126_token_stop_3BDA3FFF9692BFE6DB371F69FB5B666D/part-00000
+13/08/19 12:33:56 INFO mapred.MapTask: Processing split: cascading.tap.hadoop.io.MultiInputSplit@6fe22c75
+13/08/19 12:33:56 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:56 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:56 INFO mapred.MapTask: numReduceTasks: 1
+13/08/19 12:33:56 INFO mapred.MapTask: io.sort.mb = 100
+13/08/19 12:33:56 INFO mapred.MapTask: data buffer = 79691776/99614720
+13/08/19 12:33:56 INFO mapred.MapTask: record buffer = 262144/327680
+13/08/19 12:33:56 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:56 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:56 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:56 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:56 INFO hadoop.FlowMapper: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:33:56 INFO hadoop.FlowMapper: child jvm opts: -Xmx200m
+13/08/19 12:33:57 INFO hadoop.FlowMapper: sourcing from: TempHfs["SequenceFile[['doc_id', 'token']]"][8182613126/token_stop/]
+13/08/19 12:33:57 INFO hadoop.FlowMapper: sinking to: GroupBy(DF)[by:[{?}:ALL]]
+13/08/19 12:33:57 INFO mapred.MapTask: Starting flush of map output
+13/08/19 12:33:57 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:57 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:57 INFO mapred.MapTask: Finished spill 0
+13/08/19 12:33:57 INFO mapred.Task: Task:attempt_local77971291_0007_m_000000_0 is done. And is in the process of commiting
+13/08/19 12:33:57 INFO mapred.LocalJobRunner: file:/tmp/hadoop-fs111/8182613126_token_stop_3BDA3FFF9692BFE6DB371F69FB5B666D/part-00000:0+1539
+13/08/19 12:33:57 INFO mapred.Task: Task 'attempt_local77971291_0007_m_000000_0' done.
+13/08/19 12:33:57 INFO mapred.LocalJobRunner: Finishing task: attempt_local77971291_0007_m_000000_0
+13/08/19 12:33:57 INFO mapred.LocalJobRunner: Map task executor complete.
+13/08/19 12:33:57 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@15353154
+13/08/19 12:33:57 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:57 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:57 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:57 INFO mapred.Merger: Merging 1 sorted segments
+13/08/19 12:33:57 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 1229 bytes
+13/08/19 12:33:57 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:57 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:57 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:57 INFO hadoop.FlowReducer: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:33:57 INFO hadoop.FlowReducer: child jvm opts: -Xmx200m
+13/08/19 12:33:57 INFO hadoop.FlowReducer: sourcing from: GroupBy(DF)[by:[{?}:ALL]]
+13/08/19 12:33:57 INFO hadoop.FlowReducer: sinking to: TempHfs["SequenceFile[['token', 'df_count']]"][3392823254/DF/]
+13/08/19 12:33:57 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:57 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:57 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:57 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:57 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:33:57 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:33:57 INFO assembly.AggregateBy: using threshold value: 10000
+13/08/19 12:33:57 INFO mapred.Task: Task:attempt_local77971291_0007_r_000000_0 is done. And is in the process of commiting
+13/08/19 12:33:57 INFO mapred.LocalJobRunner: 
+13/08/19 12:33:57 INFO mapred.Task: Task attempt_local77971291_0007_r_000000_0 is allowed to commit now
+13/08/19 12:33:57 INFO mapred.FileOutputCommitter: Saved output of task 'attempt_local77971291_0007_r_000000_0' to file:/tmp/hadoop-fs111/3392823254_DF_F31E61799D870C0E7C2B02DB57487998
+13/08/19 12:33:57 INFO mapred.LocalJobRunner: reduce > reduce
+13/08/19 12:33:57 INFO mapred.Task: Task 'attempt_local77971291_0007_r_000000_0' done.
+13/08/19 12:34:01 INFO flow.FlowStep: [tfidf] starting step: (7/9)
+13/08/19 12:34:01 INFO mapred.FileInputFormat: Total input paths to process : 1
+13/08/19 12:34:02 INFO flow.FlowStep: [tfidf] submitted hadoop job: job_local2053921222_0008
+13/08/19 12:34:02 INFO mapred.LocalJobRunner: Waiting for map tasks
+13/08/19 12:34:02 INFO mapred.LocalJobRunner: Starting task: attempt_local2053921222_0008_m_000000_0
+13/08/19 12:34:02 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@2cbc9673
+13/08/19 12:34:02 INFO io.MultiInputSplit: current split input path: file:/tmp/hadoop-fs111/3392823254_DF_F31E61799D870C0E7C2B02DB57487998/part-00000
+13/08/19 12:34:02 INFO mapred.MapTask: Processing split: cascading.tap.hadoop.io.MultiInputSplit@51a422f6
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:02 INFO mapred.MapTask: numReduceTasks: 1
+13/08/19 12:34:02 INFO mapred.MapTask: io.sort.mb = 100
+13/08/19 12:34:02 INFO mapred.MapTask: data buffer = 79691776/99614720
+13/08/19 12:34:02 INFO mapred.MapTask: record buffer = 262144/327680
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:02 INFO hadoop.FlowMapper: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:34:02 INFO hadoop.FlowMapper: child jvm opts: -Xmx200m
+13/08/19 12:34:02 INFO hadoop.FlowMapper: sourcing from: TempHfs["SequenceFile[['token', 'df_count']]"][3392823254/DF/]
+13/08/19 12:34:02 INFO hadoop.FlowMapper: sinking to: GroupBy(DF)[by:[{1}:'token']]
+13/08/19 12:34:02 INFO mapred.MapTask: Starting flush of map output
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:02 INFO mapred.MapTask: Finished spill 0
+13/08/19 12:34:02 INFO mapred.Task: Task:attempt_local2053921222_0008_m_000000_0 is done. And is in the process of commiting
+13/08/19 12:34:02 INFO mapred.LocalJobRunner: file:/tmp/hadoop-fs111/3392823254_DF_F31E61799D870C0E7C2B02DB57487998/part-00000:0+784
+13/08/19 12:34:02 INFO mapred.Task: Task 'attempt_local2053921222_0008_m_000000_0' done.
+13/08/19 12:34:02 INFO mapred.LocalJobRunner: Finishing task: attempt_local2053921222_0008_m_000000_0
+13/08/19 12:34:02 INFO mapred.LocalJobRunner: Map task executor complete.
+13/08/19 12:34:02 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@763f1179
+13/08/19 12:34:02 INFO mapred.LocalJobRunner: 
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:02 INFO mapred.Merger: Merging 1 sorted segments
+13/08/19 12:34:02 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 561 bytes
+13/08/19 12:34:02 INFO mapred.LocalJobRunner: 
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:02 INFO hadoop.FlowReducer: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:34:02 INFO hadoop.FlowReducer: child jvm opts: -Xmx200m
+13/08/19 12:34:02 INFO hadoop.FlowReducer: sourcing from: GroupBy(DF)[by:[{1}:'token']]
+13/08/19 12:34:02 INFO hadoop.FlowReducer: sinking to: TempHfs["SequenceFile[['df_count', 'df_token', 'lhs_join']]"][164733349/DF/]
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:02 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:02 INFO mapred.Task: Task:attempt_local2053921222_0008_r_000000_0 is done. And is in the process of commiting
+13/08/19 12:34:02 INFO mapred.LocalJobRunner: 
+13/08/19 12:34:02 INFO mapred.Task: Task attempt_local2053921222_0008_r_000000_0 is allowed to commit now
+13/08/19 12:34:02 INFO mapred.FileOutputCommitter: Saved output of task 'attempt_local2053921222_0008_r_000000_0' to file:/tmp/hadoop-fs111/164733349_DF_D8DEAAEA6EF95E153411DBFBDB78F7EC
+13/08/19 12:34:02 INFO mapred.LocalJobRunner: reduce > reduce
+13/08/19 12:34:02 INFO mapred.Task: Task 'attempt_local2053921222_0008_r_000000_0' done.
+13/08/19 12:34:07 INFO flow.FlowStep: [tfidf] starting step: (5/9) output/tfidf
+13/08/19 12:34:07 INFO mapred.FileInputFormat: Total input paths to process : 1
+13/08/19 12:34:07 INFO mapred.FileInputFormat: Total input paths to process : 1
+13/08/19 12:34:07 INFO flow.FlowStep: [tfidf] submitted hadoop job: job_local1981382593_0009
+13/08/19 12:34:07 INFO mapred.LocalJobRunner: Waiting for map tasks
+13/08/19 12:34:07 INFO mapred.LocalJobRunner: Starting task: attempt_local1981382593_0009_m_000000_0
+13/08/19 12:34:07 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@77c30993
+13/08/19 12:34:07 INFO io.MultiInputSplit: current split input path: file:/tmp/hadoop-fs111/5440785012_TF_F5C0DA96743F7DB06C71514744BE9450/part-00000
+13/08/19 12:34:07 INFO mapred.MapTask: Processing split: cascading.tap.hadoop.io.MultiInputSplit@2f6a23cf
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:07 INFO mapred.MapTask: numReduceTasks: 1
+13/08/19 12:34:07 INFO mapred.MapTask: io.sort.mb = 100
+13/08/19 12:34:07 INFO mapred.MapTask: data buffer = 79691776/99614720
+13/08/19 12:34:07 INFO mapred.MapTask: record buffer = 262144/327680
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:07 INFO hadoop.FlowMapper: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:34:07 INFO hadoop.FlowMapper: child jvm opts: -Xmx200m
+13/08/19 12:34:07 INFO hadoop.FlowMapper: sourcing from: TempHfs["SequenceFile[['doc_id', 'tf_count', 'tf_token']]"][5440785012/TF/]
+13/08/19 12:34:07 INFO hadoop.FlowMapper: sinking to: CoGroup(TF*DF*D)[by:TF:[{1}:'tf_token']DF*D:[{1}:'df_token']]
+13/08/19 12:34:07 INFO mapred.MapTask: Starting flush of map output
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:07 INFO mapred.MapTask: Finished spill 0
+13/08/19 12:34:07 INFO mapred.Task: Task:attempt_local1981382593_0009_m_000000_0 is done. And is in the process of commiting
+13/08/19 12:34:07 INFO mapred.LocalJobRunner: file:/tmp/hadoop-fs111/5440785012_TF_F5C0DA96743F7DB06C71514744BE9450/part-00000:0+1573
+13/08/19 12:34:07 INFO mapred.Task: Task 'attempt_local1981382593_0009_m_000000_0' done.
+13/08/19 12:34:07 INFO mapred.LocalJobRunner: Finishing task: attempt_local1981382593_0009_m_000000_0
+13/08/19 12:34:07 INFO mapred.LocalJobRunner: Starting task: attempt_local1981382593_0009_m_000001_0
+13/08/19 12:34:07 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@45b2b450
+13/08/19 12:34:07 INFO io.MultiInputSplit: current split input path: file:/tmp/hadoop-fs111/164733349_DF_D8DEAAEA6EF95E153411DBFBDB78F7EC/part-00000
+13/08/19 12:34:07 INFO mapred.MapTask: Processing split: cascading.tap.hadoop.io.MultiInputSplit@5e20dcb7
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:07 INFO mapred.MapTask: numReduceTasks: 1
+13/08/19 12:34:07 INFO mapred.MapTask: io.sort.mb = 100
+13/08/19 12:34:07 INFO mapred.MapTask: data buffer = 79691776/99614720
+13/08/19 12:34:07 INFO mapred.MapTask: record buffer = 262144/327680
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:07 INFO hadoop.FlowMapper: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:34:07 INFO hadoop.FlowMapper: child jvm opts: -Xmx200m
+13/08/19 12:34:07 INFO hadoop.FlowMapper: sourcing from: TempHfs["SequenceFile[['df_count', 'df_token', 'lhs_join']]"][164733349/DF/]
+13/08/19 12:34:07 INFO hadoop.FlowMapper: sourcing from: TempHfs["SequenceFile[['rhs_join', 'n_docs']]"][1824700825/D/]
+13/08/19 12:34:07 INFO hadoop.FlowMapper: sinking to: CoGroup(TF*DF*D)[by:TF:[{1}:'tf_token']DF*D:[{1}:'df_token']]
+13/08/19 12:34:07 INFO collect.SpillableTupleList: attempting to load codec: org.apache.hadoop.io.compress.GzipCodec
+13/08/19 12:34:07 INFO collect.SpillableTupleList: found codec: org.apache.hadoop.io.compress.GzipCodec
+13/08/19 12:34:07 INFO mapred.FileInputFormat: Total input paths to process : 1
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:07 INFO collect.SpillableTupleList: attempting to load codec: org.apache.hadoop.io.compress.GzipCodec
+13/08/19 12:34:07 INFO collect.SpillableTupleList: found codec: org.apache.hadoop.io.compress.GzipCodec
+13/08/19 12:34:07 INFO mapred.MapTask: Starting flush of map output
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:07 INFO mapred.MapTask: Finished spill 0
+13/08/19 12:34:07 INFO mapred.Task: Task:attempt_local1981382593_0009_m_000001_0 is done. And is in the process of commiting
+13/08/19 12:34:07 INFO mapred.LocalJobRunner: file:/tmp/hadoop-fs111/164733349_DF_D8DEAAEA6EF95E153411DBFBDB78F7EC/part-00000:0+846
+13/08/19 12:34:07 INFO mapred.Task: Task 'attempt_local1981382593_0009_m_000001_0' done.
+13/08/19 12:34:07 INFO mapred.LocalJobRunner: Finishing task: attempt_local1981382593_0009_m_000001_0
+13/08/19 12:34:07 INFO mapred.LocalJobRunner: Map task executor complete.
+13/08/19 12:34:07 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@3d360c93
+13/08/19 12:34:07 INFO mapred.LocalJobRunner: 
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:07 INFO mapred.Merger: Merging 2 sorted segments
+13/08/19 12:34:07 INFO mapred.Merger: Down to the last merge-pass, with 2 segments left of total size: 2176 bytes
+13/08/19 12:34:07 INFO mapred.LocalJobRunner: 
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:07 INFO hadoop.FlowReducer: cascading version: Concurrent, Inc - Cascading 2.1.6
+13/08/19 12:34:07 INFO hadoop.FlowReducer: child jvm opts: -Xmx200m
+13/08/19 12:34:07 INFO hadoop.FlowReducer: sourcing from: CoGroup(TF*DF*D)[by:TF:[{1}:'tf_token']DF*D:[{1}:'df_token']]
+13/08/19 12:34:07 INFO hadoop.FlowReducer: sinking to: Hfs["TextDelimited[[UNKNOWN]->['doc_id', 'tfidf', 'token']]"]["output/tfidf"]
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: using hadoop serializations from the job conf: cascading.tuple.hadoop.TupleSerialization,org.apache.hadoop.io.serializer.WritableSerialization 
+13/08/19 12:34:07 INFO hadoop.TupleSerialization: adding serialization token: 127, for classname: org.apache.hadoop.io.BytesWritable
+13/08/19 12:34:07 INFO collect.SpillableTupleList: attempting to load codec: org.apache.hadoop.io.compress.GzipCodec
+13/08/19 12:34:07 INFO collect.SpillableTupleList: found codec: org.apache.hadoop.io.compress.GzipCodec
+13/08/19 12:34:07 INFO mapred.Task: Task:attempt_local1981382593_0009_r_000000_0 is done. And is in the process of commiting
+13/08/19 12:34:07 INFO mapred.LocalJobRunner: 
+13/08/19 12:34:07 INFO mapred.Task: Task attempt_local1981382593_0009_r_000000_0 is allowed to commit now
+13/08/19 12:34:07 INFO mapred.FileOutputCommitter: Saved output of task 'attempt_local1981382593_0009_r_000000_0' to file:/home/fs111/code/concurrent/Impatient/part5/output/tfidf
+13/08/19 12:34:07 INFO mapred.LocalJobRunner: reduce > reduce
+13/08/19 12:34:07 INFO mapred.Task: Task 'attempt_local1981382593_0009_r_000000_0' done.
+13/08/19 12:34:12 INFO util.Hadoop18TapUtil: deleting temp path output/wc/_temporary
+13/08/19 12:34:12 INFO util.Hadoop18TapUtil: deleting temp path output/tfidf/_temporary
