@@ -45,21 +45,21 @@ asciidoctor {
           'source-highlighter': 'highlightjs',
           'highlightjs-theme': 'pojoaque',
           'linkcss!': '',
-          stylesdir: 'src/site/stylesheets/', // should not be relative to rootDir
+          stylesdir: 'impatient-docs/src/site/stylesheets/', // should not be relative to rootDir
           stylesheet: 'cascading.css',
           'data-uri': '',
-          imagesdir: 'src/site/images/', // should not be relative to rootDir
+          imagesdir: 'impatient-docs/src/site/images/', // should not be relative to rootDir
           //artifactsurl: project.s3Bucket,
           //docsurl: project.s3BucketDocs,
           //projectroot: project.rootDir,
-          //analyticsid: System.properties[ 'analytics.id' ],
-          //analyticsdomain: System.properties[ 'analytics.domain' ]
+          analyticsid: System.properties[ 'analytics.id' ],
+          analyticsdomain: System.properties[ 'analytics.domain' ]
 
           // disabled till attributes in docinfo is supported
 //          docinfo1: '',
   ]
   options = [
-          template_dir: './src/templates/',
+          template_dir: 'impatient-docs/src/templates/',
           eruby: 'erubis',
           attributes: attributes
   ]

@@ -323,7 +323,7 @@ kbd kbd:last-child { margin-right: 0; }
 
 #header span { color: #666666; }
 
-#header #revnumber { margin: 0 auto; margin-left: 350px; width: 960px; display: block; color: #FFF; text-transform: capitalize; }
+#header #revnumber { margin: 0 auto; margin-left: 350px; width: 960px; display: block; color: #FFF; /*text-transform:capitalize;*/ }
 
 #header br { display: none; }
 
@@ -349,7 +349,7 @@ kbd kbd:last-child { margin-right: 0; }
 
 @media only screen and (min-width: 1280px) { /* body.toc2 { padding-left:20em; } */
   .toc { margin-top: 40px; margin-left: 30px; }
-  #toc.toc2 { position: absolute; overflow: auto; left: 0; top: 124px; padding: 1em; width: 20em; height: 640px; border: 1px solid #DDD; /*border-bottom: none;*/ z-index: 1000; }
+  #toc.toc2 { position: absolute; overflow: auto; left: 0; top: 124px; padding: 1em; width: 20em; /*height: 640px;*/ border: 1px solid #DDD; /*border-bottom: none;*/ z-index: 1000; }
   #toc.toc2 #toctitle { margin-top: 0; }
   #toc.toc2 > ul, #toc.toc2 > ol { font-size: .95em; }
   #toc.toc2 ul ul, #toc.toc2 ol ol { margin-left: 0; padding-left: 1.33333em; }
@@ -621,9 +621,9 @@ h2 { color: #325D72; border-bottom: 1px solid #dddddd; }
 
 .sidebarblock > .content > .title { margin-top: -20px; margin-right: -20px; margin-left: -20px; margin-bottom: 20px; padding: 1em; font-size: 0.8em; background: #eaeaea; }
 
-#header { margin-bottom: 0; padding-top: 5px; height: 119px; border-top: 1px solid #000; background: #2F4251; }
+#header { margin-bottom: 0; padding-top: 5px; height: 119px; border-top: 1px solid #000; background: #2f4251 url(http://docs.cascading.org/images/cascading-white.png) 35px center no-repeat; }
 
-.cascLogo {position:absolute; top:0; left:0; width:290px; height:122px; background:#2F4251 url(http://www.cascading.org/files/2012/05/cascading-new-white1.png) 17px center no-repeat;}
+.cascLogo { position: relative; top: -100px; display: block; width: 307px; height: 119px; }
 
 .container { position: relative; width: 960px; margin: 0 auto; padding: 0; }
 
