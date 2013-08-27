@@ -35,6 +35,4 @@ if( System.properties[ 'publish.repo.url' ] )
 
 ext.awsAccessId = System.properties[ 'publish.aws.accessId' ]
 ext.awsSecretKey = System.properties[ 'publish.aws.secretKey' ]
-ext.s3BucketDocs = "docs.concurrentinc.com"
-if ( System.properties [ 'release' ] )
-    ext.s3BucketDocs = "docs.cascading.org"
+ext.s3BucketDocs = System.properties[ 'publish.docs.bucket' ]
