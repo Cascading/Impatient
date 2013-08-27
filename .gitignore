@@ -20,3 +20,5 @@
 *.iws
 
 .gradle
+
+aws.properties
