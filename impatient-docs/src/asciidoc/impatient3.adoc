@@ -16,7 +16,7 @@ http://en.wikipedia.org/wiki/Test-driven_development[test-driven development
 Theory
 ~~~~~~
 
-This example in Part 3 uses a custom *operation* in Cascading to ``scrub`` the
+This example in Part 3 uses a custom *operation* in Cascading to ``scrub'' the
 token stream, prior to counting the tokens. Previously we used a
 RegexSplitGenerator to tokenize the text, which is a built-in operation and
 works pretty well. However, one thing you’ll find in working with most any text
@@ -34,13 +34,13 @@ cases, adding more as they get identified. An added benefit is that we can also
 add unit tests to our custom class, with test coverage increasing as each new
 issue gets found. More about unit tests later.
 
-Operations get used in Cascading to perform the ``T`` part of
-http://en.wikipedia.org/wiki/Extract,_transform,_load[ETL]. In other words,
+Operations get used in Cascading to perform the ``T'' part of
+link:http://en.wikipedia.org/wiki/Extract,\_transform,_load[ETL]. In other words,
 operations act on the data to transform the tuple stream, filter it, analyze it,
 etc. Think what roles command line utilities such as `grep` or `awk` perform in Unix
 shell scripts. Cascading provides a rich library of standard operations, to
-encode the ``business logic`` of transforming ``Big Data``. It’s relatively simple
-to develop your own custom operations, and our text “scrubbing” example here
+encode the ``business logic'' of transforming ``Big Data''. It’s relatively simple
+to develop your own custom operations, and our text ``scrubbing'' example here
 shows a good use case. However, if you find yourself starting to develop _lots_ of
 custom operations every time you begin to write a Cascading app, that’s a good
 indication that you need to step back and reevaluate. On one hand, the standard
@@ -163,4 +163,8 @@ For those familiar with Apache Pig, we have included a comparable script, and to
     mkdir -p dot
     pig -p docPath=./data/rain.txt -p wcPath=./output/wc -p stopPath=./data/en.stop ./src/scripts/wc.pig
 
+Next
+----
+In link:impatient4.html[Part 4] of Cascading for the Impatient you will
+learn how to implement a stop word filter.
 

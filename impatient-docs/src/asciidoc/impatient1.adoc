@@ -10,7 +10,7 @@ following best practices. No bangs, no whistles, just good solid code.
 https://github.com/Cascading/Impatient/tree/master/part1
 
 Here’s a brief Java program, about a dozen lines long. It copies lines of text
-from file ``A`` to file ``B``. It uses 1 _mapper_ in
+from file ``A'' to file ``B''. It uses 1 _mapper_ in
 http://hadoop.apache.org[Apache Hadoop]. No _reducer_ needed.  A conceptual
 diagram for this implementation in Cascading is shown as:
 
@@ -21,7 +21,7 @@ Certainly this same work could be performed in much quicker ways, such as using
 build on this example, adding new pieces of code to explore features and
 strengths of Cascading. We’ll keep building until we have a MapReduce
 implementation of http://en.wikipedia.org/wiki/Tf*idf[TF-IDF] for scoring the
-relative ``importance`` of keywords in a set of documents. In other words, Text
+relative ``importance'' of keywords in a set of documents. In other words, Text
 Mining 101. What you might find when you peek inside
 http://lucene.apache.org[Lucene] for example, or some other text indexing
 framework. Moreover, we’ll show how to use
@@ -62,7 +62,7 @@ Pipe copyPipe = new Pipe( "copy" );
 ----
 
 Here comes the fun part. Get your tool belt ready, because we need to do a
-little plumbing… Connect the taps and pipes into a flow:
+little plumbing... Connect the taps and pipes into a flow:
 
 [source,java]
 ----
@@ -94,7 +94,7 @@ should be good to go.
 If you want to read in more detail about the classes in the Cascading API which
 were used, see the
 http://docs.cascading.org/cascading/2.1/userguide/html/[Cascading 2.2 User
-Guide] and http://docs.cascading.org/cascading/2.1/javadoc/[JavaDoc].  
+Guide] and http://docs.cascading.org/cascading/2.1/javadoc/[JavaDoc].
 
 Build
 ~~~~~
@@ -153,5 +153,10 @@ To run that, use:
     pig -p inPath=./data/rain.txt -p outPath=./output/rain ./src/scripts/copy.pig
 
 That's it in a nutshell, our simplest app possible in Cascading. Not quite a
-``Hello World``, but more like a `Hi there, bus stop``. Or something.
+``Hello World'', but more like a `Hi there, bus stop''. Or something.
+
+Next
+----
+Learn how to implement the classical word count with Cascading in
+link:impatient2.html[Part 2] of Cascading for the Impatient.
 

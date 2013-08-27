@@ -29,7 +29,7 @@ http://en.wikipedia.org/wiki/Hans_Peter_Luhn[Hans Peter Luhn] at IBM Research,
 during the dawn of computing. The reasons for it are two-fold. On one hand,
 consider that the most common words in any given natural language are generally
 not useful for http://en.wikipedia.org/wiki/Text_analytics[text analytics]. For
-example in English, words such as ``the``, ``of``, ``and`` are probably not what
+example in English, words such as ``the'', ``of'', ``and'' are probably not what
 you want to search, and probably not interesting for Word Count metrics. They
 represent the http://en.wikipedia.org/wiki/Long_Tail[long tail] of the token
 distribution: high frequency, low semantic value. Consequently, they cause the
@@ -90,20 +90,20 @@ http://en.wikipedia.org/wiki/Sparse_matrix[sparse] then we can use specific
 variants of joins to compute efficiently in parallel. Cascading includes a
 HashJoin which joins two or more tuple streams into a single stream via a Joiner -
 when all but one tuple stream are small enough to fit into memory. In other
-words, given some insights about the ``shape`` of the data, when you have a large
+words, given some insights about the ``shape'' of the data, when you have a large
 data set (non-sparse) you can join with one or more small data sets (sparse) in
 memory.
 
 A join has a left-hand side (LHS) and a right-hand side (RHS); in Cascading we
 put the sparser data on the right-hand side. So the
 http://docs.cascading.org/cascading/2.1/javadoc/cascading/pipe/HashJoin.html[HashJoin]
-implements a non-blocking ``asymmetrical join`` or ``replicated join``, where the
+implements a non-blocking ``asymmetrical join'' or ``replicated join'', where the
 left-most side will not block (accumulate into memory) in order to complete the
 join, but the right-most sides will.
 
 Recall that stop words lists tend to be bounded at approximately *10^5*, which is
 relatively sparse when compared with an arbitrarily large token stream. In
-typical ``web scale`` text analytics use cases for TF-IDF, that might be in the
+typical ``web scale'' text analytics use cases for TF-IDF, that might be in the
 range billions of tokens, i.e., several orders of magnitude larger than our
 largest possible stop words list. Sounds like a great use case for HashJoin.
 
@@ -176,7 +176,7 @@ Modify the `Main` method to make those changes, then build a JAR file. You shoul
 be good to go. For those keeping score, the resulting physical plan in
 MapReduce for Part 4 still uses one mapper and one reducer.
 
-The diagram for the Cascading flow will be in the dot/ subdirectory after the
+The diagram for the Cascading flow will be in the `dot/` subdirectory after the
 app runs. Here we have annotated it to show where the mapper and reducer phases
 are running, and also the section which was added since Part 3:
 
@@ -214,4 +214,9 @@ rm -rf output
 mkdir -p dot
 pig -p docPath=./data/rain.txt -p wcPath=./output/wc -p stopPath=./data/en.stop ./src/scripts/wc.pig
 ----
+
+Next
+----
+link:impatient5.html[Part 5] of Cascading for the Impatient implements the
+TF-IDF with Cascading.
 

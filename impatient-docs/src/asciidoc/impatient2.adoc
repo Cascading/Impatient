@@ -9,7 +9,7 @@ yet, it’s probably best to start there.
 
 Today’s lesson takes the same app and stretches it a bit further. Undoubtedly
 you’ve seen Word Count before. We’d feel remiss if we did not provide a Word
-Count example. It’s the ``Hello World`` of MapReduce apps. Fortunately, this
+Count example. It’s the ``Hello World'' of MapReduce apps. Fortunately, this
 code is one of the basic steps toward developing a TF-IDF implementation. How
 convenient. We’ll also show how to use Cascading to generate a visualization of
 your MapReduce app. 
@@ -19,8 +19,8 @@ Theory
 
 Our example code in link:impatient1.html[Part 1] of this series showed how to
 move data from point A to point B. It was simply a distributed file copy -
-loading data via distributed tasks, an instance of the ``L`` in
-http://en.wikipedia.org/wiki/Extract,_transform,_load[ETL].
+loading data via distributed tasks, an instance of the ``L'' in
+link:http://en.wikipedia.org/wiki/Extract,\_transform,_load[ETL].
 
 That may seem overly simple, and it may seem like Cascading is overkill for
 that kind of work. However, moving important data from point A to point B
@@ -211,5 +211,10 @@ To run that, use:
     mkdir -p dot
     pig -p docPath=./data/rain.txt -p wcPath=./output/wc ./src/scripts/wc.pig
 
-So that’s our Word Count example. Twenty lines of yummy goodness.
+So that is our Word Count example. Twenty lines of yummy goodness.
+
+Next
+----
+Learn how to write custom Operations to clean your data in
+link:impatient3.html[Part 3] of Cascading for the Impatient.
 

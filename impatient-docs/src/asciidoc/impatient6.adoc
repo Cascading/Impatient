@@ -28,15 +28,15 @@ jobs involving terabytes of data and huge clusters running apps that take days
 to complete.
 
 Stated in a different way, according to Kent Beck, TDD ``encourages simple
-designs and inspires confidence.`` That statement does actually fit well with
+designs and inspires confidence.'' That statement does actually fit well with
 Cascading. The API is intended to provide simple design patterns for working
 with data - _GroupBy_, _Join_, _Count_, _Regex_, _Filter_ - so that the need for writing
 custom functions becomes relatively rare. That speaks to “encouraging simple
 designs” directly. The practice in Cascading of modeling business process and
-orchestrating MapReduce workflows - that speaks to ``inspiring confidence`` in a
+orchestrating MapReduce workflows - that speaks to ``inspiring confidence'' in a
 big way.
 
-So now we’ll let the cat out of the bag for a little secret… Working with
+So now we’ll let the cat out of the bag for a little secret... Working with
 unstructured data at scale has been shown to be quite valuable (Google, Amazon,
 LinkedIn, Twitter, etc.) however most of the “heavy lifting” which we perform in
 MapReduce workflows is essentially cleaning up data. DJ Patil explained this
@@ -44,14 +44,14 @@ point quite eloquently in
 http://radar.oreilly.com/2012/07/data-jujitsu.html[Data Jujitsu]: ``It’s
 impossible to overstress this: 80% of the work in any data project is in
 cleaning the data... Work done up front in getting clean data will be amply
-repaid over the course of the project.``
+repaid over the course of the project.''
 
 Cleaning up the data allows for subsequent use of
 http://en.wikipedia.org/wiki/Sampling_%28statistics%29[sampling techniques],
 http://en.wikipedia.org/wiki/Dimension_reduction[dimensional reduction], and
 other practices which help alleviate some of the bottlenecks which might
 otherwise be encountered in Big Data. In other words, there are great use cases
-for formalisms which help demonstrate that "dirty" data at scale has been
+for formalisms which help demonstrate that ``dirty" data at scale has been
 cleaned up. Those turn out to be quite valuable in practice.
 
 However, TDD practices tend to be based on
@@ -59,7 +59,7 @@ http://en.wikipedia.org/wiki/Unit_test[unit tests] or
 http://en.wikipedia.org/wiki/Mock_object[mocks]... how does one
 write a quick unit test for a Godzilla-sized dataset?
 
-The short answer is: you don’t. However, you can greatly reduce the need for
+The short answer is: you don't. However, you can greatly reduce the need for
 writing unit test coverage by limiting the amount of custom code required.
 Hopefully we’ve shown that aspect of Cascading by now. Beyond that aspect, you
 can use sampling techniques to quantify the confidence for an app running
@@ -88,10 +88,10 @@ http://docs.cascading.org/cascading/2.1/javadoc/cascading/pipe/HashJoin.html[Has
 Sampling may be performed either before (like with Debug) or after the data gets
 persisted to HDFS.
 
-Next, let’s talk about system tests. Cascading include support for
+Next, let's talk about system tests. Cascading include support for
 http://docs.cascading.org/cascading/2.1/userguide/htmlsingle/#N21317[stream
 assertions]. These provide mechanisms for asserting that the values in a tuple
-stream meet certain criteria – similar to the `assert` keyword in Java, or an
+stream meet certain criteria - similar to the `assert` keyword in Java, or an
 `assertNotNull()` in a unit test. We can assert patterns strictly as unit tests
 during development, then run testing against regression data. For performance
 reasons, we might use command line options to turn off assertions in production.
@@ -108,7 +108,7 @@ process the 99% which work and shunt the 1% failure cases into a special file,
 marked “for manual review”. Keep in mind, however, that traps are intended for
 handling exceptional cases. If you know in advance how to categorize good vs.
 bad data, then use a
-http://docs.cascading.org/cascading/2.0/userguide/html/ch10s09.html[filter
+http://docs.cascading.org/cascading/2.1/userguide/html/ch10s09.html[filter
 instead of a trap].
 
 Meanwhile, a conceptual diagram for this implementation of TF-IDF in Cascading

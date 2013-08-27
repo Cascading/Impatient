@@ -20,7 +20,7 @@ Fortunately, all of the data required to calculate TF-IDF weight was already
 available in our Word Count example in Part 4. However, we’ll need to revise the
 overall workflow, adding more pipe assemblies to it.
 
-TF-IDF calculates a metric for each token which indicates how ``important`` that
+TF-IDF calculates a metric for each token which indicates how ``important'' that
 token is to a document _within the context of a collection of documents_. The
 metric is calculated based on relative frequencies. On one hand, tokens which
 appear in most documents tend to have very low TF-IDF weights. On the other
@@ -67,7 +67,7 @@ Tap tfidfTap = new Hfs( new TextDelimited( true, "\t" ), tfidfPath );
 ----
 
 Next we'll modify the existing pipe assemblies for Word Count, beginning
-immediately after the ``stop words`` filter. We add the following line to retain
+immediately after the ``stop words'' filter. We add the following line to retain
 only the doc_id and token fields:
 
 [source,java]
@@ -261,4 +261,9 @@ rm -rf output
 mkdir -p dot
 pig -p docPath=./data/rain.txt -p wcPath=./output/wc -p stopPath=./data/en.stop -p tfidfPath=./output/tfidf ./src/scripts/tfidf.pig
 ----
+
+Next
+----
+link:impatient6.html[Part 6] of Cascading for the Impatient explores testing
+with Cascading.
 

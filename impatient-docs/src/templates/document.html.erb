@@ -151,15 +151,10 @@
   </div>
 <%
    end %>
+  <hr>
 <div id="footer">
   <div id="footer-text">
-    <%
-       if attr? :revnumber %>
-      Version <%= attr :revnumber %>
-      <br>
-    <%
-       end %>
-    Last updated <%= attr :docdatetime %>
+      <a href="index.html">Back to Overview</a> - Last updated <%= attr :docdatetime %>
   </div>
 </div>
 </body>

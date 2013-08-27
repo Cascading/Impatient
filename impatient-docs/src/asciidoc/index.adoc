@@ -19,7 +19,7 @@ Each part has its own sub-directory in the repository.
 
 In order to follow the tutorial, you will also have to have
 http://gradle.org[gradle] and http://hadoop.apache.org/[apache hadoop] installed
-on your computer. You do not need a hadoop cluster,local mode is sufficient.
+on your computer. You do not need a hadoop cluster, local mode is sufficient.
 
 Gradle
 ~~~~~~
