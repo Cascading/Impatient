@@ -64,3 +64,14 @@ asciidoctor {
           attributes: attributes
   ]
 }
+
+
+
+task docDist( type: Copy, dependsOn: asciidoctor ) { 
+  description = "publish documentation"
+
+  from asciidoctor.outputDir
+  into "${rootProject.s3UploadDocs.source}/" // intentionally publish to root
+
+  rootProject.s3UploadDocs.dependsOn docDist
+}

@@ -17,8 +17,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-apply from: "${rootDir}/etc/s3Upload.gradle"
 
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'eclipse'
+if( project.properties[ 'teamcity' ] ) // make them system properties
+  System.properties.putAll( project.properties[ 'teamcity' ] )
+
+if( System.properties[ 'aws.properties' ] )
+{
+  file( System.properties[ 'aws.properties' ] ).withReader { reader ->
+    def awsProperties = new Properties()
+    awsProperties.load( reader )
+    System.properties.putAll( awsProperties )
+  }
+}
+
+if( System.properties[ 'publish.repo.url' ] )
+  repoUrl = System.properties[ 'publish.repo.url' ]
+
+ext.awsAccessId = System.properties[ 'publish.aws.accessId' ]
+ext.awsSecretKey = System.properties[ 'publish.aws.secretKey' ]
+ext.s3BucketDocs = "docs.concurrentinc.com"
+if ( System.properties [ 'release' ] )
+    ext.s3BucketDocs = "docs.cascading.org"
