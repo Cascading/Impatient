@@ -106,9 +106,8 @@ link:impatient6.html[Part 6]
 Other versions
 --------------
 
-Also, compare these other excellent implementations of the example apps here -
-by http://sujitpal.blogspot.de/2012/08/scalding-for-impatient.html[Sujit Pal] in
-http://github.com/twitter/scalding[Scalding] and by
-https://github.com/Cascading/Impatient-Cascalog[Paul Lam] in
-https://github.com/nathanmarz/cascalog[Cascalog].
+Also, compare these other excellent implementations of the example apps here:
+
+  * http://sujitpal.blogspot.de/2012/08/scalding-for-impatient.html[Scalding for the Impatient] by Sujit Pal in http://github.com/twitter/scalding[Scalding] and
+  * https://github.com/Cascading/Impatient-Cascalog[Cascalog for the Impatient] by Paul Lam in https://github.com/nathanmarz/cascalog[Cascalog].
 

@@ -65,9 +65,7 @@ asciidoctor {
   ]
 }
 
-
-
-task docDist( type: Copy, dependsOn: asciidoctor ) { 
+task docDist( type: Copy, dependsOn: asciidoctor ) {
   description = "publish documentation"
 
   from asciidoctor.outputDir
