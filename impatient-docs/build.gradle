@@ -65,10 +65,20 @@ asciidoctor {
   ]
 }
 
-task docDist( type: Copy, dependsOn: asciidoctor ) {
+task zipDocs( type: Zip, dependsOn: asciidoctor ){
+  baseName = "impatient"
+  from (asciidoctor.outputDir){
+      include '*.*'
+  }
+  into "impatient-docs"
+}
+
+
+task docDist( type: Copy, dependsOn: [asciidoctor, zipDocs] ) {
   description = "publish documentation"
 
   from asciidoctor.outputDir
+  from zipDocs.destinationDir
   into "${rootProject.s3UploadDocs.source}/" // intentionally publish to root
 
   rootProject.s3UploadDocs.dependsOn docDist
