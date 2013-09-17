@@ -4,7 +4,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 html { line-height: 1; }
 
-ol, ul { list-style: none; }
+ol, ul { list-style: disc; margin-left:18px;}
 
 table { border-collapse: collapse; border-spacing: 0; }
 
@@ -34,9 +34,9 @@ audio:not([controls]) { display: none; height: 0; }
 body { margin: 0; color: #444; font-size: 14px; line-height: 150%; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: normal; font-style: normal; background: #f1efea url(http://www.cascading.org/files/2012/05/background.png) repeat top center fixed; }
 
 /* ========================================================================== Links ========================================================================== */
-a, a:link, a:visited, a:active { color: #1F546C; text-decoration: none; }
+a, a:link, a:visited, a:active { color: #4183C4; text-decoration: none; }
 
-a:hover { text-decoration: underline; }
+a:hover { color: #1F546C; text-decoration: underline; }
 
 /** Address `outline` inconsistency between Chrome and other browsers. */
 a:focus { outline: thin dotted; }
@@ -323,7 +323,7 @@ kbd kbd:last-child { margin-right: 0; }
 
 #header span { color: #666666; }
 
-#header #revnumber { margin: 0 auto; margin-left: 350px; width: 960px; display: block; color: #FFF; /*text-transform:capitalize;*/ }
+#header #revnumber { margin: 0 auto; margin-left: 350px; width: 960px; display: block; color: #FFF; text-transform: capitalize; }
 
 #header br { display: none; }
 
@@ -607,7 +607,7 @@ h2 { color: #325D72; border-bottom: 1px solid #dddddd; }
 
 #header, #content, #footnotes { /*max-width: 660px;*/ padding-left: 0; padding-right: 0; }
 
-#content ul { list-style-type: none; }
+/* #content ul { list-style-type: none; } */
 
 #content ul li { padding-left: .7em; }
 
@@ -621,9 +621,7 @@ h2 { color: #325D72; border-bottom: 1px solid #dddddd; }
 
 .sidebarblock > .content > .title { margin-top: -20px; margin-right: -20px; margin-left: -20px; margin-bottom: 20px; padding: 1em; font-size: 0.8em; background: #eaeaea; }
 
-#header { margin-bottom: 0; padding-top: 5px; height: 119px; border-top: 1px solid #000; background: #2f4251 url(http://docs.cascading.org/images/cascading-white.png) 35px center no-repeat; }
-
-.cascLogo { position: relative; top: -100px; display: block; width: 307px; height: 119px; }
+#header { margin-bottom: 0; padding-top: 5px; height: 119px; border-top: 1px solid #000; background: #2f4251 url(http://www.cascading.org/files/2012/05/cascading-new-white1.png) 35px center no-repeat; }
 
 .container { position: relative; width: 960px; margin: 0 auto; padding: 0; }
 
