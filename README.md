@@ -1,10 +1,10 @@
 ## Cascading for the Impatient
 
-Welcome to [Cascading for the Impatient](http://www.cascading.org/category/impatient/), a series of blog posts and [Cascading 2.0](http://www.cascading.org/) code examples to get you started. Quickly. Like, yesterday.
+Welcome to [Cascading for the Impatient](http://docs.cascading.org/impatient), a tutorial for [Cascading 2.2](http://www.cascading.org/) to get you started. Quickly. Like, yesterday.
 
 This set of progressive coding examples starts with a simple file copy and builds up to a MapReduce implementation of the TF-IDF algorithm.
 
-For more detailed information, please see https://github.com/Cascading/Impatient/wiki
+You can read the full series here: http://docs.cascading.org/impatient/
 
 ### Part 1
 * Implements simplest Cascading app possible
@@ -44,6 +44,3 @@ For more detailed information, please see https://github.com/Cascading/Impatient
 
 ### Part 8
 * Scalding equivalents of previous examples in Cascading
-
----
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Cascading/Impatient/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
