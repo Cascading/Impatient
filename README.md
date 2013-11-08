@@ -6,6 +6,9 @@ This set of progressive coding examples starts with a simple file copy and build
 
 You can read the full series here: http://docs.cascading.org/impatient/
 
+If you have a question or run into any problems send an email to the [cascading-user-list](https://groups.google.com/forum/#!forum/cascading-user).
+
+
 ### Part 1
 * Implements simplest Cascading app possible
 * Copies each TSV line from source tap to sink tap
