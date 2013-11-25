@@ -4,7 +4,7 @@ Part 2 - Word count
 -------------------
 
 In our link:impatient1.html[first installment] of this series we showed how to
-create the simplest possible Cascading 2.2 application. If you haven’t read that
+create the simplest possible Cascading 2.5 application. If you haven’t read that
 yet, it’s probably best to start there.
 
 Today’s lesson takes the same app and stretches it a bit further. Undoubtedly
@@ -98,7 +98,7 @@ to have more descriptive names. Makes it simpler to follow all the plumbing.
 
 Previously we defined a simple *pipe* to connect the *taps*. This example shows a
 more complex pipe. We use a *generator* inside of an
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/pipe/Each.html[Each], to split the document
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/pipe/Each.html[Each], to split the document
 text into a token stream. We use a regex to split on word boundaries:
 
 [source,java]
@@ -115,7 +115,7 @@ can change the regex to handle more complex cases of splitting tokens — withou
 having to rewrite a different generator class.
 
 Next, we use a
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/pipe/GroupBy.html[GroupBy]
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/pipe/GroupBy.html[GroupBy]
 to count the occurrences of each token:
 
 [source,java]
@@ -127,7 +127,7 @@ wcPipe = new Every( wcPipe, Fields.ALL, new Count(), Fields.ALL );
 
 From that pipe, we’ll have a resulting tuple stream of token and count for the
 output. So we connect up the plumbing with a
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/flow/FlowDef.html[FlowDef]:
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/flow/FlowDef.html[FlowDef]:
 
 [source,java]
 ----
@@ -156,9 +156,9 @@ The diagram for the Cascading flow will be in the `dot/` subdirectory. Here we
 have annotated it to show where the mapper and reducer phases are running:
 
 If you want to read in more detail about the classes in the Cascading API which
-were used, see the Cascading 2.2
-http://docs.cascading.org/cascading/2.2/userguide/html/[User Guide] and
-http://docs.cascading.org/cascading/2.2/javadoc/[JavaDoc].
+were used, see the Cascading 2.5
+http://docs.cascading.org/cascading/2.5/userguide/html/[User Guide] and
+http://docs.cascading.org/cascading/2.5/javadoc/[JavaDoc].
 
 Build
 ~~~~~

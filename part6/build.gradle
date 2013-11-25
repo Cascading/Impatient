@@ -34,8 +34,8 @@ repositories {
   mavenRepo name: 'conjars', url: 'http://conjars.org/repo/'
 }
 
-ext.cascadingVersion = '2.2.0'
-ext.hadoopVersion = '1.1.2'
+ext.cascadingVersion = '2.5.0'
+ext.hadoopVersion = '1.2.1'
 
 dependencies {
   compile group: 'cascading', name: 'cascading-core', version: cascadingVersion

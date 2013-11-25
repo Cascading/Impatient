@@ -9,12 +9,12 @@ http://en.wikipedia.org/wiki/Test-driven_development[test-driven development
 so sooner), plus show how to leverage TDD features which are unique to
 Cascading: checkpoints, traps, assertions, etc. These features are based on
 using
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/pipe/Checkpoint.html[Checkpoint],
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/operation/Debug.html[Debug], and 
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/operation/assertion/AssertMatches.html[AssertMatches].
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/pipe/Checkpoint.html[Checkpoint],
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/operation/Debug.html[Debug], and 
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/operation/assertion/AssertMatches.html[AssertMatches].
 
 We’ll keep building on this example to show how to leverage
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/flow/local/package-summary.html[“local
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/flow/local/package-summary.html[“local
 mode”].
 
 Theory
@@ -71,25 +71,25 @@ Let’s discuss sampling... generally speaking, large MapReduce workflows are
 relatively opaque processes which are difficult to observe. However, Cascading
 provides two techniques for observing portions of a workflow. One very simple
 approach is to insert a
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/operation/Debug.html[Debug]
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/operation/Debug.html[Debug]
 into a pipe, to see the tuple values passing through a particular part of a
 workflow. Debug output goes to the log instead of a file, but it can be turned
 off, e.g., with a command line option. If the data is large, one can use a
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/operation/filter/Sample.html[Sample]
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/operation/filter/Sample.html[Sample]
 filter to sample the tuple values which get written to the log.
 
 Another approach is to use a
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/pipe/Checkpoint.html[Checkpoint],
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/pipe/Checkpoint.html[Checkpoint],
 which forces intermediate data to be written out to HDFS. This may also become
 important for performance reasons, i.e., forcing results to disk to avoid
 recomputing – e.g., when there are multiple uses for the output of a pipe
 downstream such as with the right side of a
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/pipe/HashJoin.html[HashJoin].
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/pipe/HashJoin.html[HashJoin].
 Sampling may be performed either before (like with Debug) or after the data gets
 persisted to HDFS.
 
 Next, let's talk about system tests. Cascading include support for
-http://docs.cascading.org/cascading/2.2/userguide/htmlsingle/#N2144D[stream
+http://docs.cascading.org/cascading/2.5/userguide/htmlsingle/#N2148A[stream
 assertions]. These provide mechanisms for asserting that the values in a tuple
 stream meet certain criteria - similar to the `assert` keyword in Java, or an
 `assertNotNull()` in a unit test. We can assert patterns strictly as unit tests
@@ -100,7 +100,7 @@ Or keep them, if a use case requires that level of guarantees.
 Lastly, what to do when assumptions fail? One lesson of working with data at
 scale is that the best assumptions will inevitably fail. Unexpected things
 happen, and 80% of the work will be cleaning up problems. Cascading defines
-http://docs.cascading.org/cascading/2.2/userguide/htmlsingle/#N214B9[failure
+http://docs.cascading.org/cascading/2.5/userguide/htmlsingle/#N214F6[failure
 traps] which capture data that causes an Operation to fail, e.g., throw
 an Exception. For example, perhaps 99% of the cases in your log files can be
 rolled up into a set of standard reports... but 1% requires manual review. Great,
@@ -108,7 +108,7 @@ process the 99% which work and shunt the 1% failure cases into a special file,
 marked “for manual review”. Keep in mind, however, that traps are intended for
 handling exceptional cases. If you know in advance how to categorize good vs.
 bad data, then use a
-http://docs.cascading.org/cascading/2.2/userguide/html/ch11s09.html[filter
+http://docs.cascading.org/cascading/2.5/userguide/html/ch11s09.html[filter
 instead of a trap].
 
 Meanwhile, a conceptual diagram for this implementation of TF-IDF in Cascading

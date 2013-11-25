@@ -5,11 +5,11 @@ Part 5 - Implementing TF-IDF in Cascading
 
 This part builds on the Word Count app from the previous chapter and now
 implements TF-IDF in Cascading. We'll show how to use a
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/pipe/assembly/SumBy.html[SumBy]
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/pipe/assembly/SumBy.html[SumBy]
 and a
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/pipe/CoGroup.html[CoGroup]
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/pipe/CoGroup.html[CoGroup]
 to aggregate the data needed, and then how to use an
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/operation/expression/ExpressionFunction.html[ExpressionFunction]
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/operation/expression/ExpressionFunction.html[ExpressionFunction]
 to calculate the TF-IDF weights. We also continue to show best practices for
 workflow orchestration and test-driven development (TDD) at scale.
 
@@ -94,7 +94,7 @@ At that point, we have _TF_ values for each token.
 In a second branch we'll calculate _D_, the total number of documents in a way
 which can be consumed later in a join. This uses a built-in partial aggregate
 operation called
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/pipe/assembly/SumBy.html[SumBy]:
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/pipe/assembly/SumBy.html[SumBy]:
 
 [source,java]
 ----
@@ -131,7 +131,7 @@ dfPipe = new Each( dfPipe, new Insert( lhs_join, 1 ), Fields.ALL );
 
 Now we have all the components needed to calculate TF-IDF weights. We’ll use two
 kinds of joins - a HashJoin followed by a
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/pipe/CoGroup.html[CoGroup] -
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/pipe/CoGroup.html[CoGroup] -
 to merge the three branches together:
 
 [source,java]
@@ -145,7 +145,7 @@ Pipe tfidfPipe = new CoGroup( tfPipe, tf_token, idfPipe, df_token );
 ----
 
 Then we calculate the weights using an
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/operation/expression/ExpressionFunction.html[ExpressionFunction]
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/operation/expression/ExpressionFunction.html[ExpressionFunction]
 in Cascading:
 
 [source,java]
@@ -175,7 +175,7 @@ wcPipe = new Rename( wcPipe, tf_token, token );
 ----
 
 Last, we’ll add another sink tap to the
-http://docs.cascading.org/cascading/2.2/javadoc/cascading/flow/FlowDef.html[FlowDef], to include output data for our
+http://docs.cascading.org/cascading/2.5/javadoc/cascading/flow/FlowDef.html[FlowDef], to include output data for our
 TF-IDF weights:
 
 [source,java]
@@ -210,9 +210,6 @@ app runs. Here we have annotated it to show where the *mapper* and *reducer*
 phases are running, and also the sections which were added since _Part 4_:
 
 image:tfidf1.png[]
-
-If you want to read in more detail about the classes in the Cascading API which
-were used, see the Cascading 2.0 User Guide and JavaDoc.
 
 Build
 ~~~~~

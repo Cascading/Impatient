@@ -1,7 +1,7 @@
 # Cascading for the Impatient
 
 The Impatient series is a set of tutorials to get you started with
-http://cascading.org/[Cascading 2.2].
+http://cascading.org/[Cascading 2.5].
 
 This set of progressive coding examples starts with a simple file copy and
 builds up to a MapReduce implementation of the TF-IDF algorithm.

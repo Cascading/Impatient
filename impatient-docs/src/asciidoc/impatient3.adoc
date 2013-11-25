@@ -4,7 +4,7 @@ Part 3 - Scrubbing
 -----------------
 
 In the link:impatient2.html[previous installement] we have implemented the
-famous Word Count as a Cascading 2.2 application.
+famous Word Count as a Cascading 2.5 application.
 
 This part takes the same app and stretches it even more. We’ll show how to write
 a custom Operation. Again, this code is leading toward an implementation of
