@@ -20,8 +20,8 @@
 
 buildscript {
   repositories {
-    mavenRepo name: 'Bintray Asciidoctor repo', url: 'http://dl.bintray.com/content/aalmiray/asciidoctor'
-    mavenRepo name: 'Bintray JCenter', url: 'http://jcenter.bintray.com'
+    maven{ url 'http://dl.bintray.com/content/aalmiray/asciidoctor' }
+    maven{ url 'http://jcenter.bintray.com' }
   }
 
   dependencies {

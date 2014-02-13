@@ -116,7 +116,7 @@ http://hadoop.apache.org[Apache Hadoop] installed. Here’s what was used to
 develop and test our example code:
 
     $ hadoop version
-    Hadoop 1.2.1
+    Hadoop 2.2.0
 
 Be sure to set your `HADOOP_HOME` environment variable. Then clear the output
 directory (Apache Hadoop insists, if you’re running in standalone mode) and run

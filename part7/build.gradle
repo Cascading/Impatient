@@ -30,19 +30,23 @@ archivesBaseName = 'impatient'
 repositories {
   mavenLocal()
   mavenCentral()
-  mavenRepo name: 'conjars', url: 'http://conjars.org/repo/'
+  maven{ url 'http://conjars.org/repo/' }
 }
 
-ext.cascadingVersion = '2.5.1'
-ext.hadoopVersion = '1.2.1'
+ext.cascadingVersion = '2.5.2'
+ext.hadoopVersion = '2.2.0'
 
 dependencies {
   compile( group: 'cascading', name: 'cascading-core', version: cascadingVersion )
-  compile( group: 'cascading', name: 'cascading-hadoop', version: cascadingVersion )
-  providedCompile( group: 'org.apache.hadoop', name: 'hadoop-core', version: hadoopVersion )
+  compile( group: 'cascading', name: 'cascading-hadoop2-mr1', version: cascadingVersion )
+  providedCompile( group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client', version: hadoopVersion )
 
-  testCompile( group: 'org.apache.hadoop', name: 'hadoop-test', version: hadoopVersion )
-  testCompile( 'junit:junit:4.8.+' )
+  testCompile( 'junit:junit:4.11.+' )
+  testCompile group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: hadoopVersion 
+  testCompile group: 'org.apache.hadoop', name: 'hadoop-minicluster', version: hadoopVersion 
+  testCompile group: 'cascading', name: 'cascading-core', version: cascadingVersion, classifier: 'tests', changing: true
+  testCompile group: 'cascading', name: 'cascading-hadoop2-mr1', version: cascadingVersion, classifier: 'tests', changing: true
+  testCompile group: 'cascading', name: 'cascading-platform', version: cascadingVersion, classifier: 'tests', changing: true
 }
 
 jar {

@@ -24,23 +24,23 @@ on your computer. You do not need a hadoop cluster, local mode is sufficient.
 Gradle
 ~~~~~~
 
-Everything has been tested with gradle 1.6. You can check your version of gradle
+Everything has been tested with gradle 1.8. You can check your version of gradle
 like this:
 
     $ gradle -v
     ------------------------------------------------------------
-    Gradle 1.6
+    Gradle 1.8
     ------------------------------------------------------------
     ...
 
 Hadoop
 ~~~~~~
 
-For hadoop please install the latest stable version from the 1.x series. At the
-time of this writing, this means apache hadoop 1.2.1.
+For hadoop please install the latest stable version from the 2.x series. At the
+time of this writing, this means apache hadoop 2.2.0.
 
     $ hadoop version
-    Hadoop 1.2.1
+    Hadoop 2.2.0
     ...
 
 Cascading is compatible with a number of hadoop distributions and versions. You

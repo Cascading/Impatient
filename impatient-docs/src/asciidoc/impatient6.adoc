@@ -122,14 +122,20 @@ Source
 All code and data is in the `part6` subdirectory of the github project.
 
 Let's add a unit test and show how that works into this example. In the Gradle
-build script build.gradle we need to modify the compile task to include JUnit
+build script `build.gradle` we need to modify the compile task to include JUnit
 and other testing dependencies:
 
 [source,groovy]
 ----
-compile( 'cascading:cascading-hadoop:2.1.6' ) { transitive = true }
-testCompile( 'org.apache.hadoop:hadoop-test:1.1.2' )
-testCompile( 'junit:junit:4.8.+' )
+testCompile group: 'cascading', name: 'cascading-platform', version: "2.5.2", classifier: 'tests'
+testCompile group: 'cascading', name: 'cascading-hadoop2-mr1', version: "2.5.2", classifier: 'tests'
+testCompile group: 'cascading', name: 'cascading-core', version: "2.5.2", classifier: 'tests'
+
+testCompile group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: "2.2.0"
+testCompile group: 'org.apache.hadoop', name: 'hadoop-minicluster', version: "2.2.0"
+testCompile group: 'junit', name: 'junit', version: '4.11'
+testCompile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'
+testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.5'
 ----
 
 Then we’ll add a test task:

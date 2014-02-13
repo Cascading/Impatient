@@ -226,7 +226,7 @@ Apache Hadoop installed. Here’s what was used to develop and test our example
 code:
 
     $ hadoop version
-    Hadoop 1.1.2
+    Hadoop 2.2.0
 
 To run this incarnation of our app, do this:
 
