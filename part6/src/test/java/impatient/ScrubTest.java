@@ -23,13 +23,12 @@ package impatient;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import org.junit.Test;
-
 import cascading.CascadingTestCase;
 import cascading.operation.Function;
 import cascading.tuple.Fields;
 import cascading.tuple.Tuple;
 import cascading.tuple.TupleListCollector;
+import org.junit.Test;
 
 public class ScrubTest extends CascadingTestCase
   {

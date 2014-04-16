@@ -40,7 +40,7 @@ ext.hadoopVersion = '2.2.0'
 dependencies {
   compile( group: 'cascading', name: 'cascading-core', version: cascadingVersion )
   compile( group: 'cascading', name: 'cascading-hadoop2-mr1', version: cascadingVersion )
-  providedCompile( group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client', version: hadoopVersion )
+  providedCompile( group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: hadoopVersion )
 }
 
 jar {

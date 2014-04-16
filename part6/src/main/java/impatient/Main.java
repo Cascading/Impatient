@@ -36,7 +36,6 @@ import cascading.operation.regex.RegexSplitGenerator;
 import cascading.pipe.Checkpoint;
 import cascading.pipe.CoGroup;
 import cascading.pipe.Each;
-import cascading.pipe.Every;
 import cascading.pipe.GroupBy;
 import cascading.pipe.HashJoin;
 import cascading.pipe.Pipe;
@@ -47,7 +46,6 @@ import cascading.pipe.assembly.SumBy;
 import cascading.pipe.assembly.Unique;
 import cascading.pipe.joiner.LeftJoin;
 import cascading.property.AppProps;
-import cascading.scheme.Scheme;
 import cascading.scheme.hadoop.TextDelimited;
 import cascading.tap.Tap;
 import cascading.tap.hadoop.Hfs;
@@ -136,7 +134,7 @@ public class
     // example use of a debug, to observe tuple stream; turn off below
     dfPipe = new Each( dfPipe, DebugLevel.VERBOSE, new Debug( true ) );
 
-    // join to bring together all the components for calculating TF-IDF 
+    // join to bring together all the components for calculating TF-IDF
     // the D side of the join is smaller, so it goes on the RHS
     Pipe idfPipe = new HashJoin( dfPipe, lhs_join, dPipe, rhs_join );
 

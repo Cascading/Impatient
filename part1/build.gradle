@@ -40,7 +40,7 @@ dependencies {
   compile( group: 'cascading', name: 'cascading-local', version: cascadingVersion )
   compile( group: 'cascading', name: 'cascading-hadoop2-mr1', version: cascadingVersion )
 
-  providedCompile( group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client', version: hadoopVersion )
+  providedCompile( group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: hadoopVersion )
 }
 
 jar {

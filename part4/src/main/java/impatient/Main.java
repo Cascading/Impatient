@@ -36,7 +36,6 @@ import cascading.pipe.Pipe;
 import cascading.pipe.assembly.Retain;
 import cascading.pipe.joiner.LeftJoin;
 import cascading.property.AppProps;
-import cascading.scheme.Scheme;
 import cascading.scheme.hadoop.TextDelimited;
 import cascading.tap.Tap;
 import cascading.tap.hadoop.Hfs;
