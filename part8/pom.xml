@@ -16,28 +16,29 @@
             <id>conjars.org</id>
             <url>http://conjars.org/repo</url>
         </repository>
-        <repository>
-            <id>maven-central</id>
-            <url>http://repo1.maven.org/maven2</url>
-        </repository>
     </repositories>
     <dependencies>
         <dependency>
             <groupId>com.twitter</groupId>
-            <artifactId>scalding_2.9.2</artifactId>
-            <version>0.8.1</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>hadoop-core</artifactId>
-                    <groupId>org.apache.hadoop</groupId>
-                </exclusion>
-            </exclusions>
+            <artifactId>scalding-core_2.10</artifactId>
+            <version>0.10.0</version>
         </dependency>
         <dependency>
-            <artifactId>hadoop-core</artifactId>
             <groupId>org.apache.hadoop</groupId>
-            <version>1.0.3</version>
+            <artifactId>hadoop-mapreduce-client-core</artifactId>
+            <version>2.4.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>2.4.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.10.4</version>
         </dependency>
     </dependencies>
     <build>
@@ -45,7 +46,7 @@
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>3.1.6</version>
                 <executions>
                     <execution>
                         <goals>

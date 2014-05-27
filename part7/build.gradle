@@ -22,6 +22,7 @@ import java.text.SimpleDateFormat
 
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'eclipse'
 
 apply from: "../common/providedCompile.gradle"
 
@@ -33,15 +34,15 @@ repositories {
   maven{ url 'http://conjars.org/repo/' }
 }
 
-ext.cascadingVersion = '2.5.2'
-ext.hadoopVersion = '2.2.0'
+ext.cascadingVersion = '2.5.4'
+ext.hadoopVersion = '2.4.0'
 
 dependencies {
   compile( group: 'cascading', name: 'cascading-core', version: cascadingVersion )
   compile( group: 'cascading', name: 'cascading-hadoop2-mr1', version: cascadingVersion )
-  providedCompile( group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client', version: hadoopVersion )
+  providedCompile( group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: hadoopVersion )
 
-  testCompile( 'junit:junit:4.11.+' )
+  testCompile( 'junit:junit:4.11' )
   testCompile group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: hadoopVersion 
   testCompile group: 'org.apache.hadoop', name: 'hadoop-minicluster', version: hadoopVersion 
   testCompile group: 'cascading', name: 'cascading-core', version: cascadingVersion, classifier: 'tests', changing: true
