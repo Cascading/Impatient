@@ -233,6 +233,50 @@ To run this incarnation of our app, do this:
     rm -rf output
     hadoop jar ./build/libs/impatient.jar data/rain.txt output/wc data/en.stop output/tfidf
 
+Driven
+~~~~~~
+Let's see how Driven helps you visualize this application. Depending upon how you 
+installed the Driven plugin, start your Driven-enabled application.
+
+*If you did not install Driven plugin, you can still explore a historical Part 5 run
+ through Driven by visiting this https://driven.cascading.io/driven/67DC87B93DF24F54B6F0207869F1D46F[link]*
+
+Make sure that your refresh is set to ON; observe how Driven renders what part of the code 
+is currently being executed, and what part has already been executed. In addition, from the 
+upper panel, you can track what percentage of your end-end flow is complete. 
+
+Alternate between the Logical and the Physical view to explore the intermediate 
+Tap and Pipe subassemblies in the code. 
+
+image:driven-part5.png[]
+
+[NOTE]
+===============================
+Driven lets you visually track the progress of your application in real-time. While 
+this particular application view is not intended to be a replacement for a more formal 
+operational monitoring view, this feature comes in very handy to sanity-check the progress 
+of large, complex jobs. In addition, as the data applications get complex, the graph 
+is an excellent way to review the architecture for your data-driven application. Examples 
+of quick checks that can be conducted include ensuring that much of filtering of data 
+pipes is done ahead of a join, establishing points where checkpoints have to be introduced,
+validating that the business requirements are aligned with the actual implementation of 
+the data transformation function…
+===============================
+
+Now, it gets interesting to start exploring the application in the Driven Performance View.
+You can observe the intermediate Taps being created in each step. As applications get more
+complex, or the data sets become larger, the  performance view becomes very important 
+to understand how your code steps get decomposed into Mappers and Reducers, the cost associated 
+with such steps (execution time), helping address such questions as, "how much did the join cost me?"
+
+image:driven-part5-b.png[]
+
+The bottom half of the screen contains the 'Timeline View', which will give details associated
+with each flow run. You can click on the 'Add Columns' to visualize other signals too. 
+
+To understand how best to understand the timing counters, read 
+link:cascading_state.html[Understanding Timing Counters]
+
 Output text gets stored in the partition file `output/tfidf` which you can then
 verify:
 
@@ -249,15 +293,6 @@ not set up correctly. Drop us a line on the
 https://groups.google.com/forum/#!forum/cascading-user[cascading-user] email
 forum.
 
-
-For those familiar with Apache Pig, we have included a comparable script, and to run that:
-
-[source]
-----
-rm -rf output
-mkdir -p dot
-pig -p docPath=./data/rain.txt -p wcPath=./output/wc -p stopPath=./data/en.stop -p tfidfPath=./output/tfidf ./src/scripts/tfidf.pig
-----
 
 Next
 ----

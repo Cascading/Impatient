@@ -1,0 +1,31 @@
+Let's understand better how to read the timeline view. To do that, let's go deeper
+into understanding the different states for the Cascading application.
+
+image:cascading-state.png[]
+
+As the Cascading framework composes the Flows, they enter the "Pending" state. Since
+Flows within a Casacade can have dependencies, the Flows stay in the "Pending" state
+until all the dependencies predicating its execution have successfully completed.
+
+Similary, as the query planner maps the assembly of steps into Mappers and Reducers (or other
+execution primitives associated with the underlying fabric), they now enter the "Submitted" 
+state waiting the work unit to be executed, at which time they enter the "Running" state
+
+Measuring how much time the application, flow, or a Cascading step spends in a particular state 
+can give valuable insights about how to improve the performance of your application. 
+
+For example, a large time interval between the submitted and running time can allude to
+concurrency issues in running MapReduce jobs, and suggesting that increasing the number
+of mapper or reducer slots can significantly improve the application performance. 
+
+Similarly, if the application spends a large proportion of its total run time in 
+pending state, it may be cause to review your application architecture and see how 
+some dependencies between the Flows be eliminated. 
+
+You can visualize this information related to latencies for each state from two places.
+Hover your mouse over the timelime bars, and you can see the state associated with 
+each color band. For a more detailed and an analytical view, select "Add Columns", and select 
+the following counters: "Pending Time", "Start Time", "Submit Time", "Run Time", "Finished Time"
+
+Now with these detailed insights, you are ready to take your application tuning to the 
+next level!

@@ -346,4 +346,9 @@ elastic-mapreduce --create --name "TF-IDF" \
   --arg s3n://temp.cascading.org/impatient/out/check
 ----
 
+Driven
+~~~~~~
+*If you have not installed the Driven plugin, but would like to explore an instance of a historical
+run of Part 6, visit this https://driven.cascading.io/index.html#/apps/B03D98C79D0B4C498807CE838D85509D?view=element[link]*
+
 That's all folks!

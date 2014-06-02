@@ -130,7 +130,6 @@ are running, and also the section which was added since Part 2:
 
 image:wc1.png[]
 
-
 Build
 ~~~~~
 
@@ -146,6 +145,39 @@ Run the app like this:
     rm -rf output
     hadoop jar ./build/libs/impatient.jar data/rain.txt output/wc
 
+Driven
+~~~~~~
+Explore with *Driven* how your application got composed into Cascading. 
+
+*If you did not install the Driven plugin, you can still explore Part 3 
+through Driven by following this https://driven.cascading.io/driven/A6C97AEB171449F4945FF90651C08E74[link]*
+
+image:driven-part3.png[]
+
+*If you ran your application on a distributed Hadoop cluster*, your flow name ("wc") 
+in the timeline view will have a link into how the steps got composed into Mappers
+and Reducers.
+
+image:driven-part3-b.png[]
+
+Click on the step link ("(1/1) output/wc") in the Performance view if you want to 
+explore how your application executed from the Hadoop job dashboard.
+
+[NOTE]
+===============================
+Driven exposes three views of the DAG -- Logical, Physical and Contracted. The Logical View lets 
+you inspect and visualize the Tap, Pipe and other Cascading constructs that you 
+specified in your code. With Physical View, you can also inspect intermediate Tap 
+and Pipe Assemblies embedded in your code. In our case, we can see that the Retain 
+function was used in the subassembly.  
+===============================
+ 
+The bottom half of the screen contains the 'Timeline View', which will give details associated
+with each flow run. You can click on the 'Add Columns' to visualize other signals too. 
+
+To understand how best to understand the timing counters, read 
+link:cascading_state.html[Understanding Timing Counters]
+
 Output text gets stored in the partition file `output/wc1` which you can then
 verify:
 
@@ -156,12 +188,6 @@ app, part 3. If your run looks terribly different, something is probably not set
 up correctly. Drop us a line on the
 https://groups.google.com/forum/#!forum/cascading-user[cascading-user] email
 forum.
-
-For those familiar with Apache Pig, we have included a comparable script, and to run that:
-
-    rm -rf output
-    mkdir -p dot
-    pig -p docPath=./data/rain.txt -p wcPath=./output/wc -p stopPath=./data/en.stop ./src/scripts/wc.pig
 
 Next
 ----

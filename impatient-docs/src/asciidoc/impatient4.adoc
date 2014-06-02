@@ -5,7 +5,7 @@ Part 4 - Implementing a Stop Word Filter
 
 In the previous installement we showed how to write a custom
 http://docs.cascading.org/cascading/2.5/javadoc/cascading/operation/package-summary.html[Operation]
-for a Cascading 2.0 application. If you haven’t read that yet, it’s probably
+for a Cascading application. If you haven’t read that yet, it’s probably
 best to start there.
 
 Today’s lesson takes that same Word Count app and expands on it to implement a
@@ -197,6 +197,32 @@ To run the app, do the following:
     rm -rf output
     hadoop jar ./build/libs/impatient.jar data/rain.txt output/wc data/en.stop
 
+Driven
+~~~~~~
+Open your *Driven-enabled* app to track the progress of your application in real-time. Make 
+sure that you have set the Refresh feature to ON. By default, the Driven updates the visualization
+every 30 seconds. 
+
+*If you have not installed the Driven plugin, you can still explore Part 4 through
+Driven by following this https://driven.cascading.io/driven/1AE69BD0641146EFB926DE7AC83B94B0[link]*
+
+[NOTE]
+===============================
+If you registered at http://cascading.io and installed the Driven API key, you will 
+have accces to the “All Applications” view that tracks all your historical application
+runs. This view starts becoming interesting over a period of time when you want to 
+track trending, identify outlier behavior, or monitor applications based on their 
+termination status
+===============================
+
+image:driven-part4.png[]
+
+You can get detailed insights 
+into how your Cascading steps translated into Map Reduce by clicking on your Flow name 
+in the timeline view ("wc"). 
+
+image:driven-part4-b.png[]
+
 Output text gets stored in the partition file `output/wc` which you can then verify:
 
     more output/wc/part-00000
@@ -205,15 +231,6 @@ Here’s a link:part4.log[log] file from our run of the
 sample app, part 4. If your run looks terribly different, something is probably
 not set up correctly. Drop us a line on the
 https://groups.google.com/forum/#!forum/cascading-user[cascading-user] email forum.
-
-For those familiar with Apache Pig, we have included a comparable script, and to run that:
-
-[source,java]
-----
-rm -rf output
-mkdir -p dot
-pig -p docPath=./data/rain.txt -p wcPath=./output/wc -p stopPath=./data/en.stop ./src/scripts/wc.pig
-----
 
 Next
 ----

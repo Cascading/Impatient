@@ -18,8 +18,46 @@ disk like so:
 Each part has its own sub-directory in the repository.
 
 In order to follow the tutorial, you will also have to have
-http://gradle.org[gradle] and http://hadoop.apache.org/[apache hadoop] installed
+http://gradle.org[gradle] and http://hadoop.apache.org/[Apache Hadoop] installed
 on your computer. You do not need a hadoop cluster, local mode is sufficient.
+
+
+
+In the tutorials, we will also use *Driven* as an alternative to viewing the application 
+composition using the .dot file graphics. Driven is the application performance management 
+product designed to help developers accelerate Cascading application development and management. 
+Driven will give us additional visibility about our Cascading tutorial as we run it on the 
+cluster. If there's an issue, we can immediately identify where it happened and narrow 
+it down to the specific line of code.
+
+image:driven1.png[“Driven”,height=126]
+
+You do not need to make any changes to your existing Cascading applications to integrate 
+with the Driven application. To use Driven, the Driven Plugin must be on the runtime
+classpath for your Cascading application. 
+
+The cloud version of Driven is free for developer use. To get started using Driven, 
+visit http://docs.cascading.io/driven/1.0/getting-started/index.html[Getting Started with Driven] to access all the 
+developer features and gain visibility into your Cascading applications (including apps 
+built with Scalding, Cascalog, Lingual, Pattern or any other Cascading dynamic programming language).
+
+[NOTE]
+===============================
+We will use the cloud-based Driven product for the purposes of this tutorial. Driven will 
+receive the data from your application to help you monitor and visualize the development 
+and the execution of your application. 
+
+To use Driven, the Driven plugin must be visible to your Cascading application. In addition, 
+your Cascading application must have network access to the Internet so it may send data 
+to the domain name "driven.cascading.io" over port 443 (the default SSL port for HTTP). Note 
+that the client side of Cascading will be the only Java process attempting to make a 
+remote network connection. Neither Cascading or the Plugin will open an connection from 
+within an Apache Hadoop cluster.
+
+You can learn more about using Driven for your Cascading application at 
+http://docs.cascading.io/driven/1.0/getting-started/index.html[Getting Started with Driven]
+
+===============================
 
 Gradle
 ~~~~~~
@@ -92,7 +130,7 @@ link:impatient4.html[Part 4]
 
 link:impatient5.html[Part 5]
 ----------------------------
-- Calculates TF-IDF using an ExpressionFunction
+- Calculates the importance of a word in the document (TF-IDF) using an ExpressionFunction
 - Shows how to use a CountBy, SumBy, and a CoGroup
 - Physical plan: 10 Mappers, 8 Reducers
 
