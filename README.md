@@ -1,6 +1,6 @@
 ## Cascading for the Impatient
 
-Welcome to [Cascading for the Impatient](http://docs.cascading.org/impatient), a tutorial for [Cascading 2.2](http://www.cascading.org/) to get you started. Quickly. Like, yesterday.
+Welcome to [Cascading for the Impatient](http://docs.cascading.org/impatient), a tutorial for [Cascading 2.x](http://www.cascading.org/) to get you started. Quickly. Like, yesterday.
 
 This set of progressive coding examples starts with a simple file copy and builds up to a MapReduce implementation of the TF-IDF algorithm.
 
