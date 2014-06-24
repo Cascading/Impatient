@@ -1,11 +1,12 @@
-**/build
-**/dot
-**/output
-**/.idea
-**/.gradle
-**/.classpath
-**/.settings
-**/.project
+build/
+bin/
+dot/
+output/
+.idea
+.gradle
+.classpath
+.settings/
+.project
 
 *~
 *.dot
@@ -23,4 +24,3 @@
 gradle.properties
 
 aws.properties
-build

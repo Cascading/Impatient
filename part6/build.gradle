@@ -34,15 +34,16 @@ repositories {
   maven{ url 'http://conjars.org/repo/' }
 }
 
-ext.cascadingVersion = '2.5.2'
-ext.hadoopVersion = '2.2.0'
+ext.cascadingVersion = '2.5.4'
+ext.hadoopVersion = '2.4.0'
+ext.slf4jVersion = '1.7.7'
 
 dependencies {
   compile group: 'cascading', name: 'cascading-core', version: cascadingVersion
   compile group: 'cascading', name: 'cascading-hadoop2-mr1', version: cascadingVersion
-  providedCompile group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: hadoopVersion // resolves issue with jdk1.7
-  providedCompile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'
-  providedCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.5'
+  providedCompile group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: hadoopVersion
+  providedCompile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+  providedCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: slf4jVersion
 
   testCompile group: 'cascading', name: 'cascading-platform', version: cascadingVersion, classifier: 'tests'
   testCompile group: 'cascading', name: 'cascading-hadoop2-mr1', version: cascadingVersion, classifier: 'tests'
@@ -51,8 +52,8 @@ dependencies {
   testCompile group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: hadoopVersion
   testCompile group: 'org.apache.hadoop', name: 'hadoop-minicluster', version: hadoopVersion
   testCompile group: 'junit', name: 'junit', version: '4.11'
-  testCompile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'
-  testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.5'
+  testCompile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+  testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: slf4jVersion
 }
 
 jar {
