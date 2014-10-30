@@ -1,7 +1,7 @@
 # Cascading for the Impatient
 
 The Impatient series is a set of tutorials to get you started with
-http://cascading.org/[Cascading 2.5].
+http://cascading.org/[Cascading 2.6].
 
 This set of progressive coding examples starts with a simple file copy and
 builds up to a MapReduce implementation of the TF-IDF algorithm.
@@ -62,12 +62,11 @@ http://docs.cascading.io/driven/1.0/getting-started/index.html[Getting Started w
 Gradle
 ~~~~~~
 
-Everything has been tested with gradle 1.8. You can check your version of gradle
-like this:
+Everything has been tested with gradle 1.11. You can check your version of gradle
 
     $ gradle -v
     ------------------------------------------------------------
-    Gradle 1.8
+    Gradle 1.11
     ------------------------------------------------------------
     ...
 
@@ -75,10 +74,10 @@ Hadoop
 ~~~~~~
 
 For hadoop please install the latest stable version from the 2.x series. At the
-time of this writing, this means apache hadoop 2.2.0.
+time of this writing this means Apache hadoop 2.4.1.
 
     $ hadoop version
-    Hadoop 2.2.0
+    Hadoop 2.4.1
     ...
 
 Cascading is compatible with a number of hadoop distributions and versions. You

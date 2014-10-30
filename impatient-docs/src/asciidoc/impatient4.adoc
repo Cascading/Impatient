@@ -4,14 +4,14 @@ Part 4 - Implementing a Stop Word Filter
 ---------------------------------------
 
 In the previous installement we showed how to write a custom
-http://docs.cascading.org/cascading/2.5/javadoc/cascading/operation/package-summary.html[Operation]
+http://docs.cascading.org/cascading/2.6/javadoc/cascading/operation/package-summary.html[Operation]
 for a Cascading application. If you haven’t read that yet, it’s probably
 best to start there.
 
 Today’s lesson takes that same Word Count app and expands on it to implement a
 http://en.wikipedia.org/wiki/Stop_words[stop words] filter, which is a list of
 tokens to nix from the stream. We’ll show how to use
-http://docs.cascading.org/cascading/2.5/javadoc/cascading/pipe/HashJoin.html[HashJoin]
+http://docs.cascading.org/cascading/2.6/javadoc/cascading/pipe/HashJoin.html[HashJoin]
 on two pipes, so we can perform that filtering at scale. Again, this code is
 leading toward an implementation of TF-IDF in Cascading. We’ll show best
 practices for workflow orchestration and test-driven development (TDD) at scale.
@@ -50,7 +50,7 @@ learning], this can lead to *highly embarrassing* situations. _Caveat
 machinator_.
 
 Next, let's consider about working with a
-http://docs.cascading.org/cascading/2.5/javadoc/cascading/pipe/joiner/package-summary.html[Joiner]
+http://docs.cascading.org/cascading/2.6/javadoc/cascading/pipe/joiner/package-summary.html[Joiner]
 in Cascading. We will have two pipes, one for the “scrubbed” token stream and
 another for the stop words list.  We want to filter all instances of tokens from
 the stop words list out of the token stream. If we weren’t working in MapReduce,
@@ -65,7 +65,7 @@ from the naive coding approach described above.
 Instead we want to leverage the workflow orchestration in Cascading. One might
 try to write a custom operation in Cascading, as we did in Part 3 — e.g., a
 custom
-http://docs.cascading.org/cascading/2.5/javadoc/cascading/operation/filter/package-summary.html[Filter].
+http://docs.cascading.org/cascading/2.6/javadoc/cascading/operation/filter/package-summary.html[Filter].
 That sounds like extra work, plus also extra code to verify and maintain, when
 the built-in primatives will to tend to be more efficient anyway.
 
@@ -96,7 +96,7 @@ memory.
 
 A join has a left-hand side (LHS) and a right-hand side (RHS); in Cascading we
 put the sparser data on the right-hand side. So the
-http://docs.cascading.org/cascading/2.5/javadoc/cascading/pipe/HashJoin.html[HashJoin]
+http://docs.cascading.org/cascading/2.6/javadoc/cascading/pipe/HashJoin.html[HashJoin]
 implements a non-blocking ``asymmetrical join'' or ``replicated join'', where the
 left-most side will not block (accumulate into memory) in order to complete the
 join, but the right-most sides will.
@@ -144,7 +144,7 @@ Pipe tokenPipe = new HashJoin( docPipe, token, stopPipe, stop, new LeftJoin() );
 ----
 
 Next we discard the non-null results from the left join, using a
-http://docs.cascading.org/cascading/2.5/javadoc/cascading/operation/regex/RegexFilter.html[RegexFilter]:
+http://docs.cascading.org/cascading/2.6/javadoc/cascading/operation/regex/RegexFilter.html[RegexFilter]:
 
 [source,java]
 ----

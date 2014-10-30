@@ -4,7 +4,7 @@ Part 3 - Scrubbing
 -----------------
 
 In the link:impatient2.html[previous installement] we have implemented the
-famous Word Count as a Cascading 2.5 application.
+famous Word Count as a Cascading 2.6 application.
 
 This part takes the same app and stretches it even more. We’ll show how to write
 a custom Operation. Again, this code is leading toward an implementation of
@@ -147,35 +147,35 @@ Run the app like this:
 
 Driven
 ~~~~~~
-Explore with *Driven* how your application got composed into Cascading. 
+Explore with *Driven* how your application got composed into Cascading.
 
-*If you did not install the Driven plugin, you can still explore Part 3 
+*If you did not install the Driven plugin, you can still explore Part 3
 through Driven by following this https://driven.cascading.io/driven/A6C97AEB171449F4945FF90651C08E74[link]*
 
 image:driven-part3.png[]
 
-*If you ran your application on a distributed Hadoop cluster*, your flow name ("wc") 
+*If you ran your application on a distributed Hadoop cluster*, your flow name ("wc")
 in the timeline view will have a link into how the steps got composed into Mappers
 and Reducers.
 
 image:driven-part3-b.png[]
 
-Click on the step link ("(1/1) output/wc") in the Performance view if you want to 
+Click on the step link ("(1/1) output/wc") in the Performance view if you want to
 explore how your application executed from the Hadoop job dashboard.
 
 [NOTE]
 ===============================
-Driven exposes three views of the DAG -- Logical, Physical and Contracted. The Logical View lets 
-you inspect and visualize the Tap, Pipe and other Cascading constructs that you 
-specified in your code. With Physical View, you can also inspect intermediate Tap 
-and Pipe Assemblies embedded in your code. In our case, we can see that the Retain 
-function was used in the subassembly.  
+Driven exposes three views of the DAG -- Logical, Physical and Contracted. The Logical View lets
+you inspect and visualize the Tap, Pipe and other Cascading constructs that you
+specified in your code. With Physical View, you can also inspect intermediate Tap
+and Pipe Assemblies embedded in your code. In our case, we can see that the Retain
+function was used in the subassembly.
 ===============================
- 
-The bottom half of the screen contains the 'Timeline View', which will give details associated
-with each flow run. You can click on the 'Add Columns' to visualize other signals too. 
 
-To understand how best to understand the timing counters, read 
+The bottom half of the screen contains the 'Timeline View', which will give details associated
+with each flow run. You can click on the 'Add Columns' to visualize other signals too.
+
+To understand how best to understand the timing counters, read
 link:cascading_state.html[Understanding Timing Counters]
 
 Output text gets stored in the partition file `output/wc1` which you can then

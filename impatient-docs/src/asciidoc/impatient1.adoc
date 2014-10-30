@@ -3,7 +3,7 @@
 Part 1 - Distributed file copy
 ------------------------------
 
-The lesson today is how to write a simple Cascading 2.5 app. The goal is clear
+The lesson today is how to write a simple Cascading 2.6 app. The goal is clear
 and concise: create the simplest application possible in Cascading, while
 following best practices. No bangs, no whistles, just good solid code.
 
@@ -77,7 +77,7 @@ a MapReduce job, we prefer to think about apps. Real-world apps tend to use lots
 of job steps. Those are connected and have dependencies, which are typically
 specified by a http://en.wikipedia.org/wiki/Directed_acyclic_graph[directed
 acyclic graph (DAG)]. Cascading uses
-http://docs.cascading.org/cascading/2.5/javadoc/cascading/flow/FlowDef.html[`FlowDef`]
+http://docs.cascading.org/cascading/2.6/javadoc/cascading/flow/FlowDef.html[`FlowDef`]
 objects to define how a MapReduce app - a.k.a., a DAG of MapReduce job steps -
 must be connected.
 
@@ -93,8 +93,8 @@ should be good to go.
 
 If you want to read in more detail about the classes in the Cascading API which
 were used, see the
-http://docs.cascading.org/cascading/2.5/userguide/html/[Cascading 2.5 User
-Guide] and http://docs.cascading.org/cascading/2.5/javadoc/[JavaDoc].
+http://docs.cascading.org/cascading/2.6/userguide/html/[Cascading 2.6 User
+Guide] and http://docs.cascading.org/cascading/2.6/javadoc/[JavaDoc].
 
 Build
 ~~~~~
@@ -106,7 +106,7 @@ To build the sample app from the command line use:
 What you should have at this point is a JAR file which is nearly ready to drop
 into your http://maven.apache.org[Maven] repo - almost. Actually, we provide a
 community jar repository for Cascading libraries and extensions at
-http://conjars.org 
+http://conjars.org
 
 Run
 ~~~
@@ -116,7 +116,7 @@ http://hadoop.apache.org[Apache Hadoop] installed. Here’s what was used to
 develop and test our example code:
 
     $ hadoop version
-    Hadoop 2.2.0
+    Hadoop 2.4.1
 
 Be sure to set your `HADOOP_HOME` environment variable. Then clear the output
 directory (Apache Hadoop insists, if you’re running in standalone mode) and run
@@ -144,9 +144,9 @@ That's it in a nutshell, our simplest app possible in Cascading. Not quite a
 Driven
 ~~~~~~
 
-Let us get started accessing your *Driven* environment. Driven is an 
-application-performance management application that helps you visualize 
-you application development, debugging, performance tuning, monitoring and 
+Let us get started accessing your *Driven* environment. Driven is an
+application-performance management application that helps you visualize
+you application development, debugging, performance tuning, monitoring and
 other operational aspects for data-driven applications built on Cascading.
 
 _Driven is free for developer use on cascading.io._
@@ -155,50 +155,50 @@ To get started, http://cascading.io/try/[download the Driven plugin]
 
 NOTE: *How does Driven work?*
 When you run your Cascading application, the framework underneath instruments
-your code and sends these telemetry signals to your Driven server, which can 
-reside in the Cloud (cascading.io)  or be self-hosted. The Driven plugin, which resides close 
-your application, only sends the operational meta-data to the server for 
+your code and sends these telemetry signals to your Driven server, which can
+reside in the Cloud (cascading.io)  or be self-hosted. The Driven plugin, which resides close
+your application, only sends the operational meta-data to the server for
 analysis and visualization -- _no application data is ever transmitted_. The operational
 meta-data includes the graph it constructs to run the application on the native
 computational fabric (MapReduce, local..) as well as the counter information it
-collects from the run. 
+collects from the run.
 
-Since this is a very elementary application, we will not have much to analyze — we 
-will wait for later parts in the tutorial for that. However, it is important at 
+Since this is a very elementary application, we will not have much to analyze - we
+will wait for later parts in the tutorial for that. However, it is important at
 this stage to learn how to setup and access your Driven environment.
 
-When you execute your application, you will see the URL in your console prompt. 
-Your URL, will of course be different than the one in this screenshot. 
+When you execute your application, you will see the URL in your console prompt.
+Your URL, will of course be different than the one in this screenshot.
 
 image:driven-part1-b.png[]
 
-This URL will give you insights about your application, some of 
+This URL will give you insights about your application, some of
 which we will cover as part of the tutorial. If you have not installed the Driven plugin,
-you can still see how Driven will help you visualize such an application by following the 
- https://driven.cascading.io/driven/4750100B4D434B70BFAD0BA7543FB99A[link]. 
+you can still see how Driven will help you visualize such an application by following the
+ https://driven.cascading.io/driven/4750100B4D434B70BFAD0BA7543FB99A[link].
 
-NOTE: To take advantage of additional features such as comparing your application statistics 
-with historical runs, collaborating with teams, and managing multiple applications, we suggest 
-that you get a free API key at http://cascading.io/register. If you have registered and 
-finished the instructions to install the key, log in at https://driven.cascading.io 
-to visualize your application flow. We will cover cover various features of the Driven 
+NOTE: To take advantage of additional features such as comparing your application statistics
+with historical runs, collaborating with teams, and managing multiple applications, we suggest
+that you get a free API key at http://cascading.io/register. If you have registered and
+finished the instructions to install the key, log in at https://driven.cascading.io
+to visualize your application flow. We will cover cover various features of the Driven
 application in the following tutorials.
 
-image:driven-part1-a.png[] 
+image:driven-part1-a.png[]
 
-We will get additional insights in later parts as we create more complex applications. 
+We will get additional insights in later parts as we create more complex applications.
 From the screenshot, you will see two key components as part of the application developer
 view. The top half will help you visualize the graph associated with your application, showing
 you all the dependencies between different Cascading steps and flows. Clicking on the two
 taps (green circles) will give you additional attribute information, including reference to
-the source code where the Tap was defined. 
+the source code where the Tap was defined.
 
 The bottom half of the screen contains the 'Timeline View', which will give details associated
 with each flow run. You can click on the 'Add Columns' to explore other counters too. As your
 applications get more complex, these counters will help you gain insights if a particular
-run-time behavior is caused by code, the infrastructure, or the network. 
+run-time behavior is caused by code, the infrastructure, or the network.
 
-To understand how best to understand the timing counters, read 
+To understand how best to understand the timing counters, read
 link:cascading_state.html[the following note on timing durations]
 
 Next

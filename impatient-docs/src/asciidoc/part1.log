@@ -1,63 +1,78 @@
-14/02/13 12:27:25 INFO util.HadoopUtil: resolving application jar from found main method on: impatient.Main
-14/02/13 12:27:25 INFO planner.HadoopPlanner: using application jar: /home/fs111/code/concurrent/Impatient/part1/./build/libs/impatient.jar
-14/02/13 12:27:25 INFO property.AppProps: using app.id: C0DC4C28A97B40E48F42364F6EB9FA94
-14/02/13 12:27:25 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-14/02/13 12:27:25 INFO Configuration.deprecation: mapred.jar is deprecated. Instead, use mapreduce.job.jar
-14/02/13 12:27:25 INFO mapred.FileInputFormat: Total input paths to process : 1
-14/02/13 12:27:25 INFO Configuration.deprecation: mapred.used.genericoptionsparser is deprecated. Instead, use mapreduce.client.genericoptionsparser.used
-14/02/13 12:27:25 INFO Configuration.deprecation: mapred.job.tracker is deprecated. Instead, use mapreduce.jobtracker.address
-14/02/13 12:27:25 INFO Configuration.deprecation: mapred.output.compress is deprecated. Instead, use mapreduce.output.fileoutputformat.compress
-14/02/13 12:27:25 INFO util.Version: Concurrent, Inc - Cascading 2.5.2
-14/02/13 12:27:25 INFO flow.Flow: [] starting
-14/02/13 12:27:25 INFO flow.Flow: []  source: Hfs["TextDelimited[['doc_id', 'text']]"]["data/rain.txt"]
-14/02/13 12:27:25 INFO flow.Flow: []  sink: Hfs["TextDelimited[['doc_id', 'text']]"]["output/rain"]
-14/02/13 12:27:25 INFO flow.Flow: []  parallel execution is enabled: false
-14/02/13 12:27:25 INFO flow.Flow: []  starting jobs: 1
-14/02/13 12:27:25 INFO flow.Flow: []  allocating threads: 1
-14/02/13 12:27:25 INFO flow.FlowStep: [] starting step: (1/1) output/rain
-14/02/13 12:27:25 INFO Configuration.deprecation: session.id is deprecated. Instead, use dfs.metrics.session-id
-14/02/13 12:27:25 INFO jvm.JvmMetrics: Initializing JVM Metrics with processName=JobTracker, sessionId=
-14/02/13 12:27:26 INFO jvm.JvmMetrics: Cannot initialize JVM Metrics with processName=JobTracker, sessionId= - already initialized
-14/02/13 12:27:26 INFO Configuration.deprecation: mapred.input.dir is deprecated. Instead, use mapreduce.input.fileinputformat.inputdir
-14/02/13 12:27:26 INFO mapred.FileInputFormat: Total input paths to process : 1
-14/02/13 12:27:26 INFO mapreduce.JobSubmitter: number of splits:1
-14/02/13 12:27:26 INFO Configuration.deprecation: user.name is deprecated. Instead, use mapreduce.job.user.name
-14/02/13 12:27:26 INFO Configuration.deprecation: mapred.reduce.tasks is deprecated. Instead, use mapreduce.job.reduces
-14/02/13 12:27:26 INFO Configuration.deprecation: mapred.output.value.class is deprecated. Instead, use mapreduce.job.output.value.class
-14/02/13 12:27:26 INFO Configuration.deprecation: mapred.output.key.comparator.class is deprecated. Instead, use mapreduce.job.output.key.comparator.class
-14/02/13 12:27:26 INFO Configuration.deprecation: mapred.job.name is deprecated. Instead, use mapreduce.job.name
-14/02/13 12:27:26 INFO Configuration.deprecation: mapred.output.dir is deprecated. Instead, use mapreduce.output.fileoutputformat.outputdir
-14/02/13 12:27:26 INFO Configuration.deprecation: mapred.map.tasks is deprecated. Instead, use mapreduce.job.maps
-14/02/13 12:27:26 INFO Configuration.deprecation: mapred.output.key.class is deprecated. Instead, use mapreduce.job.output.key.class
-14/02/13 12:27:26 INFO Configuration.deprecation: mapred.working.dir is deprecated. Instead, use mapreduce.job.working.dir
-14/02/13 12:27:26 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_local1608633790_0001
-14/02/13 12:27:26 WARN conf.Configuration: file:/tmp/hadoop-fs111/mapred/staging/fs1111608633790/.staging/job_local1608633790_0001/job.xml:an attempt to override final parameter: mapreduce.job.end-notification.max.retry.interval;  Ignoring.
-14/02/13 12:27:26 WARN conf.Configuration: file:/tmp/hadoop-fs111/mapred/staging/fs1111608633790/.staging/job_local1608633790_0001/job.xml:an attempt to override final parameter: mapreduce.job.end-notification.max.attempts;  Ignoring.
-14/02/13 12:27:26 WARN conf.Configuration: file:/tmp/hadoop-fs111/mapred/local/localRunner/fs111/job_local1608633790_0001/job_local1608633790_0001.xml:an attempt to override final parameter: mapreduce.job.end-notification.max.retry.interval;  Ignoring.
-14/02/13 12:27:26 WARN conf.Configuration: file:/tmp/hadoop-fs111/mapred/local/localRunner/fs111/job_local1608633790_0001/job_local1608633790_0001.xml:an attempt to override final parameter: mapreduce.job.end-notification.max.attempts;  Ignoring.
-14/02/13 12:27:26 INFO mapreduce.Job: The url to track the job: http://localhost:8080/
-14/02/13 12:27:26 INFO mapred.LocalJobRunner: OutputCommitter set in config null
-14/02/13 12:27:26 INFO flow.FlowStep: [] submitted hadoop job: job_local1608633790_0001
-14/02/13 12:27:26 INFO flow.FlowStep: [] tracking url: http://localhost:8080/
-14/02/13 12:27:26 INFO mapred.LocalJobRunner: OutputCommitter is org.apache.hadoop.mapred.FileOutputCommitter
-14/02/13 12:27:26 INFO mapred.LocalJobRunner: Waiting for map tasks
-14/02/13 12:27:26 INFO mapred.LocalJobRunner: Starting task: attempt_local1608633790_0001_m_000000_0
-14/02/13 12:27:26 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
-14/02/13 12:27:26 INFO io.MultiInputSplit: current split input path: file:/home/fs111/code/concurrent/Impatient/part1/data/rain.txt
-14/02/13 12:27:26 INFO mapred.MapTask: Processing split: cascading.tap.hadoop.io.MultiInputSplit@7a22ce00
-14/02/13 12:27:26 INFO mapred.MapTask: numReduceTasks: 0
-14/02/13 12:27:26 INFO hadoop.FlowMapper: cascading version: 2.5.2
-14/02/13 12:27:26 INFO hadoop.FlowMapper: child jvm opts: -Xmx200m
-14/02/13 12:27:26 INFO Configuration.deprecation: mapred.task.partition is deprecated. Instead, use mapreduce.task.partition
-14/02/13 12:27:26 INFO hadoop.FlowMapper: sourcing from: Hfs["TextDelimited[['doc_id', 'text']]"]["data/rain.txt"]
-14/02/13 12:27:26 INFO hadoop.FlowMapper: sinking to: Hfs["TextDelimited[['doc_id', 'text']]"]["output/rain"]
-14/02/13 12:27:26 INFO mapred.LocalJobRunner: 
-14/02/13 12:27:26 INFO mapred.Task: Task:attempt_local1608633790_0001_m_000000_0 is done. And is in the process of committing
-14/02/13 12:27:26 INFO mapred.LocalJobRunner: 
-14/02/13 12:27:26 INFO mapred.Task: Task attempt_local1608633790_0001_m_000000_0 is allowed to commit now
-14/02/13 12:27:26 INFO output.FileOutputCommitter: Saved output of task 'attempt_local1608633790_0001_m_000000_0' to file:/home/fs111/code/concurrent/Impatient/part1/output/rain/_temporary/0/task_local1608633790_0001_m_000000
-14/02/13 12:27:26 INFO mapred.LocalJobRunner: file:/home/fs111/code/concurrent/Impatient/part1/data/rain.txt:0+510
-14/02/13 12:27:26 INFO mapred.Task: Task 'attempt_local1608633790_0001_m_000000_0' done.
-14/02/13 12:27:26 INFO mapred.LocalJobRunner: Finishing task: attempt_local1608633790_0001_m_000000_0
-14/02/13 12:27:26 INFO mapred.LocalJobRunner: Map task executor complete.
-14/02/13 12:27:31 INFO util.Hadoop18TapUtil: deleting temp path output/rain/_temporary
+14/10/30 13:45:27 INFO util.HadoopUtil: resolving application jar from found main method on: impatient.Main
+14/10/30 13:45:27 INFO planner.HadoopPlanner: using application jar: /home/fs111/code/concurrent/Impatient/part1/./build/libs/impatient.jar
+14/10/30 13:45:27 INFO property.AppProps: using app.id: B0E55D2175634822A968AB9F17586CA7
+14/10/30 13:45:27 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+14/10/30 13:45:27 INFO management.CascadingServices: loading properties: cascading-service.properties
+14/10/30 13:45:27 INFO management.CascadingServices: loading properties: cascading/management/service.properties, from jar: file:/home/fs111/code/concurrent/driven/driven-plugin/build/libs/driven-plugin-1.1.1-dev-shaded.jar
+14/10/30 13:45:27 INFO mapred.FileInputFormat: Total input paths to process : 1
+14/10/30 13:45:27 INFO provider.ServiceLoader: loading services from library: file:/home/fs111/code/concurrent/driven/driven-plugin/build/libs/driven-plugin-1.1.1-dev-shaded.jar
+14/10/30 13:45:28 INFO rest.BulkUploadClient: using api key 6139CB96E91D4AEB8C7ADB18342F8A93
+14/10/30 13:45:28 INFO rest.DrivenDocumentService: starting service. sending telemetry to https://driven.cascading.io from plugin /home/fs111/code/concurrent/driven/driven-plugin/build/libs/driven-plugin-1.1.1-dev-shaded.jar
+14/10/30 13:45:28 INFO rest.BufferedWriter: archive recording is not enabled
+14/10/30 13:45:29 WARN rest.BulkUploadClient: server version: '1.1-eap-9' does not match plugin version: '1.1.1-dev-4d74256'
+14/10/30 13:45:29 INFO rest.BulkUploadClient: resolved protocol config: {}
+14/10/30 13:45:29 INFO rest.BulkUploadClient: available https://driven.cascading.io
+14/10/30 13:45:29 INFO Configuration.deprecation: mapred.used.genericoptionsparser is deprecated. Instead, use mapreduce.client.genericoptionsparser.used
+14/10/30 13:45:29 INFO Configuration.deprecation: mapred.job.tracker is deprecated. Instead, use mapreduce.jobtracker.address
+14/10/30 13:45:29 INFO Configuration.deprecation: mapred.output.compress is deprecated. Instead, use mapreduce.output.fileoutputformat.compress
+14/10/30 13:45:29 INFO Configuration.deprecation: mapred.map.child.java.opts is deprecated. Instead, use mapreduce.map.java.opts
+14/10/30 13:45:29 INFO Configuration.deprecation: mapred.reduce.child.java.opts is deprecated. Instead, use mapreduce.reduce.java.opts
+14/10/30 13:45:29 INFO Configuration.deprecation: mapred.job.map.memory.mb is deprecated. Instead, use mapreduce.map.memory.mb
+14/10/30 13:45:29 INFO Configuration.deprecation: mapred.job.reduce.memory.mb is deprecated. Instead, use mapreduce.reduce.memory.mb
+14/10/30 13:45:29 INFO util.Version: Concurrent, Inc - Cascading 2.6.0
+14/10/30 13:45:29 INFO flow.Flow: [] starting
+14/10/30 13:45:29 INFO flow.Flow: []  source: Hfs["TextDelimited[['doc_id', 'text']]"]["data/rain.txt"]
+14/10/30 13:45:29 INFO flow.Flow: []  sink: Hfs["TextDelimited[['doc_id', 'text']]"]["output/rain"]
+14/10/30 13:45:29 INFO flow.Flow: []  parallel execution is enabled: false
+14/10/30 13:45:29 INFO flow.Flow: []  starting jobs: 1
+14/10/30 13:45:29 INFO flow.Flow: []  allocating threads: 1
+14/10/30 13:45:29 INFO flow.FlowStep: [] starting step: (1/1) output/rain
+14/10/30 13:45:29 INFO Configuration.deprecation: session.id is deprecated. Instead, use dfs.metrics.session-id
+14/10/30 13:45:29 INFO jvm.JvmMetrics: Initializing JVM Metrics with processName=JobTracker, sessionId=
+14/10/30 13:45:29 INFO jvm.JvmMetrics: Cannot initialize JVM Metrics with processName=JobTracker, sessionId= - already initialized
+14/10/30 13:45:29 INFO mapred.FileInputFormat: Total input paths to process : 1
+14/10/30 13:45:29 INFO rest.DrivenDocumentService: https://driven.cascading.io/driven/B0E55D2175634822A968AB9F17586CA7
+14/10/30 13:45:29 INFO rest.DrivenDocumentService: plugin version 1.1.1-dev-4d74256
+14/10/30 13:45:29 INFO mapreduce.JobSubmitter: number of splits:1
+14/10/30 13:45:30 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_local1587291881_0001
+14/10/30 13:45:30 WARN conf.Configuration: file:/tmp/hadoop-fs111/mapred/staging/fs1111587291881/.staging/job_local1587291881_0001/job.xml:an attempt to override final parameter: mapreduce.job.end-notification.max.retry.interval;  Ignoring.
+14/10/30 13:45:30 WARN conf.Configuration: file:/tmp/hadoop-fs111/mapred/staging/fs1111587291881/.staging/job_local1587291881_0001/job.xml:an attempt to override final parameter: mapreduce.job.end-notification.max.attempts;  Ignoring.
+14/10/30 13:45:30 WARN conf.Configuration: file:/tmp/hadoop-fs111/mapred/local/localRunner/fs111/job_local1587291881_0001/job_local1587291881_0001.xml:an attempt to override final parameter: mapreduce.job.end-notification.max.retry.interval;  Ignoring.
+14/10/30 13:45:30 WARN conf.Configuration: file:/tmp/hadoop-fs111/mapred/local/localRunner/fs111/job_local1587291881_0001/job_local1587291881_0001.xml:an attempt to override final parameter: mapreduce.job.end-notification.max.attempts;  Ignoring.
+14/10/30 13:45:30 INFO mapreduce.Job: The url to track the job: http://localhost:8080/
+14/10/30 13:45:30 INFO mapred.LocalJobRunner: OutputCommitter set in config null
+14/10/30 13:45:30 INFO flow.FlowStep: [] submitted hadoop job: job_local1587291881_0001
+14/10/30 13:45:30 INFO flow.FlowStep: [] tracking url: http://localhost:8080/
+14/10/30 13:45:30 INFO mapred.LocalJobRunner: OutputCommitter is org.apache.hadoop.mapred.FileOutputCommitter
+14/10/30 13:45:30 INFO mapred.LocalJobRunner: Waiting for map tasks
+14/10/30 13:45:30 INFO mapred.LocalJobRunner: Starting task: attempt_local1587291881_0001_m_000000_0
+14/10/30 13:45:30 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
+14/10/30 13:45:30 WARN conf.Configuration: file:/tmp/hadoop-fs111/mapred/staging/fs1111587291881/.staging/job_local1587291881_0001/job.xml:an attempt to override final parameter: mapreduce.job.end-notification.max.retry.interval;  Ignoring.
+14/10/30 13:45:30 WARN conf.Configuration: file:/tmp/hadoop-fs111/mapred/staging/fs1111587291881/.staging/job_local1587291881_0001/job.xml:an attempt to override final parameter: mapreduce.job.end-notification.max.attempts;  Ignoring.
+14/10/30 13:45:30 INFO io.MultiInputSplit: current split input path: file:/home/fs111/code/concurrent/Impatient/part1/data/rain.txt
+14/10/30 13:45:30 INFO mapred.MapTask: Processing split: cascading.tap.hadoop.io.MultiInputSplit@1bae939f
+14/10/30 13:45:30 INFO mapred.MapTask: numReduceTasks: 0
+14/10/30 13:45:30 INFO hadoop.FlowMapper: cascading version: 2.6.0
+14/10/30 13:45:30 INFO hadoop.FlowMapper: child jvm opts: -Xmx200m
+14/10/30 13:45:30 WARN conf.Configuration: file:/tmp/hadoop-fs111/mapred/staging/fs1111587291881/.staging/job_local1587291881_0001/job.xml:an attempt to override final parameter: mapreduce.job.end-notification.max.retry.interval;  Ignoring.
+14/10/30 13:45:30 WARN conf.Configuration: file:/tmp/hadoop-fs111/mapred/staging/fs1111587291881/.staging/job_local1587291881_0001/job.xml:an attempt to override final parameter: mapreduce.job.end-notification.max.attempts;  Ignoring.
+14/10/30 13:45:30 INFO Configuration.deprecation: mapred.task.partition is deprecated. Instead, use mapreduce.task.partition
+14/10/30 13:45:30 INFO hadoop.FlowMapper: sourcing from: Hfs["TextDelimited[['doc_id', 'text']]"]["data/rain.txt"]
+14/10/30 13:45:30 INFO hadoop.FlowMapper: sinking to: Hfs["TextDelimited[['doc_id', 'text']]"]["output/rain"]
+14/10/30 13:45:30 INFO mapred.LocalJobRunner: 
+14/10/30 13:45:30 INFO mapred.Task: Task:attempt_local1587291881_0001_m_000000_0 is done. And is in the process of committing
+14/10/30 13:45:30 INFO mapred.LocalJobRunner: 
+14/10/30 13:45:30 INFO mapred.Task: Task attempt_local1587291881_0001_m_000000_0 is allowed to commit now
+14/10/30 13:45:30 INFO output.FileOutputCommitter: Saved output of task 'attempt_local1587291881_0001_m_000000_0' to file:/home/fs111/code/concurrent/Impatient/part1/output/rain/_temporary/0/task_local1587291881_0001_m_000000
+14/10/30 13:45:30 INFO mapred.LocalJobRunner: file:/home/fs111/code/concurrent/Impatient/part1/data/rain.txt:0+510
+14/10/30 13:45:30 INFO mapred.Task: Task 'attempt_local1587291881_0001_m_000000_0' done.
+14/10/30 13:45:30 INFO mapred.LocalJobRunner: Finishing task: attempt_local1587291881_0001_m_000000_0
+14/10/30 13:45:30 INFO mapred.LocalJobRunner: map task executor complete.
+14/10/30 13:45:30 WARN conf.Configuration: file:/tmp/hadoop-fs111/mapred/staging/fs1111587291881/.staging/job_local1587291881_0001/job.xml:an attempt to override final parameter: mapreduce.job.end-notification.max.retry.interval;  Ignoring.
+14/10/30 13:45:30 WARN conf.Configuration: file:/tmp/hadoop-fs111/mapred/staging/fs1111587291881/.staging/job_local1587291881_0001/job.xml:an attempt to override final parameter: mapreduce.job.end-notification.max.attempts;  Ignoring.
+14/10/30 13:45:30 INFO util.Hadoop18TapUtil: deleting temp path output/rain/_temporary
+14/10/30 13:45:30 INFO state.AppStats: shutdown finalizing app status
+14/10/30 13:45:30 INFO state.AppStats: shutdown hook finished.
+14/10/30 13:45:31 INFO rest.DrivenDocumentService: https://driven.cascading.io/driven/B0E55D2175634822A968AB9F17586CA7
+14/10/30 13:45:31 INFO rest.DrivenDocumentService: plugin version 1.1.1-dev-4d74256
+14/10/30 13:45:31 INFO rest.DrivenDocumentService: stopped document service

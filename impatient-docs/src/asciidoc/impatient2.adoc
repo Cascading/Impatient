@@ -4,15 +4,15 @@ Part 2 - Word count
 -------------------
 
 In our link:impatient1.html[first installment] of this series we showed how to
-create the simplest possible Cascading 2.5 application. If you haven’t read that
+create the simplest possible Cascading 2.6 application. If you haven’t read that
 yet, it’s probably best to start there.
 
 Today’s lesson takes the same app and stretches it a bit further. Undoubtedly
 you’ve seen Word Count before. We’d feel remiss if we did not provide a Word
 Count example. It’s the ``Hello World'' of MapReduce apps. Fortunately, this
 code is one of the basic steps toward developing a implementation of a word
-scoring algorithm such as TF-IDF. How convenient. We’ll also show how to use 
-Cascading to generate a visualization of your MapReduce app. 
+scoring algorithm such as TF-IDF. How convenient. We’ll also show how to use
+Cascading to generate a visualization of your MapReduce app.
 
 Theory
 ~~~~~~
@@ -188,11 +188,11 @@ So that is our Word Count example. Twenty lines of yummy goodness.
 Driven
 ~~~~~~
 
-Now, we will start viewing some interesting details and getting some application insights 
-through Driven. 
+Now, we will start viewing some interesting details and getting some application insights
+through Driven.
 
 *If you have not installed the Driven plugin, you can still explore how Driven
-will visualize Part 2 by visiting this 
+will visualize Part 2 by visiting this
 https://driven.cascading.io/driven/56AB59A8C83E4ABAB50A617B2512600F[link]*
 
 You can inspect the application run either by following the URL provided in system
@@ -200,40 +200,40 @@ command, or visiting http://driven.cascading.io if your registered your key.
 
 image:driven-part2.png[]
 
-1. The first thing you will see is a graph -- Directed Acyclic Graph (DAG) in 
+1. The first thing you will see is a graph -- Directed Acyclic Graph (DAG) in
 formal parlance -- that shows all the steps in your code, and the dependencies.
-The circles represent the Tap, and you can now inspect the function, Group by, 
+The circles represent the Tap, and you can now inspect the function, Group by,
 and the count function used by your code by clicking on each step.
 2. Click on each step of the DAG. You will see additional details about the specific
-operator, and the reference to  the line of the code where the that step was 
+operator, and the reference to  the line of the code where the that step was
 invoked.
-3. The timeline chart visualizes how the application executed in your environment. You 
-can see details about the time taken by the flow to execute, and get additional 
+3. The timeline chart visualizes how the application executed in your environment. You
+can see details about the time taken by the flow to execute, and get additional
 insights by clicking on "Add Columns" button.
 4. If you executed your application on the Hadoop cluster in a distributed mode,
 you will get additional insights regarding how your Cascading flows mapped into mappers
-and reducers. Note, that the 'Performance View' is only available if you ran your 
+and reducers. Note, that the 'Performance View' is only available if you ran your
 application on Hadoop (distributed mode)
 5. In the timeline view, click on the your flow name link ("wc"). You will see how
  your application logic got decomposed into the mapper (regex function and Group By),
-and what part of your application logic became part of the Reducer (of course, the count). 
-You can also see how many slices were created for the shard. 
+and what part of your application logic became part of the Reducer (of course, the count).
+You can also see how many slices were created for the shard.
 
 image:driven-part2-c.png[]
 
-As your applications become more complex, the 'Performance View' becomes seminal in 
-understanding the behavior of your application. 
+As your applications become more complex, the 'Performance View' becomes seminal in
+understanding the behavior of your application.
 
-*If you registered and configured the Driven API key*, you will also have an 
-“All Application” view, where we can see all the applications that are 
-running, or have run in the Hadoop cluster for a given user. You can customize 
-the view to display additional attributes such as application name, ID, 
-owner. In addition, you can customize the view to filter the information 
+*If you registered and configured the Driven API key*, you will also have an
+“All Application” view, where we can see all the applications that are
+running, or have run in the Hadoop cluster for a given user. You can customize
+the view to display additional attributes such as application name, ID,
+owner. In addition, you can customize the view to filter the information
 based on status and dates.
 
 image:driven-part2-b.png[]
 
-To understand how best to understand the timing counters, read 
+To understand how best to understand the timing counters, read
 link:cascading_state.html[Understanding Timing Counters]
 
 Next

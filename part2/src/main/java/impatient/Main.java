@@ -23,8 +23,9 @@ package impatient;
 import java.util.Properties;
 
 import cascading.flow.Flow;
+import cascading.flow.FlowConnector;
 import cascading.flow.FlowDef;
-import cascading.flow.hadoop.HadoopFlowConnector;
+import cascading.flow.hadoop2.Hadoop2MR1FlowConnector;
 import cascading.operation.aggregator.Count;
 import cascading.operation.regex.RegexSplitGenerator;
 import cascading.pipe.Each;
@@ -49,7 +50,7 @@ public class
 
     Properties properties = new Properties();
     AppProps.setApplicationJarClass( properties, Main.class );
-    HadoopFlowConnector flowConnector = new HadoopFlowConnector( properties );
+    FlowConnector flowConnector = new Hadoop2MR1FlowConnector( properties );
 
     // create source and sink taps
     Tap docTap = new Hfs( new TextDelimited( true, "\t" ), docPath );

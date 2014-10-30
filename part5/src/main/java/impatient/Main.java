@@ -23,8 +23,9 @@ package impatient;
 import java.util.Properties;
 
 import cascading.flow.Flow;
+import cascading.flow.FlowConnector;
 import cascading.flow.FlowDef;
-import cascading.flow.hadoop.HadoopFlowConnector;
+import cascading.flow.hadoop2.Hadoop2MR1FlowConnector;
 import cascading.operation.Insert;
 import cascading.operation.expression.ExpressionFunction;
 import cascading.operation.regex.RegexFilter;
@@ -60,7 +61,7 @@ public class
 
     Properties properties = new Properties();
     AppProps.setApplicationJarClass( properties, Main.class );
-    HadoopFlowConnector flowConnector = new HadoopFlowConnector( properties );
+    FlowConnector flowConnector = new Hadoop2MR1FlowConnector( properties );
 
     // create source and sink taps
     Tap docTap = new Hfs( new TextDelimited( true, "\t" ), docPath );
@@ -116,7 +117,7 @@ public class
     dfPipe = new Rename( dfPipe, token, df_token );
     dfPipe = new Each( dfPipe, new Insert( lhs_join, 1 ), Fields.ALL );
 
-    // join to bring together all the components for calculating TF-IDF 
+    // join to bring together all the components for calculating TF-IDF
     // the D side of the join is smaller, so it goes on the RHS
     Pipe idfPipe = new HashJoin( dfPipe, lhs_join, dPipe, rhs_join );
 
@@ -136,7 +137,7 @@ public class
 
     // keep track of the word counts, which are useful for QA
     Pipe wcPipe = new Pipe( "wc", tfPipe );
-  
+
     Fields count = new Fields( "count" );
     wcPipe = new SumBy( wcPipe, tf_token, tf_count, count, long.class );
     wcPipe = new Rename( wcPipe, tf_token, token );
