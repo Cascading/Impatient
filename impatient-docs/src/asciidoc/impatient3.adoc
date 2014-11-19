@@ -178,7 +178,7 @@ with each flow run. You can click on the 'Add Columns' to visualize other signal
 To understand how best to understand the timing counters, read
 link:cascading_state.html[Understanding Timing Counters]
 
-Output text gets stored in the partition file `output/wc1` which you can then
+Output text gets stored in the partition file `output/wc` which you can then
 verify:
 
     more output/wc/part-00000

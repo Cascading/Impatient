@@ -26,18 +26,14 @@ import cascading.flow.Flow;
 import cascading.flow.FlowConnector;
 import cascading.flow.FlowDef;
 import cascading.flow.hadoop2.Hadoop2MR1FlowConnector;
-import cascading.operation.aggregator.Count;
-import cascading.operation.regex.RegexSplitGenerator;
-import cascading.pipe.Each;
-import cascading.pipe.Every;
-import cascading.pipe.GroupBy;
+import cascading.fluid.Fluid;
+import cascading.fluid.api.assembly.Assembly.AssemblyBuilder;
 import cascading.pipe.Pipe;
 import cascading.property.AppProps;
 import cascading.scheme.hadoop.TextDelimited;
 import cascading.tap.Tap;
 import cascading.tap.hadoop.Hfs;
 import cascading.tuple.Fields;
-
 
 public class
   Main
@@ -56,23 +52,33 @@ public class
     Tap docTap = new Hfs( new TextDelimited( true, "\t" ), docPath );
     Tap wcTap = new Hfs( new TextDelimited( true, "\t" ), wcPath );
 
-    // specify a regex operation to split the "document" text lines into a token stream
-    Fields token = new Fields( "token" );
-    Fields text = new Fields( "text" );
-    RegexSplitGenerator splitter = new RegexSplitGenerator( token, "[ \\[\\]\\(\\),.]" );
-    // only returns "token"
-    Pipe docPipe = new Each( "token", text, splitter, Fields.RESULTS );
+    AssemblyBuilder.Start builder = Fluid.assembly();
 
-    // determine the word counts
-    Pipe wcPipe = new Pipe( "wc", docPipe );
-    wcPipe = new GroupBy( wcPipe, token );
-    wcPipe = new Every( wcPipe, Fields.ALL, new Count(), Fields.ALL );
+    // only returns "token"
+    Pipe docPipe = builder
+      .startBranch( "token" )
+      .each( Fluid.fields( "text" ) )
+      .function(
+        Fluid.function()
+          // specify a regex operation to split the "document" text lines into a token stream
+          .RegexSplitGenerator().fieldDeclaration( Fluid.fields( "token" ) ).patternString( "[ \\[\\]\\(\\),.]" ).end()
+      )
+      .outgoing( Fields.RESULTS )
+      .groupBy( Fluid.fields( "token" ) )
+      .every( Fields.ALL )
+      .aggregator(
+        Fluid.aggregator()
+          .Count( Fluid.fields( "count" ) )
+      )
+      .outgoing( Fields.ALL )
+      .completeGroupBy()
+      .completeBranch();
 
     // connect the taps, pipes, etc., into a flow
     FlowDef flowDef = FlowDef.flowDef()
-     .setName( "wc" )
-     .addSource( docPipe, docTap )
-     .addTailSink( wcPipe, wcTap );
+      .setName( "wc" )
+      .addSource( "token", docTap )
+      .addTailSink( docPipe, wcTap );
 
     // write a DOT file and run the flow
     Flow wcFlow = flowConnector.connect( flowDef );

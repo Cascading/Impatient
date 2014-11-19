@@ -32,12 +32,16 @@ repositories {
   mavenLocal()
   mavenCentral()
   maven{ url 'http://conjars.org/repo/' }
+  maven{ url 'http://www.unquietcode.com/maven/releases' }
 }
 
-ext.cascadingVersion = '2.6.0'
-ext.hadoopVersion = '2.4.1'
+def fluidVersion = '1.0.0-wip-10'
+def cascadingVersion = '2.6.1'
+def hadoopVersion = '2.4.1'
 
 dependencies {
+  compile( group: 'cascading', name: 'fluid-api', version: fluidVersion )
+  compile( group: 'cascading', name: 'fluid-cascading26', version: fluidVersion )
   compile group: 'cascading', name: 'cascading-core', version: cascadingVersion
   compile group: 'cascading', name: 'cascading-hadoop2-mr1', version: cascadingVersion
   providedCompile group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: hadoopVersion // resolves issue with jdk1.7

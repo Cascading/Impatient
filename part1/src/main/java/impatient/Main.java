@@ -25,12 +25,12 @@ import java.util.Properties;
 import cascading.flow.FlowConnector;
 import cascading.flow.FlowDef;
 import cascading.flow.hadoop2.Hadoop2MR1FlowConnector;
+import cascading.fluid.Fluid;
 import cascading.pipe.Pipe;
 import cascading.property.AppProps;
 import cascading.scheme.hadoop.TextDelimited;
 import cascading.tap.Tap;
 import cascading.tap.hadoop.Hfs;
-
 
 public class
   Main
@@ -52,12 +52,14 @@ public class
     Tap outTap = new Hfs( new TextDelimited( true, "\t" ), outPath );
 
     // specify a pipe to connect the taps
-    Pipe copyPipe = new Pipe( "copy" );
+    Pipe copyPipe = Fluid.assembly()
+      .startBranch( "copy" )
+      .completeBranch();
 
     // connect the taps, pipes, etc., into a flow
     FlowDef flowDef = FlowDef.flowDef()
-     .addSource( copyPipe, inTap )
-     .addTailSink( copyPipe, outTap );
+      .addSource( copyPipe, inTap )
+      .addTailSink( copyPipe, outTap );
 
     // run the flow
     flowConnector.connect( flowDef ).complete();

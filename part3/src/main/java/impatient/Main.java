@@ -26,19 +26,14 @@ import cascading.flow.Flow;
 import cascading.flow.FlowConnector;
 import cascading.flow.FlowDef;
 import cascading.flow.hadoop2.Hadoop2MR1FlowConnector;
-import cascading.operation.aggregator.Count;
-import cascading.operation.regex.RegexSplitGenerator;
-import cascading.pipe.Each;
-import cascading.pipe.Every;
-import cascading.pipe.GroupBy;
+import cascading.fluid.Fluid;
+import cascading.fluid.api.assembly.Assembly.AssemblyBuilder;
 import cascading.pipe.Pipe;
-import cascading.pipe.assembly.Retain;
 import cascading.property.AppProps;
 import cascading.scheme.hadoop.TextDelimited;
 import cascading.tap.Tap;
 import cascading.tap.hadoop.Hfs;
 import cascading.tuple.Fields;
-
 
 public class
   Main
@@ -57,28 +52,37 @@ public class
     Tap docTap = new Hfs( new TextDelimited( true, "\t" ), docPath );
     Tap wcTap = new Hfs( new TextDelimited( true, "\t" ), wcPath );
 
-    // specify a regex operation to split the "document" text lines into a token stream
-    Fields token = new Fields( "token" );
-    Fields text = new Fields( "text" );
-    RegexSplitGenerator splitter = new RegexSplitGenerator( token, "[ \\[\\]\\(\\),.]" );
-    Fields fieldSelector = new Fields( "doc_id", "token" );
-    Pipe docPipe = new Each( "token", text, splitter, fieldSelector );
+    AssemblyBuilder.Start builder = Fluid.assembly();
 
-    // define "ScrubFunction" to clean up the token stream
-    Fields scrubArguments = new Fields( "doc_id", "token" );
-    docPipe = new Each( docPipe, scrubArguments, new ScrubFunction( scrubArguments ), Fields.RESULTS );
-
-    // determine the word counts
-    Pipe wcPipe = new Pipe( "wc", docPipe );
-    wcPipe = new Retain( wcPipe, token );
-    wcPipe = new GroupBy( wcPipe, token );
-    wcPipe = new Every( wcPipe, Fields.ALL, new Count(), Fields.ALL );
+    Pipe docPipe = builder
+      .startBranch( "token" )
+      .each( Fluid.fields( "text" ) )
+      .function(
+        Fluid.function()
+          // specify a regex operation to split the "document" text lines into a token stream
+          .RegexSplitGenerator().fieldDeclaration( Fluid.fields( "token" ) ).patternString( "[ \\[\\]\\(\\),.]" ).end()
+      )
+      .outgoing( Fluid.fields( "doc_id", "token" ) )
+      .each( Fluid.fields( "doc_id", "token" ) ).function(
+        new ScrubFunction( Fields.ARGS ) // define "ScrubFunction" to clean up the token stream
+      )
+      .outgoing( Fields.RESULTS )
+      .retain( Fluid.fields( "token" ) )
+      .groupBy( Fluid.fields( "token" ) ) // determine the word counts
+      .every( Fields.ALL )
+      .aggregator(
+        Fluid.aggregator()
+          .Count( Fluid.fields( "count" ) )
+      )
+      .outgoing( Fields.ALL )
+      .completeGroupBy()
+      .completeBranch();
 
     // connect the taps, pipes, etc., into a flow
     FlowDef flowDef = FlowDef.flowDef()
-     .setName( "wc" )
-     .addSource( docPipe, docTap )
-     .addTailSink( wcPipe, wcTap );
+      .setName( "wc" )
+      .addSource( docPipe, docTap )
+      .addTailSink( docPipe, wcTap );
 
     // write a DOT file and run the flow
     Flow wcFlow = flowConnector.connect( flowDef );
