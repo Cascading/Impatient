@@ -42,8 +42,7 @@ If you have a question or run into any problems send an email to the [cascading-
 * Physical plan: 11 Mappers, 8 Reducers
 
 ### Part 7
-* Implements switch to run the example in local mode (without Apache Hadoop)
-* Uses an R script to analyze/visualize the results
+This example is currently not implemented.
 
 ### Part 8
 * Scalding equivalents of previous examples in Cascading
