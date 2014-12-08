@@ -32,10 +32,9 @@ repositories {
   mavenLocal()
   mavenCentral()
   maven{ url 'http://conjars.org/repo/' }
-  maven{ url 'http://www.unquietcode.com/maven/releases' }
 }
 
-def fluidVersion = '1.0.0-wip-10'
+def fluidVersion = '1.0.0'
 def cascadingVersion = '2.6.1'
 def hadoopVersion = '2.4.1'
 
