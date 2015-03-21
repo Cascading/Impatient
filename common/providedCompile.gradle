@@ -25,7 +25,7 @@ configurations {
 }
 
 sourceSets {
-  main.compileClasspath += configurations.providedCompile
+  main.compileClasspath += [configurations.providedCompile]
 }
 
 task mappings {
@@ -34,17 +34,17 @@ task mappings {
 
 idea {
   module {
-    scopes.PROVIDED.plus += configurations.providedCompile
+    scopes.PROVIDED.plus += [configurations.providedCompile]
   }
 }
 
 javadoc {
-  classpath += configurations.providedCompile
+  classpath += [configurations.providedCompile]
 }
 
 eclipse {
     classpath{
-        plusConfigurations += configurations.providedCompile
+        plusConfigurations += [configurations.providedCompile]
     }
 }
 
