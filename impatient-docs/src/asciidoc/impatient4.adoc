@@ -4,16 +4,16 @@ Part 4 - Implementing a Stop Word Filter
 ---------------------------------------
 
 In the previous installement we showed how to write a custom
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/operation/package-summary.html[Operation]
-for a Cascading application. If you haven’t read that yet, it’s probably
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/operation/package-summary.html[Operation]
+for a Cascading application. If you have not read that yet, it is probably
 best to start there.
 
-Today’s lesson takes that same Word Count app and expands on it to implement a
+Today's lesson takes that same Word Count app and expands on it to implement a
 http://en.wikipedia.org/wiki/Stop_words[stop words] filter, which is a list of
-tokens to nix from the stream. We’ll show how to use
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/pipe/HashJoin.html[HashJoin]
+tokens to nix from the stream. We'll show how to use
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/pipe/HashJoin.html[HashJoin]
 on two pipes, so we can perform that filtering at scale. Again, this code is
-leading toward an implementation of TF-IDF in Cascading. We’ll show best
+leading toward an implementation of TF-IDF in Cascading. We'll show best
 practices for workflow orchestration and test-driven development (TDD) at scale.
 
 Theory
@@ -42,18 +42,18 @@ On the other hand, you may also want to remove some words explicitly from the
 token stream. This almost always comes up in practice, especially when working
 with public discussions such as social network comments. Think about it, what
 are some of the most common words posted online in comments? Words which are not
-the most common words in “polite” English? Based on the math for TF-IDF, those
+the most common words in 'polite' English? Based on the math for TF-IDF, those
 would tend to get ranked highest. Do you really want those words to bubble up to
-the “most significant” positions in your text analytics? In automated systems
+the 'most significant' positions in your text analytics? In automated systems
 which leverage http://en.wikipedia.org/wiki/Unsupervised_learning[unsupervised
 learning], this can lead to *highly embarrassing* situations. _Caveat
 machinator_.
 
 Next, let's consider about working with a
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/pipe/joiner/package-summary.html[Joiner]
-in Cascading. We will have two pipes, one for the “scrubbed” token stream and
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/pipe/joiner/package-summary.html[Joiner]
+in Cascading. We will have two pipes, one for the 'scrubbed' token stream and
 another for the stop words list.  We want to filter all instances of tokens from
-the stop words list out of the token stream. If we weren’t working in MapReduce,
+the stop words list out of the token stream. If we were not working in MapReduce,
 a naive approach would simply load the stop words list into a hashtable, then
 iterate through our token stream to lookup each token in the hashtable and
 delete it if found. If we were coding in Hadoop directly, a less naive approach
@@ -63,9 +63,9 @@ cache] and have a job step which loads it during setup, then rinse/lather/repeat
 from the naive coding approach described above.
 
 Instead we want to leverage the workflow orchestration in Cascading. One might
-try to write a custom operation in Cascading, as we did in Part 3 — e.g., a
+try to write a custom operation in Cascading, as we did in Part 3 e.g., a
 custom
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/operation/filter/package-summary.html[Filter].
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/operation/filter/package-summary.html[Filter].
 That sounds like extra work, plus also extra code to verify and maintain, when
 the built-in primatives will to tend to be more efficient anyway.
 
@@ -81,8 +81,8 @@ Suppose you have *N* items in one tuple stream and *M* items in another, and wan
 to join them? In the general case, for an arbitrary join, that requires *N x M*
 operations and also introduces a data dependeny, such that the join cannot be
 performed in parallel. If both *N* and *M* are relatively large, say in the
-millions of tuples, then we’d end up processing *10^12* operations on a single
-processor — which kind of defeats the purpose, in terms of leveraging
+millions of tuples, then we'd end up processing *10^12* operations on a single
+processor which kind of defeats the purpose, in terms of leveraging
 MapReduce.
 
 Fortunately, if some of that data is
@@ -96,7 +96,7 @@ memory.
 
 A join has a left-hand side (LHS) and a right-hand side (RHS); in Cascading we
 put the sparser data on the right-hand side. So the
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/pipe/HashJoin.html[HashJoin]
+http://docs.cascading.org/cascading/2.7/javadoc/cascading/pipe/HashJoin.html[HashJoin]
 implements a non-blocking ``asymmetrical join'' or ``replicated join'', where the
 left-most side will not block (accumulate into memory) in order to complete the
 join, but the right-most sides will.
@@ -131,8 +131,8 @@ Fields stop = new Fields( "stop" );
 Tap stopTap = new Hfs( new TextDelimited( stop, true, "\t" ), stopPath );
 ----
 
-Next we’ll insert another pipe into the assembly, placing `tokenPipe` between our
-“scrub” and “count” sections of our workflow. That’s where the HashJoin gets
+Next we'll insert another pipe into the assembly, placing `tokenPipe` between our
+'scrub' and 'count' sections of our workflow. That's where the HashJoin gets
 performed, implementing a left join:
 
 [source,java]
@@ -144,7 +144,7 @@ Pipe tokenPipe = new HashJoin( docPipe, token, stopPipe, stop, new LeftJoin() );
 ----
 
 Next we discard the non-null results from the left join, using a
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/operation/regex/RegexFilter.html[RegexFilter]:
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/operation/regex/RegexFilter.html[RegexFilter]:
 
 [source,java]
 ----
@@ -159,7 +159,7 @@ before. The workflow continues on much the same from there:
 Pipe wcPipe = new Pipe( "wc", tokenPipe );
 ----
 
-Last, we’ll add the additional source tap to the `FlowDef`, to include input data
+Last, we'll add the additional source tap to the `FlowDef`, to include input data
 for our stop words list:
 
 [source,java]
@@ -209,7 +209,7 @@ Driven by following this https://driven.cascading.io/driven/1AE69BD0641146EFB926
 [NOTE]
 ===============================
 If you registered at http://cascading.io and installed the Driven API key, you will 
-have accces to the “All Applications” view that tracks all your historical application
+have accces to the 'All Applications' view that tracks all your historical application
 runs. This view starts becoming interesting over a period of time when you want to 
 track trending, identify outlier behavior, or monitor applications based on their 
 termination status
@@ -227,7 +227,7 @@ Output text gets stored in the partition file `output/wc` which you can then ver
 
     more output/wc/part-00000
 
-Here’s a link:part4.log[log] file from our run of the
+Here is a link:part4.log[log] file from our run of the
 sample app, part 4. If your run looks terribly different, something is probably
 not set up correctly. Drop us a line on the
 https://groups.google.com/forum/#!forum/cascading-user[cascading-user] email forum.

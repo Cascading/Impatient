@@ -1,7 +1,7 @@
 # Cascading for the Impatient
 
 The Impatient series is a set of tutorials to get you started with
-http://cascading.org/[Cascading 2.6].
+http://cascading.org/[Cascading].
 
 This set of progressive coding examples starts with a simple file copy and
 builds up to a MapReduce implementation of the TF-IDF algorithm.
@@ -37,7 +37,7 @@ with the Driven application. To use Driven, the Driven Plugin must be on the run
 classpath for your Cascading application. 
 
 The cloud version of Driven is free for developer use. To get started using Driven, 
-visit http://docs.cascading.io/driven/1.0/getting-started/index.html[Getting Started with Driven] to access all the 
+visit http://docs.cascading.io/driven/1.1/getting-started/index.html[Getting Started with Driven] to access all the 
 developer features and gain visibility into your Cascading applications (including apps 
 built with Scalding, Cascalog, Lingual, Pattern or any other Cascading dynamic programming language).
 
@@ -62,11 +62,11 @@ http://docs.cascading.io/driven/1.0/getting-started/index.html[Getting Started w
 Gradle
 ~~~~~~
 
-Everything has been tested with gradle 1.11. You can check your version of gradle
+Everything has been tested with gradle 1.12. You can check your version of gradle
 
     $ gradle -v
     ------------------------------------------------------------
-    Gradle 1.11
+    Gradle 1.12
     ------------------------------------------------------------
     ...
 

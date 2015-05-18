@@ -5,17 +5,17 @@ Part 6 - TDD at scale
 
 This part of the Impatient series. extends the TF-IDF app to show best practices for
 http://en.wikipedia.org/wiki/Test-driven_development[test-driven development
-(TDD)] at scale. We’ll incorporate unit tests into the build (should have done
+(TDD)] at scale. We will incorporate unit tests into the build (should have done
 so sooner), plus show how to leverage TDD features which are unique to
 Cascading: checkpoints, traps, assertions, etc. These features are based on
 using
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/pipe/Checkpoint.html[Checkpoint],
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/operation/Debug.html[Debug], and 
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/operation/assertion/AssertMatches.html[AssertMatches].
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/pipe/Checkpoint.html[Checkpoint],
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/operation/Debug.html[Debug], and 
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/operation/assertion/AssertMatches.html[AssertMatches].
 
-We’ll keep building on this example to show how to leverage
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/flow/local/package-summary.html[“local
-mode”].
+We will keep building on this example to show how to leverage
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/flow/local/package-summary.html['local
+mode'].
 
 Theory
 ~~~~~~
@@ -31,14 +31,14 @@ Stated in a different way, according to Kent Beck, TDD ``encourages simple
 designs and inspires confidence.'' That statement does actually fit well with
 Cascading. The API is intended to provide simple design patterns for working
 with data - _GroupBy_, _Join_, _Count_, _Regex_, _Filter_ - so that the need for writing
-custom functions becomes relatively rare. That speaks to “encouraging simple
-designs” directly. The practice in Cascading of modeling business process and
+custom functions becomes relatively rare. That speaks to encouraging simple
+designs directly. The practice in Cascading of modeling business process and
 orchestrating MapReduce workflows - that speaks to ``inspiring confidence'' in a
 big way.
 
-So now we’ll let the cat out of the bag for a little secret... Working with
+So now we will let the cat out of the bag for a little secret... Working with
 unstructured data at scale has been shown to be quite valuable (Google, Amazon,
-LinkedIn, Twitter, etc.) however most of the “heavy lifting” which we perform in
+LinkedIn, Twitter, etc.) however most of the 'heavy lifting' which we perform in
 MapReduce workflows is essentially cleaning up data. DJ Patil explained this
 point quite eloquently in
 http://radar.oreilly.com/2012/07/data-jujitsu.html[Data Jujitsu]: ``It’s
@@ -61,35 +61,35 @@ write a quick unit test for a Godzilla-sized dataset?
 
 The short answer is: you don't. However, you can greatly reduce the need for
 writing unit test coverage by limiting the amount of custom code required.
-Hopefully we’ve shown that aspect of Cascading by now. Beyond that aspect, you
+Hopefully we have shown that aspect of Cascading by now. Beyond that aspect, you
 can use sampling techniques to quantify the confidence for an app running
 correctly. You can also define system tests at scale in relatively simple ways.
 Furthermore, you can define contingencies for _what to do when assumptions
 fail..._ as they inevitably do, at scale.
 
-Let’s discuss sampling... generally speaking, large MapReduce workflows are
+Let's discuss sampling... generally speaking, large MapReduce workflows are
 relatively opaque processes which are difficult to observe. However, Cascading
 provides two techniques for observing portions of a workflow. One very simple
 approach is to insert a
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/operation/Debug.html[Debug]
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/operation/Debug.html[Debug]
 into a pipe, to see the tuple values passing through a particular part of a
 workflow. Debug output goes to the log instead of a file, but it can be turned
 off, e.g., with a command line option. If the data is large, one can use a
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/operation/filter/Sample.html[Sample]
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/operation/filter/Sample.html[Sample]
 filter to sample the tuple values which get written to the log.
 
 Another approach is to use a
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/pipe/Checkpoint.html[Checkpoint],
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/pipe/Checkpoint.html[Checkpoint],
 which forces intermediate data to be written out to HDFS. This may also become
 important for performance reasons, i.e., forcing results to disk to avoid
 recomputing – e.g., when there are multiple uses for the output of a pipe
 downstream such as with the right side of a
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/pipe/HashJoin.html[HashJoin].
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/pipe/HashJoin.html[HashJoin].
 Sampling may be performed either before (like with Debug) or after the data gets
 persisted to HDFS.
 
 Next, let's talk about system tests. Cascading include support for
-http://docs.cascading.org/cascading/2.6/userguide/htmlsingle/#N2148A[stream
+http://docs.cascading.org/cascading/2.7/userguide/htmlsingle/#N2148A[stream
 assertions]. These provide mechanisms for asserting that the values in a tuple
 stream meet certain criteria - similar to the `assert` keyword in Java, or an
 `assertNotNull()` in a unit test. We can assert patterns strictly as unit tests
@@ -105,10 +105,10 @@ traps] which capture data that causes an Operation to fail, e.g., throw
 an Exception. For example, perhaps 99% of the cases in your log files can be
 rolled up into a set of standard reports... but 1% requires manual review. Great,
 process the 99% which work and shunt the 1% failure cases into a special file,
-marked “for manual review”. Keep in mind, however, that traps are intended for
+marked for manual review. Keep in mind, however, that traps are intended for
 handling exceptional cases. If you know in advance how to categorize good vs.
 bad data, then use a
-http://docs.cascading.org/cascading/2.6/userguide/html/ch11s09.html[filter
+http://docs.cascading.org/cascading/2.7/userguide/html/ch11s09.html[filter
 instead of a trap].
 
 Meanwhile, a conceptual diagram for this implementation of TF-IDF in Cascading
@@ -127,9 +127,9 @@ and other testing dependencies:
 
 [source,groovy]
 ----
-testCompile group: 'cascading', name: 'cascading-platform', version: "2.6.0", classifier: 'tests'
-testCompile group: 'cascading', name: 'cascading-hadoop2-mr1', version: "2.6.0", classifier: 'tests'
-testCompile group: 'cascading', name: 'cascading-core', version: "2.6.0", classifier: 'tests'
+testCompile group: 'cascading', name: 'cascading-platform', version: "2.7.0", classifier: 'tests'
+testCompile group: 'cascading', name: 'cascading-hadoop2-mr1', version: "2.7.0", classifier: 'tests'
+testCompile group: 'cascading', name: 'cascading-core', version: "2.7.0", classifier: 'tests'
 
 testCompile group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: "2.4.1"
 testCompile group: 'org.apache.hadoop', name: 'hadoop-minicluster', version: "2.4.1"
@@ -138,7 +138,7 @@ testCompile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'
 testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.5'
 ----
 
-Then we’ll add a test task:
+Then we will add a test task:
 
 [source,groovy]
 ----
@@ -156,9 +156,9 @@ test {
 }
 ----
 
-A little restructuring of the source directories is requried – see our GitHub
-code repo, where it’s all set up property. Then we add a unit test for our
-custom function to “scrub” tokens, which was created in Part 3. This goes into
+A little restructuring of the source directories is required see our GitHub
+code repo, where it iss all set up property. Then we add a unit test for our
+custom function to 'scrub' tokens, which was created in Part 3. This goes into
 a new class `ScrubTest.java`:
 
 
@@ -181,7 +181,7 @@ This is a particularly good place for a unit test. Scrubbing tokens is a likely
 point at which edge cases get encountered at scale. In practice, you'd probably
 want to define even more unit tests.
 
-Next, going back to the `Main.java` module, let’s add sink taps for writing out
+Next, going back to the `Main.java` module, let's add sink taps for writing out
 trapped data and checkpointed data:
 
 [source,java]

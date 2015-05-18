@@ -5,11 +5,11 @@ Part 5 - Implementing TF-IDF in Cascading
 
 This part builds on the Word Count app from the previous chapter and now
 implements TF-IDF in Cascading. We'll show how to use a
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/pipe/assembly/SumBy.html[SumBy]
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/pipe/assembly/SumBy.html[SumBy]
 and a
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/pipe/CoGroup.html[CoGroup]
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/pipe/CoGroup.html[CoGroup]
 to aggregate the data needed, and then how to use an
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/operation/expression/ExpressionFunction.html[ExpressionFunction]
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/operation/expression/ExpressionFunction.html[ExpressionFunction]
 to calculate the TF-IDF weights. We also continue to show best practices for
 workflow orchestration and test-driven development (TDD) at scale.
 
@@ -17,7 +17,7 @@ Theory
 ~~~~~~
 
 Fortunately, all of the data required to calculate TF-IDF weight was already
-available in our Word Count example in Part 4. However, we’ll need to revise the
+available in our Word Count example in Part 4. However, we'll need to revise the
 overall workflow, adding more pipe assemblies to it.
 
 TF-IDF calculates a metric for each token which indicates how ``important'' that
@@ -35,10 +35,10 @@ class in Lucene.
 
 Note that in the literature, `token` and `term` may be used interchangeably for
 this sample app. More advanced text analytics might look at sequences of words,
-in which case a `term` becomes a more complex structure. However, we’re only
+in which case a `term` becomes a more complex structure. However, we are only
 looking at single words.
 
-We’ll need the following components to calculate TF-IDF:
+We will need the following components to calculate TF-IDF:
 
 - term count: number of times a given term appears in a given document
 - document frequency: how frequently a given term appears across all documents
@@ -94,7 +94,7 @@ At that point, we have _TF_ values for each token.
 In a second branch we'll calculate _D_, the total number of documents in a way
 which can be consumed later in a join. This uses a built-in partial aggregate
 operation called
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/pipe/assembly/SumBy.html[SumBy]:
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/pipe/assembly/SumBy.html[SumBy]:
 
 [source,java]
 ----
@@ -131,7 +131,7 @@ dfPipe = new Each( dfPipe, new Insert( lhs_join, 1 ), Fields.ALL );
 
 Now we have all the components needed to calculate TF-IDF weights. We’ll use two
 kinds of joins - a HashJoin followed by a
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/pipe/CoGroup.html[CoGroup] -
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/pipe/CoGroup.html[CoGroup] -
 to merge the three branches together:
 
 [source,java]
@@ -145,7 +145,7 @@ Pipe tfidfPipe = new CoGroup( tfPipe, tf_token, idfPipe, df_token );
 ----
 
 Then we calculate the weights using an
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/operation/expression/ExpressionFunction.html[ExpressionFunction]
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/operation/expression/ExpressionFunction.html[ExpressionFunction]
 in Cascading:
 
 [source,java]
@@ -161,7 +161,7 @@ tfidfPipe = new Retain( tfidfPipe, fieldSelector );
 tfidfPipe = new Rename( tfidfPipe, tf_token, token );
 ----
 
-Now we can get back to the remainder of the workflow. We’ll keep the actual
+Now we can get back to the remainder of the workflow. We will keep the actual
 Word Count metrics, since those are useful for testing:
 
 [source,java]
@@ -174,8 +174,8 @@ wcPipe = new SumBy( wcPipe, tf_token, tf_count, count, long.class );
 wcPipe = new Rename( wcPipe, tf_token, token );
 ----
 
-Last, we’ll add another sink tap to the
-http://docs.cascading.org/cascading/2.6/javadoc/cascading/flow/FlowDef.html[FlowDef], to include output data for our
+Last, we will add another sink tap to the
+http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/flow/FlowDef.html[FlowDef], to include output data for our
 TF-IDF weights:
 
 [source,java]
@@ -189,7 +189,7 @@ FlowDef flowDef = FlowDef.flowDef()
  .addTailSink( wcPipe, wcTap );
 ----
 
-We’ll change the name of the resulting Flow too, to keep our code properly
+We'll change the name of the resulting Flow too, to keep our code properly
 descriptive:
 
 [source,java]
@@ -221,8 +221,8 @@ To build the sample app from the command line use, as always:
 Run
 ~~~
 
-Before running this sample app, you’ll need to have a supported release of
-Apache Hadoop installed. Here’s what was used to develop and test our example
+Before running this sample app, you will need to have a supported release of
+Apache Hadoop installed. Here is what was used to develop and test our example
 code:
 
     $ hadoop version
@@ -260,7 +260,7 @@ is an excellent way to review the architecture for your data-driven application.
 of quick checks that can be conducted include ensuring that much of filtering of data 
 pipes is done ahead of a join, establishing points where checkpoints have to be introduced,
 validating that the business requirements are aligned with the actual implementation of 
-the data transformation function…
+the data transformation function
 ===============================
 
 Now, it gets interesting to start exploring the application in the Driven Performance View.

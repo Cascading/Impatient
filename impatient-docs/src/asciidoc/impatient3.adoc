@@ -4,7 +4,7 @@ Part 3 - Scrubbing
 -----------------
 
 In the link:impatient2.html[previous installement] we have implemented the
-famous Word Count as a Cascading 2.6 application.
+famous Word Count as a Cascading application.
 
 This part takes the same app and stretches it even more. We’ll show how to write
 a custom Operation. Again, this code is leading toward an implementation of
@@ -19,7 +19,7 @@ Theory
 This example in Part 3 uses a custom *operation* in Cascading to ``scrub'' the
 token stream, prior to counting the tokens. Previously we used a
 RegexSplitGenerator to tokenize the text, which is a built-in operation and
-works pretty well. However, one thing you’ll find in working with most any text
+works pretty well. However, one thing you'll find in working with most any text
 analytics at scale is that there are lots and lots of edge cases. Cleaning up
 the edge cases generally represents the bulk of the engineering work in text
 analytics. Hyphens, exponents, different kinds of quotes, etc. If you try to
@@ -39,13 +39,13 @@ link:http://en.wikipedia.org/wiki/Extract,\_transform,_load[ETL]. In other words
 operations act on the data to transform the tuple stream, filter it, analyze it,
 etc. Think what roles command line utilities such as `grep` or `awk` perform in Unix
 shell scripts. Cascading provides a rich library of standard operations, to
-encode the ``business logic'' of transforming ``Big Data''. It’s relatively simple
+encode the ``business logic'' of transforming ``Big Data''. It is relatively simple
 to develop your own custom operations, and our text ``scrubbing'' example here
 shows a good use case. However, if you find yourself starting to develop _lots_ of
-custom operations every time you begin to write a Cascading app, that’s a good
+custom operations every time you begin to write a Cascading app, that's a good
 indication that you need to step back and reevaluate. On one hand, the standard
 operations have been developed over the years and they tend to cover a large
-class of MapReduce applications. On the other hand, if you aren’t careful while
+class of MapReduce applications. On the other hand, if you are not careful while
 defining a custom operation, you may inadvertently introduce a bottleneck. The
 standard operations encapsulate best practices and design patterns for
 parallelism. Something to think about.
@@ -61,7 +61,7 @@ Source
 You can find the code of this part in the `part3` subdirectory. The input data
 stays the same as in the earlier code
 
-First, let’s make room for using our custom operation `ScrubFunction` to clean up
+First, let's make room for using our custom operation `ScrubFunction` to clean up
 the token stream. We place it into the `docPipe` assembly, immediately after the
 regex which splits the raw text:
 
@@ -82,7 +82,7 @@ public ScrubFunction( Fields fieldDeclaration )
 ----
 
 The `fieldDeclaration` parameter allows us to name the tuple fields from the
-flow. Since we’ll output the results as TSV, a header will be created from the
+flow. Since we'll output the results as TSV, a header will be created from the
 tuple fields.
 
 Next, we define an `operate` method. In other words, we define the function which
@@ -110,7 +110,7 @@ public void operate( FlowProcess flowProcess, FunctionCall functionCall )
 
 Last but not least, we define the `scrubText` method to clean up tokens. This
 version is relatively simple, and in practice it would have many more cases.
-It’s also relatively simple to write unit tests against:
+It's also relatively simple to write unit tests against:
 
 [source,java]
 ----
