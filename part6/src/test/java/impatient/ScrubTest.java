@@ -37,10 +37,7 @@ public class ScrubTest extends CascadingTestCase
     {
     Fields fieldDeclaration = new Fields( "doc_id", "token" );
     Function scrub = new ScrubFunction( fieldDeclaration );
-    Tuple[] arguments = new Tuple[]{
-      new Tuple( "doc_1", "FoO" ),
-      new Tuple( "doc_1", " BAR " ),
-      new Tuple( "doc_1", "     " ) // will be scrubed
+    Tuple[] arguments = new Tuple[]{new Tuple( "doc_1", "FoO" ), new Tuple( "doc_1", " BAR " ), new Tuple( "doc_1", "     " ) // will be scrubed
     };
 
     ArrayList<Tuple> expectResults = new ArrayList<Tuple>();
@@ -51,8 +48,7 @@ public class ScrubTest extends CascadingTestCase
     Iterator<Tuple> it = collector.iterator();
     ArrayList<Tuple> results = new ArrayList<Tuple>();
 
-    while( it.hasNext() )
-      results.add( it.next() );
+    while( it.hasNext() ) results.add( it.next() );
 
     assertEquals( "Scrub result is not expected", expectResults, results );
     }

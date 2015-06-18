@@ -98,7 +98,7 @@ to have more descriptive names. Makes it simpler to follow all the plumbing.
 
 Previously we defined a simple *pipe* to connect the *taps*. This example shows a
 more complex pipe. We use a *generator* inside of an
-http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/pipe/Each.html[Each], to split the document
+http://docs.cascading.org/cascading/3.0/javadoc/cascading-core/cascading/pipe/Each.html[Each], to split the document
 text into a token stream. We use a regex to split on word boundaries:
 
 [source,java]
@@ -115,7 +115,7 @@ can change the regex to handle more complex cases of splitting tokens — withou
 having to rewrite a different generator class.
 
 Next, we use a
-http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/pipe/GroupBy.html[GroupBy]
+http://docs.cascading.org/cascading/3.0/javadoc/cascading-core/cascading/pipe/GroupBy.html[GroupBy]
 to count the occurrences of each token:
 
 [source,java]
@@ -127,7 +127,7 @@ wcPipe = new Every( wcPipe, Fields.ALL, new Count(), Fields.ALL );
 
 From that pipe, we'll have a resulting tuple stream of token and count for the
 output. So we connect up the plumbing with a
-http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/cascading/flow/FlowDef.html[FlowDef]:
+http://docs.cascading.org/cascading/3.0/javadoc/cascading-core/cascading/flow/FlowDef.html[FlowDef]:
 
 [source,java]
 ----
@@ -151,8 +151,8 @@ Place those source lines all into a `Main` method, then build a JAR file. You
 should be good to go.
 
 If you want to read in more detail about the classes in the Cascading API which
-http://docs.cascading.org/cascading/2.7/userguide/html/[User Guide] and
-http://docs.cascading.org/cascading/2.7/javadoc/[JavaDoc].
+http://docs.cascading.org/cascading/3.0/userguide/[User Guide] and
+http://docs.cascading.org/cascading/3.0/javadoc/cascading-core/[JavaDoc].
 were used, see the Cascading 
 
 Build

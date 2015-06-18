@@ -23,26 +23,39 @@ import java.text.SimpleDateFormat
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
-
-apply from: "../common/providedCompile.gradle"
+apply plugin: 'provided-base'
 
 archivesBaseName = 'impatient'
+
+buildscript {
+  repositories {
+    jcenter()
+    maven { url 'http://repo.spring.io/plugins-release' }
+  }
+  dependencies {
+    classpath 'com.netflix.nebula:gradle-extra-configurations-plugin:2.2.1'
+  }
+}
 
 repositories {
   mavenLocal()
   mavenCentral()
-  maven{ url 'http://conjars.org/repo/' }
+  maven { url 'http://conjars.org/repo/' }
 }
 
-ext.cascadingVersion = '2.7.0'
-ext.hadoopVersion = '2.4.1'
+ext.cascadingVersion = '3.0.0'
+ext.hadoopVersion = '2.6.0'
 
 dependencies {
   compile group: 'cascading', name: 'cascading-core', version: cascadingVersion
   compile group: 'cascading', name: 'cascading-hadoop2-mr1', version: cascadingVersion
-  providedCompile group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: hadoopVersion // resolves issue with jdk1.7
-  providedCompile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'
-  providedCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.5'
+
+  provided( group: 'org.apache.hadoop', name: 'hadoop-common', version: hadoopVersion )
+  provided( group: 'org.apache.hadoop', name: 'hadoop-client', version: hadoopVersion )
+  provided( group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: hadoopVersion )
+  // resolves issue with jdk1.7
+  provided group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'
+  provided group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.5'
 
   testCompile group: 'cascading', name: 'cascading-platform', version: cascadingVersion, classifier: 'tests'
   testCompile group: 'cascading', name: 'cascading-hadoop2-mr1', version: cascadingVersion, classifier: 'tests'
@@ -57,9 +70,10 @@ dependencies {
 
 jar {
   description = "Assembles a Hadoop ready jar file"
+
   doFirst {
     into( 'lib' ) {
-      from configurations.compile
+      from { configurations.compile.minus( [configurations.provided] ) }
     }
   }
 
@@ -73,8 +87,8 @@ task distCopy( type: Copy, dependsOn: jar ) {
 
   from 'README.md'
   from 'build.gradle'
-  from( 'src' ) {into 'src'}
-  from( 'data' ) {into 'data'}
+  from( 'src' ) { into 'src' }
+  from( 'data' ) { into 'data' }
 
   from "$buildDir/libs"
 }
@@ -93,10 +107,8 @@ test {
   testLogging.showStandardStreams = true
 
   //listening to test execution events
-  beforeTest { descriptor ->
-     logger.lifecycle("Running test: " + descriptor)
+  beforeTest { descriptor -> logger.lifecycle( "Running test: " + descriptor )
   }
-  onOutput { descriptor, event ->
-     logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
+  onOutput { descriptor, event -> logger.lifecycle( "Test: " + descriptor + " produced standard out/err: " + event.message )
   }
 }

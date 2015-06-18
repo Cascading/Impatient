@@ -22,7 +22,6 @@ package impatient;
 
 import java.util.Properties;
 
-import cascading.flow.FlowConnector;
 import cascading.flow.FlowDef;
 import cascading.flow.hadoop2.Hadoop2MR1FlowConnector;
 import cascading.pipe.Pipe;
@@ -32,18 +31,16 @@ import cascading.tap.Tap;
 import cascading.tap.hadoop.Hfs;
 
 
-public class
-  Main
+public class Main
   {
-  public static void
-  main( String[] args )
+  public static void main( String[] args )
     {
     String inPath = args[ 0 ];
     String outPath = args[ 1 ];
 
     Properties properties = new Properties();
     AppProps.setApplicationJarClass( properties, Main.class );
-    FlowConnector flowConnector = new Hadoop2MR1FlowConnector( properties );
+    Hadoop2MR1FlowConnector flowConnector = new Hadoop2MR1FlowConnector( properties );
 
     // create the source tap
     Tap inTap = new Hfs( new TextDelimited( true, "\t" ), inPath );
@@ -55,9 +52,7 @@ public class
     Pipe copyPipe = new Pipe( "copy" );
 
     // connect the taps, pipes, etc., into a flow
-    FlowDef flowDef = FlowDef.flowDef()
-     .addSource( copyPipe, inTap )
-     .addTailSink( copyPipe, outTap );
+    FlowDef flowDef = FlowDef.flowDef().addSource( copyPipe, inTap ).addTailSink( copyPipe, outTap );
 
     // run the flow
     flowConnector.connect( flowDef ).complete();

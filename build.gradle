@@ -22,3 +22,48 @@ apply from: "${rootDir}/etc/s3Upload.gradle"
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
+apply plugin: 'documentation-plugin'
+
+buildscript {
+  repositories {
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+    maven { url 'http://conjars.org/repo/' }
+  }
+
+  dependencies {
+    classpath 'concurrentinc:documentation-plugin:1.1.1-14'
+    classpath 'eu.appsatori:gradle-fatjar-plugin:0.2'
+  }
+
+}
+
+createDocs {
+  targetStyle = "cascading"
+
+  sourceDir = file( "${rootDir}/impatient-docs/src/asciidoc/" )
+  imagesDir = file( "${rootDir}/impatient-docs/src/site/images/" )
+
+  options = [doctype: "book",]
+
+  attributes = [revnumber: "3.0.0",]
+}
+
+task zipDocs( type: Zip, dependsOn: createDocs ) {
+  baseName = "${project.name}"
+  from( createDocs.outputDir ) {
+    include '*.*'
+  }
+  into "${project.name}"
+}
+
+task docDist( type: Copy, dependsOn: [createDocs, zipDocs] ) {
+  description = "publish documentation"
+
+  from createDocs.outputDir
+  from zipDocs.archivePath
+  into "${rootProject.s3UploadDocs.source}/${project.name}"
+
+  rootProject.s3UploadDocs.dependsOn docDist
+}

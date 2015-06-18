@@ -30,8 +30,7 @@ if( System.properties[ 'aws.properties' ] )
   }
 }
 
-if( System.properties[ 'publish.repo.url' ] )
-  repoUrl = System.properties[ 'publish.repo.url' ]
+if( System.properties[ 'publish.repo.url' ] ) repoUrl = System.properties[ 'publish.repo.url' ]
 
 ext.awsAccessId = System.properties[ 'publish.aws.accessId' ]
 ext.awsSecretKey = System.properties[ 'publish.aws.secretKey' ]

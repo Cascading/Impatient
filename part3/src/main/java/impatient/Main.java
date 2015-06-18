@@ -40,11 +40,9 @@ import cascading.tap.hadoop.Hfs;
 import cascading.tuple.Fields;
 
 
-public class
-  Main
+public class Main
   {
-  public static void
-  main( String[] args )
+  public static void main( String[] args )
     {
     String docPath = args[ 0 ];
     String wcPath = args[ 1 ];
@@ -75,10 +73,7 @@ public class
     wcPipe = new Every( wcPipe, Fields.ALL, new Count(), Fields.ALL );
 
     // connect the taps, pipes, etc., into a flow
-    FlowDef flowDef = FlowDef.flowDef()
-     .setName( "wc" )
-     .addSource( docPipe, docTap )
-     .addTailSink( wcPipe, wcTap );
+    FlowDef flowDef = FlowDef.flowDef().setName( "wc" ).addSource( docPipe, docTap ).addTailSink( wcPipe, wcTap );
 
     // write a DOT file and run the flow
     Flow wcFlow = flowConnector.connect( flowDef );

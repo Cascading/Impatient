@@ -23,34 +23,45 @@ import java.text.SimpleDateFormat
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
-
-apply from: "../common/providedCompile.gradle"
+apply plugin: 'provided-base'
 
 archivesBaseName = 'impatient'
+
+buildscript {
+  repositories {
+    jcenter()
+    maven { url 'http://repo.spring.io/plugins-release' }
+  }
+  dependencies {
+    classpath 'com.netflix.nebula:gradle-extra-configurations-plugin:2.2.1'
+  }
+}
 
 repositories {
   mavenLocal()
   mavenCentral()
-  maven{ url 'http://conjars.org/repo/' }
+  maven { url 'http://conjars.org/repo/' }
 }
 
-ext.cascadingVersion = '2.7.0'
-ext.hadoopVersion = '2.4.1'
+ext.cascadingVersion = '3.0.0'
+ext.hadoopVersion = '2.6.0'
 
 dependencies {
   compile( group: 'cascading', name: 'cascading-core', version: cascadingVersion )
   compile( group: 'cascading', name: 'cascading-hadoop2-mr1', version: cascadingVersion )
-  providedCompile( group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: hadoopVersion )
+
+  provided( group: 'org.apache.hadoop', name: 'hadoop-common', version: hadoopVersion )
+  provided( group: 'org.apache.hadoop', name: 'hadoop-client', version: hadoopVersion )
+  provided( group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: hadoopVersion )
 }
 
 jar {
   description = "Assembles a Hadoop ready jar file"
   doFirst {
     into( 'lib' ) {
-      from configurations.compile
+      from { configurations.compile.minus( [configurations.provided] ) }
     }
   }
-
   manifest {
     attributes( "Main-Class": "impatient/Main" )
   }
@@ -61,8 +72,8 @@ task distCopy( type: Copy, dependsOn: jar ) {
 
   from 'README.md'
   from 'build.gradle'
-  from( 'src' ) {into 'src'}
-  from( 'data' ) {into 'data'}
+  from( 'src' ) { into 'src' }
+  from( 'data' ) { into 'data' }
 
   from "$buildDir/libs"
 }
