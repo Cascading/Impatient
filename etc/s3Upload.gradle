@@ -50,7 +50,7 @@ task s3UploadDocs( type: S3Sync ) {
 
   ext.source = "${buildDir}/documentation"
 
-  ext.destination = "${project.s3BucketDocs}/${rootProject.name}/"
+  ext.destination = "${project.s3BucketDocs}/"
 
   from source
   into destination
