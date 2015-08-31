@@ -43,7 +43,7 @@ repositories {
   maven { url 'http://conjars.org/repo/' }
 }
 
-ext.cascadingVersion = '3.0.0'
+ext.cascadingVersion = '3.0.2'
 ext.hadoopVersion = '2.6.0'
 
 dependencies {
