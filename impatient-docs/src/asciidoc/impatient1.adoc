@@ -10,7 +10,7 @@ following best practices. No bangs, no whistles, just good solid code.
 https://github.com/Cascading/Impatient/tree/master/part1
 
 Here’s a brief Java program, about a dozen lines long. It copies lines of text
-from file ``A'' to file ``B''. It uses 1 _mapper_ in
+from file ``A`` to file ``B``. It uses 1 _mapper_ in
 http://hadoop.apache.org[Apache Hadoop]. No _reducer_ needed.  A conceptual
 diagram for this implementation in Cascading is shown as:
 
