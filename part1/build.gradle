@@ -63,6 +63,6 @@ jar {
   }
 
   manifest {
-    attributes( "Main-Class": "impatient/HadoopMaxAvgTotalPayment" )
+    attributes( "Main-Class": "impatient/Main" )
   }
 }
