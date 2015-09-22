@@ -175,7 +175,7 @@ image:driven-part1-b.png[]
 This URL will give you insights about your application, some of
 which we will cover as part of the tutorial. If you have not installed the Driven plugin,
 you can still see how Driven will help you visualize such an application by following the
- https://driven.cascading.io/driven/4750100B4D434B70BFAD0BA7543FB99A[link].
+ https://driven.cascading.io/index.html#/apps/6890CE1FB70A4676B8BEFC296AC746B7[link].
 
 NOTE: To take advantage of additional features such as comparing your application statistics
 with historical runs, collaborating with teams, and managing multiple applications, we suggest

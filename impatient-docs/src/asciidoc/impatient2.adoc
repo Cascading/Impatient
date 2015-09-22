@@ -193,7 +193,7 @@ through Driven.
 
 *If you have not installed the Driven plugin, you can still explore how Driven
 will visualize Part 2 by visiting this
-https://driven.cascading.io/driven/56AB59A8C83E4ABAB50A617B2512600F[link]*
+https://driven.cascading.io/index.html#/apps/7162A7E4209A4A16BC34F7D560921B8F[link]*
 
 You can inspect the application run either by following the URL provided in system
 command, or visiting http://driven.cascading.io if your registered your key.

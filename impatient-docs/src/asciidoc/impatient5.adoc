@@ -239,7 +239,7 @@ Let's see how Driven helps you visualize this application. Depending upon how yo
 installed the Driven plugin, start your Driven-enabled application.
 
 *If you did not install Driven plugin, you can still explore a historical Part 5 run
- through Driven by visiting this https://driven.cascading.io/driven/67DC87B93DF24F54B6F0207869F1D46F[link]*
+ through Driven by visiting this https://driven.cascading.io/index.html#/apps/83EF275791C1437E9887396487AD2400[link]*
 
 Make sure that your refresh is set to ON; observe how Driven renders what part of the code 
 is currently being executed, and what part has already been executed. In addition, from the 

@@ -204,7 +204,7 @@ sure that you have set the Refresh feature to ON. By default, the Driven updates
 every 30 seconds. 
 
 *If you have not installed the Driven plugin, you can still explore Part 4 through
-Driven by following this https://driven.cascading.io/driven/1AE69BD0641146EFB926DE7AC83B94B0[link]*
+Driven by following this https://driven.cascading.io/index.html#/apps/B9AB39D2860448B9A508CFF6884B9A2C[link]*
 
 [NOTE]
 ===============================

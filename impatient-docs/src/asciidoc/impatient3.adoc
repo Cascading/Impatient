@@ -150,7 +150,7 @@ Driven
 Explore with *Driven* how your application got composed into Cascading.
 
 *If you did not install the Driven plugin, you can still explore Part 3
-through Driven by following this https://driven.cascading.io/driven/A6C97AEB171449F4945FF90651C08E74[link]*
+through Driven by following this https://driven.cascading.io/index.html#/apps/7390237782EC41D0BBDF1CAA642C917A[link]*
 
 image:driven-part3.png[]
 
