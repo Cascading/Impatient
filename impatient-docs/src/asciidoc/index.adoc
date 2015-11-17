@@ -37,7 +37,7 @@ with the Driven application. To use Driven, the Driven Plugin must be on the run
 classpath for your Cascading application. 
 
 The cloud version of Driven is free for developer use. To get started using Driven, 
-visit http://docs.cascading.io/driven/1.3/#_getting_started[Getting Started with Driven] to access all the
+visit http://docs.cascading.io/driven/2.0/#_getting_started[Getting Started with Driven] to access all the
 developer features and gain visibility into your Cascading applications (including apps 
 built with Scalding, Cascalog, Lingual, Pattern or any other Cascading dynamic programming language).
 
@@ -55,7 +55,7 @@ remote network connection. Neither Cascading or the Plugin will open an connecti
 within an Apache Hadoop cluster.
 
 You can learn more about using Driven for your Cascading application at 
-http://docs.cascading.io/driven/1.0/getting-started/index.html[Getting Started with Driven]
+http://docs.cascading.io/driven/2.0/#_getting_started[Getting Started with Driven]
 
 ===============================
 
