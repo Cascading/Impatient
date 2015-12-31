@@ -349,6 +349,6 @@ elastic-mapreduce --create --name "TF-IDF" \
 Driven
 ~~~~~~
 *If you have not installed the Driven plugin, but would like to explore an instance of a historical
-run of Part 6, visit this https://driven.cascading.io/index.html#/apps/8E1671A35FB841F19841745E42CBC19D?view=element[link]*
+run of Part 6, visit this http://showcase.driven.io/index.html#/apps/066773E6EBF7478086B193F75DBBB6A3?view=element[link]*
 
 That's all folks!

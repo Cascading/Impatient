@@ -40,6 +40,10 @@ public class Main
 
     Properties properties = new Properties();
     AppProps.setApplicationJarClass( properties, Main.class );
+    AppProps.setApplicationName( properties, "Impatient Part 1" );
+    AppProps.addApplicationTag( properties, "tutorial:impatient" );
+    AppProps.addApplicationTag( properties, "technology:Cascading" );
+
     Hadoop2MR1FlowConnector flowConnector = new Hadoop2MR1FlowConnector( properties );
 
     // create the source tap
@@ -52,7 +56,7 @@ public class Main
     Pipe copyPipe = new Pipe( "copy" );
 
     // connect the taps, pipes, etc., into a flow
-    FlowDef flowDef = FlowDef.flowDef().addSource( copyPipe, inTap ).addTailSink( copyPipe, outTap );
+    FlowDef flowDef = FlowDef.flowDef().addSource( copyPipe, inTap ).addTailSink( copyPipe, outTap ).setName( "Copy" );
 
     // run the flow
     flowConnector.connect( flowDef ).complete();

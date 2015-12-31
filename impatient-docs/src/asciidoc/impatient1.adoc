@@ -149,14 +149,14 @@ application-performance management application that helps you visualize
 you application development, debugging, performance tuning, monitoring and
 other operational aspects for data-driven applications built on Cascading.
 
-_Driven is free for developer use on cascading.io._
+_Driven is free for developer use on driven.io._
 
-To get started, http://cascading.io/try/[download the Driven plugin]
+To get started, http://www.driven.io/choose-trial/[download the Driven plugin]
 
 NOTE: *How does Driven work?*
 When you run your Cascading application, the framework underneath instruments
 your code and sends these telemetry signals to your Driven server, which can
-reside in the Cloud (cascading.io)  or be self-hosted. The Driven plugin, which resides close
+reside in the Cloud (trial.driven.io)  or be self-hosted. The Driven plugin, which resides close
 your application, only sends the operational meta-data to the server for
 analysis and visualization -- _no application data is ever transmitted_. The operational
 meta-data includes the graph it constructs to run the application on the native
@@ -175,12 +175,12 @@ image:driven-part1-b.png[]
 This URL will give you insights about your application, some of
 which we will cover as part of the tutorial. If you have not installed the Driven plugin,
 you can still see how Driven will help you visualize such an application by following the
- https://driven.cascading.io/index.html#/apps/6890CE1FB70A4676B8BEFC296AC746B7[link].
+ http://showcase.driven.io/index.html#/apps/7D93CF0A824C4612AA8D5FBF77E18BB3?view=element[link].
 
 NOTE: To take advantage of additional features such as comparing your application statistics
 with historical runs, collaborating with teams, and managing multiple applications, we suggest
-that you get a free API key at http://cascading.io/register. If you have registered and
-finished the instructions to install the key, log in at https://driven.cascading.io
+that you get a free API key at http://www.driven.io/choose-trial/. If you have registered and
+finished the instructions to install the key, log in at https://trial.driven.io
 to visualize your application flow. We will cover cover various features of the Driven
 application in the following tutorials.
 

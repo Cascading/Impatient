@@ -204,11 +204,11 @@ sure that you have set the Refresh feature to ON. By default, the Driven updates
 every 30 seconds. 
 
 *If you have not installed the Driven plugin, you can still explore Part 4 through
-Driven by following this https://driven.cascading.io/index.html#/apps/B9AB39D2860448B9A508CFF6884B9A2C[link]*
+Driven by following this http://showcase.driven.io/index.html#/apps/82EE3093670B447AB22D0DFE8873FEAF?view=element[link]*
 
 [NOTE]
 ===============================
-If you registered at http://cascading.io and installed the Driven API key, you will 
+If you registered at http://driven.io and installed the Driven API key, you will
 have accces to the 'All Applications' view that tracks all your historical application
 runs. This view starts becoming interesting over a period of time when you want to 
 track trending, identify outlier behavior, or monitor applications based on their 

@@ -7,11 +7,11 @@
 14/10/30 13:58:27 INFO mapred.FileInputFormat: Total input paths to process : 1
 14/10/30 13:58:28 INFO provider.ServiceLoader: loading services from library: file:/home/fs111/code/concurrent/driven/driven-plugin/build/libs/driven-plugin-1.1.1-dev-shaded.jar
 14/10/30 13:58:28 INFO rest.BulkUploadClient: using api key 6139CB96E91D4AEB8C7ADB18342F8A93
-14/10/30 13:58:28 INFO rest.DrivenDocumentService: starting service. sending telemetry to https://driven.cascading.io from plugin /home/fs111/code/concurrent/driven/driven-plugin/build/libs/driven-plugin-1.1.1-dev-shaded.jar
+14/10/30 13:58:28 INFO rest.DrivenDocumentService: starting service. sending telemetry to https://driven.io from plugin /home/fs111/code/concurrent/driven/driven-plugin/build/libs/driven-plugin-1.1.1-dev-shaded.jar
 14/10/30 13:58:28 INFO rest.BufferedWriter: archive recording is not enabled
 14/10/30 13:58:29 WARN rest.BulkUploadClient: server version: '1.1-eap-9' does not match plugin version: '1.1.1-dev-4d74256'
 14/10/30 13:58:29 INFO rest.BulkUploadClient: resolved protocol config: {}
-14/10/30 13:58:29 INFO rest.BulkUploadClient: available https://driven.cascading.io
+14/10/30 13:58:29 INFO rest.BulkUploadClient: available https://showcase.driven.io
 14/10/30 13:58:29 INFO Configuration.deprecation: mapred.used.genericoptionsparser is deprecated. Instead, use mapreduce.client.genericoptionsparser.used
 14/10/30 13:58:29 INFO Configuration.deprecation: mapred.job.tracker is deprecated. Instead, use mapreduce.jobtracker.address
 14/10/30 13:58:29 INFO Configuration.deprecation: mapred.map.child.java.opts is deprecated. Instead, use mapreduce.map.java.opts
@@ -70,8 +70,7 @@
 14/10/30 13:58:30 INFO collect.SpillableTupleList: attempting to load codec: org.apache.hadoop.io.compress.GzipCodec
 14/10/30 13:58:30 INFO collect.SpillableTupleList: found codec: org.apache.hadoop.io.compress.GzipCodec
 14/10/30 13:58:30 INFO mapred.LocalJobRunner: 
-14/10/30 13:58:30 INFO rest.DrivenDocumentService: https://driven.cascading.io/driven/9F46417DA7D24FAA985DEB46FAB98C1A
-14/10/30 13:58:30 INFO rest.DrivenDocumentService: plugin version 1.1.1-dev-4d74256
+14/10/30 13:58:30 INFO rest.DrivenDocumentService: http://showcase.driven.io/index.html#/apps/AF642BB373594C129B3A3985DFBCECA9
 14/10/30 13:58:30 INFO mapred.Task: Task:attempt_local829586464_0001_m_000000_0 is done. And is in the process of committing
 14/10/30 13:58:30 INFO mapred.LocalJobRunner: 
 14/10/30 13:58:30 INFO mapred.Task: Task attempt_local829586464_0001_m_000000_0 is allowed to commit now
@@ -786,6 +785,5 @@
 14/10/30 13:58:51 INFO util.Hadoop18TapUtil: deleting temp path output/tfidf/_temporary
 14/10/30 13:58:51 INFO state.AppStats: shutdown finalizing app status
 14/10/30 13:58:51 INFO state.AppStats: shutdown hook finished.
-14/10/30 13:58:51 INFO rest.DrivenDocumentService: https://driven.cascading.io/driven/9F46417DA7D24FAA985DEB46FAB98C1A
-14/10/30 13:58:51 INFO rest.DrivenDocumentService: plugin version 1.1.1-dev-4d74256
+14/10/30 13:58:51 INFO rest.DrivenDocumentService: http://showcase.driven.io/index.html#/apps/AF642BB373594C129B3A3985DFBCECA9
 14/10/30 13:58:51 INFO rest.DrivenDocumentService: stopped document service

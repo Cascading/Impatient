@@ -49,6 +49,9 @@ public class Main
 
     Properties properties = new Properties();
     AppProps.setApplicationJarClass( properties, Main.class );
+    AppProps.setApplicationName( properties, "Impatient Part 3" );
+    AppProps.addApplicationTag( properties, "tutorial:impatient" );
+    AppProps.addApplicationTag( properties, "technology:Cascading" );
     FlowConnector flowConnector = new Hadoop2MR1FlowConnector( properties );
 
     // create source and sink taps

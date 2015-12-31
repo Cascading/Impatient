@@ -7,11 +7,11 @@
 14/10/30 13:48:55 INFO mapred.FileInputFormat: Total input paths to process : 1
 14/10/30 13:48:55 INFO provider.ServiceLoader: loading services from library: file:/home/fs111/code/concurrent/driven/driven-plugin/build/libs/driven-plugin-1.1.1-dev-shaded.jar
 14/10/30 13:48:55 INFO rest.BulkUploadClient: using api key 6139CB96E91D4AEB8C7ADB18342F8A93
-14/10/30 13:48:55 INFO rest.DrivenDocumentService: starting service. sending telemetry to https://driven.cascading.io from plugin /home/fs111/code/concurrent/driven/driven-plugin/build/libs/driven-plugin-1.1.1-dev-shaded.jar
+14/10/30 13:48:55 INFO rest.DrivenDocumentService: starting service. sending telemetry to https://showcase.driven.io from plugin /home/fs111/code/concurrent/driven/driven-plugin/build/libs/driven-plugin-1.1.1-dev-shaded.jar
 14/10/30 13:48:55 INFO rest.BufferedWriter: archive recording is not enabled
 14/10/30 13:48:56 WARN rest.BulkUploadClient: server version: '1.1-eap-9' does not match plugin version: '1.1.1-dev-4d74256'
 14/10/30 13:48:56 INFO rest.BulkUploadClient: resolved protocol config: {}
-14/10/30 13:48:57 INFO rest.BulkUploadClient: available https://driven.cascading.io
+14/10/30 13:48:57 INFO rest.BulkUploadClient: available https://showcase.driven.io
 14/10/30 13:48:57 INFO Configuration.deprecation: mapred.used.genericoptionsparser is deprecated. Instead, use mapreduce.client.genericoptionsparser.used
 14/10/30 13:48:57 INFO Configuration.deprecation: mapred.job.tracker is deprecated. Instead, use mapreduce.jobtracker.address
 14/10/30 13:48:57 INFO Configuration.deprecation: mapred.output.compress is deprecated. Instead, use mapreduce.output.fileoutputformat.compress
@@ -53,8 +53,7 @@
 14/10/30 13:48:58 INFO mapred.MapTask: Map output collector class = org.apache.hadoop.mapred.MapTask$MapOutputBuffer
 14/10/30 13:48:58 WARN conf.Configuration: file:/tmp/hadoop-fs111/mapred/staging/fs11182790190/.staging/job_local82790190_0001/job.xml:an attempt to override final parameter: mapreduce.job.end-notification.max.retry.interval;  Ignoring.
 14/10/30 13:48:58 WARN conf.Configuration: file:/tmp/hadoop-fs111/mapred/staging/fs11182790190/.staging/job_local82790190_0001/job.xml:an attempt to override final parameter: mapreduce.job.end-notification.max.attempts;  Ignoring.
-14/10/30 13:48:58 INFO rest.DrivenDocumentService: https://driven.cascading.io/driven/DBDFDA8179424A23B12D28AA98970B57
-14/10/30 13:48:58 INFO rest.DrivenDocumentService: plugin version 1.1.1-dev-4d74256
+14/10/30 13:48:58 INFO rest.DrivenDocumentService: http://showcase.driven.io/index.html#/apps/16674F56B00743799C80A526C380A362
 14/10/30 13:48:58 INFO mapred.MapTask: (EQUATOR) 0 kvi 26214396(104857584)
 14/10/30 13:48:58 INFO mapred.MapTask: mapreduce.task.io.sort.mb: 100
 14/10/30 13:48:58 INFO mapred.MapTask: soft limit at 83886080
@@ -115,6 +114,5 @@
 14/10/30 13:49:04 INFO util.Hadoop18TapUtil: deleting temp path output/wc/_temporary
 14/10/30 13:49:04 INFO state.AppStats: shutdown finalizing app status
 14/10/30 13:49:04 INFO state.AppStats: shutdown hook finished.
-14/10/30 13:49:04 INFO rest.DrivenDocumentService: https://driven.cascading.io/driven/DBDFDA8179424A23B12D28AA98970B57
-14/10/30 13:49:04 INFO rest.DrivenDocumentService: plugin version 1.1.1-dev-4d74256
+14/10/30 13:49:04 INFO rest.DrivenDocumentService: http://showcase.driven.io/index.html#/apps/16674F56B00743799C80A526C380A362
 14/10/30 13:49:04 INFO rest.DrivenDocumentService: stopped document service
