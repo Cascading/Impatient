@@ -47,7 +47,7 @@ createDocs {
 
   options = [doctype: "book",]
 
-  attributes = [revnumber: "3.0.0",]
+  attributes = [revnumber: "3.1.0",]
 }
 
 task zipDocs( type: Zip, dependsOn: createDocs ) {

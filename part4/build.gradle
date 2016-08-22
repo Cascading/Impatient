@@ -43,12 +43,14 @@ repositories {
   maven { url 'http://conjars.org/repo/' }
 }
 
-ext.cascadingVersion = '3.0.2'
+ext.cascadingVersion = '3.1.0'
 ext.hadoopVersion = '2.6.0'
 
 dependencies {
   compile( group: 'cascading', name: 'cascading-core', version: cascadingVersion )
   compile( group: 'cascading', name: 'cascading-hadoop2-mr1', version: cascadingVersion )
+  compile( group: 'cascading', name: 'cascading-expression', version: cascadingVersion )
+
 
   provided( group: 'org.apache.hadoop', name: 'hadoop-common', version: hadoopVersion )
   provided( group: 'org.apache.hadoop', name: 'hadoop-client', version: hadoopVersion )
